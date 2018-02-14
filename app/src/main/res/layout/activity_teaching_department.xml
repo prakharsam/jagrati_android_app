@@ -24,7 +24,7 @@
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_teachingdepartment_frame" />
+                android:src="@drawable/ic_teachingdepartment_frame" />
         </LinearLayout>
 
         <LinearLayout
@@ -35,25 +35,24 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="75dp"
+                android:layout_height="74dp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <ImageButton
                     android:id="@+id/back"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginTop="12dp"
                     android:layout_weight="0"
                     android:background="@android:color/transparent"
-                    app:srcCompat="@drawable/ic_teachingdepartment_backbutton" />
-
+                    android:src="@drawable/ic_teachingdepartment_backbutton" />
                 <TextView
                     android:id="@+id/pageTitle"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_weight="0"
+                    android:gravity="center_vertical"
                     android:paddingLeft="6dp"
-                    android:paddingTop="18dp"
                     android:text="Teaching Department"
                     android:textColor="#4a4a4a"
                     android:textSize="25sp" />
@@ -63,48 +62,17 @@
             <View
                 android:layout_width="328dp"
                 android:layout_height="2dp"
+                android:layout_marginTop="1dp"
                 android:background="#d8d8d8" />
 
             <GridLayout
+                android:id="@+id/grid"
                 android:layout_width="328dp"
                 android:layout_height="match_parent"
                 android:animateLayoutChanges="false"
                 android:columnCount="2"
                 android:rowCount="10"
                 android:rowOrderPreserved="false">
-
-                <!-- TODO: Loop here-->
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <Button
-                        android:id="@+id/button25"
-                        android:layout_width="166dp"
-                        android:layout_height="60dp"
-                        android:layout_columnWeight="0"
-                        android:autoText="false"
-                        android:background="@drawable/button_lines"
-                        android:gravity="top"
-                        android:paddingLeft="20dp"
-                        android:paddingTop="9dp"
-                        android:text="ENGLISH"
-                        android:textAlignment="viewStart"
-                        android:textColor="@android:color/black"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="20dp"
-                        android:paddingTop="33dp"
-                        android:text="11 Teachers"
-                        android:textColor="#797979"
-                        android:textSize="12sp" />
-                </RelativeLayout>
-
-
             </GridLayout>
 
         </LinearLayout>
