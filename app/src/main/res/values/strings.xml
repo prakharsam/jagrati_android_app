@@ -25,4 +25,8 @@
     <string name="title_activity_home2">Home2</string>
 
     <string name="title_activity_teaching_department">TeachingDepartment</string>
+
+    <string name="title_activity_english">English</string>
+
+    <string name="title_activity_subject_teaching_department">SubjectTeachingDepartment</string>
 </resources>
