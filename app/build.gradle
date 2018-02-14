@@ -19,8 +19,6 @@ android {
     }
 }
 
-android { sourceSets { main { assets.srcDirs = ['app/src/main/res/fonts/'] } } }
-
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
