@@ -58,7 +58,8 @@
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
 
                         <ImageView
                             android:id="@+id/imageView2"
@@ -71,7 +72,7 @@
 
                         <Button
                             android:id="@+id/_class"
-                            android:layout_width="180dp"
+                            android:layout_width="match_parent"
                             android:layout_height="120dp"
                             android:background="@android:color/transparent"
                             android:gravity="top|center_horizontal"
@@ -85,7 +86,8 @@
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
 
                         <ImageView
                             android:id="@+id/imageView3"
@@ -98,7 +100,7 @@
 
                         <Button
                             android:id="@+id/studyMaterial"
-                            android:layout_width="180dp"
+                            android:layout_width="match_parent"
                             android:layout_height="120dp"
                             android:background="@android:color/transparent"
                             android:gravity="top|center_horizontal"
@@ -118,7 +120,8 @@
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
 
                         <ImageView
                             android:id="@+id/imageView4"
@@ -131,7 +134,7 @@
 
                         <Button
                             android:id="@+id/events"
-                            android:layout_width="180dp"
+                            android:layout_width="match_parent"
                             android:layout_height="120dp"
                             android:background="@android:color/transparent"
                             android:gravity="top|center_horizontal"
@@ -145,7 +148,8 @@
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
 
                         <ImageView
                             android:id="@+id/imageView5"
@@ -158,7 +162,7 @@
 
                         <Button
                             android:id="@+id/teachingDepartment"
-                            android:layout_width="180dp"
+                            android:layout_width="match_parent"
                             android:layout_height="120dp"
                             android:background="@android:color/transparent"
                             android:gravity="top|center_horizontal"
