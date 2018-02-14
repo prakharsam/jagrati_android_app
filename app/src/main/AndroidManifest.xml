@@ -41,6 +41,11 @@
             android:name=".Home"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_home"
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".SubjectTeachingDepartment"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_subject_teaching_department"
             android:theme="@style/FullscreenTheme"></activity>
     </application>
 
