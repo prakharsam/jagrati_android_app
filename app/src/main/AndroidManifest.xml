@@ -31,22 +31,23 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login" />
+            android:label="@string/title_activity_login">
+            <intent-filter>
+                <action android:name="com.example.lenovopc.jagrati.LOGIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".TeachingDepartment"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_teaching_department"
             android:theme="@style/FullscreenTheme" />
         <activity
-            android:name=".Home"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_home"
-            android:theme="@style/FullscreenTheme" />
-        <activity
             android:name=".SubjectTeachingDepartment"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_subject_teaching_department"
-            android:theme="@style/FullscreenTheme"></activity>
+            android:theme="@style/FullscreenTheme" />
     </application>
 
 </manifest>

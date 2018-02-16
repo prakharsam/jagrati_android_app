@@ -4,9 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-/**
- * Created by lenovo pc on 14-02-2018.
- */
 public class Splash extends Activity{
 
 
@@ -26,13 +23,23 @@ public class Splash extends Activity{
                     e.printStackTrace();
 
                 }finally {
-
-                    Intent openmain = new Intent("com.example.lenovopc.jagrati.MAIN");
-                    startActivity(openmain);
+                    boolean isUserLoggedIn = checkIfUserLoggedIn();
+                    if (isUserLoggedIn) {
+                        Intent homeIntent = new Intent("com.example.lenovopc.MAIN");
+                        startActivity(homeIntent);
+                    } else {
+                        Intent loginIntent = new Intent("com.example.lenovopc.jagrati.LOGIN");
+                        startActivity(loginIntent);
+                    }
                 }
             }
         };
         timer.start();
+    }
+
+    private boolean checkIfUserLoggedIn() {
+        // TODO: Add checks if user is already logged in.
+        return false;
     }
 
 }
