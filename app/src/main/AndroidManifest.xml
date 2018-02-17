@@ -31,7 +31,7 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login">
+            android:label="Log in">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.LOGIN" />
 
@@ -39,14 +39,23 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".LogoutActivity"
+            android:label="Log out">
+            <intent-filter>
+                <action android:name="com.example.lenovopc.jagrati.LOGOUT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".TeachingDepartment"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_teaching_department"
+            android:label="Teaching Department"
             android:theme="@style/FullscreenTheme" />
         <activity
             android:name=".SubjectTeachingDepartment"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_subject_teaching_department"
+            android:label="Subject Teaching Department"
             android:theme="@style/FullscreenTheme" />
     </application>
 

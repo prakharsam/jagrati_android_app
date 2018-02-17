@@ -13,8 +13,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
-import android.util.Log;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -34,11 +32,14 @@ public class LoginActivity extends Activity {
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private DatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        dbHelper = new DatabaseHelper(this);
 
         // Set up the login form.
         mEmailView = (EditText) findViewById(R.id.email);
@@ -142,16 +143,24 @@ public class LoginActivity extends Activity {
                     public void onResponse(JSONObject response) {
                         try {
                             String token;
-                            boolean isAdmin;
-                            int userId;
+                            String isAdmin;
+                            String userId;
                             token = response.get("token").toString();
-                            isAdmin = (Boolean) response.get("is_admin");
-                            userId = (int) response.get("user_id");
+                            isAdmin = response.get("is_admin").toString();
+                            userId = response.get("user_id").toString();
 
-                            // TODO: Store token and other info.
+                            dbHelper.deleteAllRows();
+                            boolean result = dbHelper.insertRow(userId, isAdmin, token);
 
-                            Intent mainIntent = new Intent("com.example.lenovopc.jagrati.MAIN");
-                            startActivity(mainIntent);
+                            if (result) {
+                                Intent mainActivity = new Intent("com.example.lenovopc.jagrati.MAIN");
+                                mainActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                mainActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                mainActivity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                startActivity(mainActivity);
+                            } else {
+                                // TODO: Show "Try Again" message here.
+                            }
                         } catch (JSONException e) {
                             // TODO: Show "Try Again" message here.
 
