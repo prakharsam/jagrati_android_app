@@ -9,4 +9,6 @@
 
     <string name="jagrati">Jagrati</string>
     <string name="api_url">http://172.27.48.39:8000</string>
+    <string name="title_activity_student_feedback">Student Feedback</string>
+    <string name="title_activity_history">History</string>
 </resources>

@@ -57,6 +57,15 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="Subject Teaching Department"
             android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".StudentFeedback"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_student_feedback"
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".History"
+            android:label="@string/title_activity_history"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>
