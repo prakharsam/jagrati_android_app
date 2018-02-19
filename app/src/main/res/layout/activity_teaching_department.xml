@@ -21,7 +21,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/bottomBg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_teachingdepartment_frame" />
@@ -41,7 +41,7 @@
 
                 <ImageButton
                     android:id="@+id/back"
-                    android:layout_width="40dp"
+                    android:layout_width="50dp"
                     android:layout_height="40dp"
                     android:layout_weight="0"
                     android:background="@android:color/transparent"
@@ -66,7 +66,7 @@
                 android:background="#d8d8d8" />
 
             <GridLayout
-                android:id="@+id/grid"
+                android:id="@+id/subjectGrid"
                 android:layout_width="328dp"
                 android:layout_height="match_parent"
                 android:animateLayoutChanges="false"

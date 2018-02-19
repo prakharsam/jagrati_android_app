@@ -47,25 +47,43 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".TeachingDepartment"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="Teaching Department"
-            android:theme="@style/FullscreenTheme" />
+            android:theme="@style/FullscreenTheme"></activity>
+
         <activity
             android:name=".SubjectTeachingDepartment"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="Subject Teaching Department"
-            android:theme="@style/FullscreenTheme" />
+            android:theme="@style/FullscreenTheme"></activity>
+
         <activity
             android:name=".StudentFeedback"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_student_feedback"
-            android:theme="@style/FullscreenTheme" />
+            android:theme="@style/FullscreenTheme"></activity>
+
         <activity
             android:name=".History"
             android:label="@string/title_activity_history"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".NotificationTimeline"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_notification_timeline"
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".AddEvent"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_add_event"
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".Events"
+            android:label="@string/title_activity_events"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

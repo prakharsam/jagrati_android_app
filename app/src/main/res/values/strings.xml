@@ -11,4 +11,10 @@
     <string name="api_url">http://172.27.48.39:8000</string>
     <string name="title_activity_student_feedback">Student Feedback</string>
     <string name="title_activity_history">History</string>
+
+    <string name="title_activity_notification_timeline">NotificationTimeline</string>
+    <string name="join_jagrati">Join Jagrati</string>
+
+    <string name="title_activity_add_event">AddEvent</string>
+    <string name="title_activity_events">Events</string>
 </resources>

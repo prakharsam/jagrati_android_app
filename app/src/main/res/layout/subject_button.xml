@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
@@ -9,14 +10,14 @@
         android:layout_width="166dp"
         android:layout_height="60dp"
         android:layout_columnWeight="0"
-        android:autoText="false"
         android:background="@drawable/button_lines"
         android:gravity="top"
         android:paddingLeft="20dp"
         android:paddingTop="9dp"
         android:textAlignment="viewStart"
         android:textColor="@android:color/black"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        tools:ignore="RtlCompat" />
 
     <TextView
         android:id="@+id/numTeachersLabel"

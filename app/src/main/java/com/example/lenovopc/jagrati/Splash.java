@@ -1,10 +1,10 @@
 package com.example.lenovopc.jagrati;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -13,10 +13,13 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Splash extends Activity{
+import java.util.HashMap;
+import java.util.Map;
+
+public class Splash extends BaseActivity{
     @Override
-    protected void onCreate(Bundle Lenovo) {
-        super.onCreate(Lenovo);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
 
         Thread timer = new Thread(){
@@ -39,14 +42,7 @@ public class Splash extends Activity{
 
         if (userRow.getCount() != 0) {
             userRow.moveToFirst();
-            final String apiURL = getString(R.string.api_url);
-            final String jwtVal = userRow.getString(2);
             final String userInfoURL = apiURL + "/user_details/?jwt=" + jwtVal;
-
-            RequestQueue queue = VolleySingleton.getInstance(
-                getApplicationContext()
-            ).getRequestQueue();
-
             JsonObjectRequest req = new JsonObjectRequest(
                 userInfoURL,
                 null,
@@ -74,7 +70,14 @@ public class Splash extends Activity{
                         moveToActivity("LOGIN");
                     }
                 }
-            );
+            ) {
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String, String> headers = new HashMap<>();
+                    headers.put("Authorization", "JWT " + jwtVal);
+                    return headers;
+                }
+            };
 
             queue.add(req);
         } else {
