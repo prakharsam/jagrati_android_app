@@ -47,29 +47,25 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".TeachingDepartment"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="Teaching Department"
-            android:theme="@style/FullscreenTheme"></activity>
-
+            android:theme="@style/FullscreenTheme" />
         <activity
             android:name=".SubjectTeachingDepartment"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="Subject Teaching Department"
-            android:theme="@style/FullscreenTheme"></activity>
-
+            android:theme="@style/FullscreenTheme" />
         <activity
             android:name=".StudentFeedback"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_student_feedback"
-            android:theme="@style/FullscreenTheme"></activity>
-
+            android:theme="@style/FullscreenTheme" />
         <activity
             android:name=".History"
             android:label="@string/title_activity_history"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".NotificationTimeline"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -83,7 +79,10 @@
         <activity
             android:name=".Events"
             android:label="@string/title_activity_events"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".EventDetails" />
+        <activity android:name=".ClassFeedback" />
+        <activity android:name=".Attendance"></activity>
     </application>
 
 </manifest>

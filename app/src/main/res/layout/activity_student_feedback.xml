@@ -84,6 +84,7 @@
                 android:hint="EXAM PERFORMANCE"
                 android:inputType="text|number"
                 android:textColor="#4a4a4a"
+                android:textColorHint="#4a4a4a"
                 android:textSize="14sp" />
 
             <EditText
@@ -98,6 +99,7 @@
                 android:hint="Other Feedback"
                 android:inputType="textMultiLine|textShortMessage"
                 android:textColor="#4a4a4a"
+                android:textColorHint="#4a4a4a"
                 android:textSize="14sp" />
 
         </LinearLayout>
