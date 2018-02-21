@@ -39,12 +39,13 @@
 
         </LinearLayout>
 
-        <android.support.v4.widget.NestedScrollView
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/linearLayout"
-            android:fillViewport="true">
+            android:fadeScrollbars="true"
+            android:scrollbarSize="3dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -150,7 +151,7 @@
 
             </LinearLayout>
 
-        </android.support.v4.widget.NestedScrollView>
+        </ScrollView>
 
         <ImageButton
             android:id="@+id/addEvent"

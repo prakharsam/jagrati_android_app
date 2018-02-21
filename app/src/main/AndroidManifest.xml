@@ -82,7 +82,8 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".EventDetails" />
         <activity android:name=".ClassFeedback" />
-        <activity android:name=".Attendance"></activity>
+        <activity android:name=".Attendance" />
+        <activity android:name=".ClassStudentList"></activity>
     </application>
 
 </manifest>

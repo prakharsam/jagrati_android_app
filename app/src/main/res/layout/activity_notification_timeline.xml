@@ -42,11 +42,12 @@
 
     </LinearLayout>
 
-    <android.support.v4.widget.NestedScrollView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="120dp"
-        android:fillViewport="true">
+        android:fadeScrollbars="true"
+        android:scrollbarSize="3dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -119,7 +120,7 @@
                     android:textSize="10sp" />
             </RelativeLayout>
         </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </ScrollView>
 
 
 </FrameLayout>
