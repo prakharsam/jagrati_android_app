@@ -20,7 +20,7 @@ public class MainActivity extends BaseActivity {
         classBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent classActivity = new Intent("com.example.lenovopc.jagrati.MAIN");
+                Intent classActivity = new Intent("com.example.lenovopc.jagrati.CLASSLIST");
                 startActivity(classActivity);
             }
         });

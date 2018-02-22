@@ -19,23 +19,23 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TeachingDepartment extends BaseActivity {
+public class ClassesList extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teaching_department);
-        getSubjects();
+        getClasses();
     }
 
-    private void getSubjects() {
-        final String subjectsURL = apiURL + "/subjects/";
+    private void getClasses() {
+        final String classesURL = apiURL + "/classes/";
 
         JsonArrayRequest req = new JsonArrayRequest(
-                subjectsURL,
+                classesURL,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        initializeSubjects(response);
+                        initializeClasses(response);
                     }
                 },
                 new Response.ErrorListener() {
@@ -56,35 +56,35 @@ public class TeachingDepartment extends BaseActivity {
         queue.add(req);
     }
 
-    private void initializeSubjects(JSONArray subjects) {
-        for (int i=0; i < subjects.length(); i++) {
+    private void initializeClasses(JSONArray classes) {
+        for (int i=0; i < classes.length(); i++) {
             try {
-                final JSONObject subject = subjects.getJSONObject(i);
-                final String id = subject.getString("id");
-                final String name = subject.getString("name");
-                final String numVolunteers = subject.getString("num_volunteers");
-                final String numVolunteersLabel = numVolunteers + " Teachers";
+                final JSONObject _class = classes.getJSONObject(i);
+                final String id = _class.getString("id");
+                final String name = _class.getString("name");
+                final String numActiveStudents = _class.getString("num_active_students");
+                final String numActiveStudentsLabel = numActiveStudents + (numActiveStudents.equals("1") ? " Active Student" : " Active Students");
 
                 GridLayout gridLayout = (GridLayout) findViewById(R.id.gridWrap);
-                View subjectButtonView = getLayoutInflater().inflate(R.layout.subject_button, null);
+                View classButtonView = getLayoutInflater().inflate(R.layout.subject_button, null);
 
-                Button subjectNameBtn = (Button) subjectButtonView.findViewById(R.id.buttonTitle);
-                subjectNameBtn.setText(name);
-                subjectNameBtn.setOnClickListener(new View.OnClickListener() {
+                Button classNameBtn = (Button) classButtonView.findViewById(R.id.buttonTitle);
+                classNameBtn.setText(name);
+                classNameBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent subjectDeptActivity = new Intent("com.example.lenovopc.jagrati.SUBJECTDEPT");
+                        Intent subjectDeptActivity = new Intent("com.example.lenovopc.jagrati.STUDENTLIST");
                         Bundle bundle = new Bundle();
-                        bundle.putString("subjectId", id);
+                        bundle.putString("classId", id);
                         subjectDeptActivity.putExtras(bundle);
                         startActivity(subjectDeptActivity);
                     }
                 });
 
-                TextView numTeachersTextView = (TextView) subjectButtonView.findViewById(R.id.buttonCaption);
-                numTeachersTextView.setText(numVolunteersLabel);
+                TextView numStudentsTextView = (TextView) classButtonView.findViewById(R.id.buttonCaption);
+                numStudentsTextView.setText(numActiveStudentsLabel);
 
-                gridLayout.addView(subjectButtonView);
+                gridLayout.addView(classButtonView);
             } catch (JSONException e) {
                 // TODO: Show error here.
             }

@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <Button
-        android:id="@+id/subjectNameButtonLabel"
+        android:id="@+id/buttonTitle"
         android:layout_width="166dp"
         android:layout_height="60dp"
         android:layout_columnWeight="0"
@@ -20,7 +20,7 @@
         tools:ignore="RtlCompat" />
 
     <TextView
-        android:id="@+id/numTeachersLabel"
+        android:id="@+id/buttonCaption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="20dp"
