@@ -16,7 +16,6 @@
         <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -25,7 +24,6 @@
             android:theme="@android:style/Theme">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.MAIN" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -34,7 +32,6 @@
             android:label="Log in">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.LOGIN" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -43,47 +40,44 @@
             android:label="Log out">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.LOGOUT" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
             android:name=".TeachingDepartment"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="Teaching Department"
-            android:theme="@style/FullscreenTheme" />
+            android:label="Teaching Department">
+            <intent-filter>
+                <action android:name="com.example.lenovopc.jagrati.TEACHINGDEPT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".SubjectTeachingDepartment"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="Subject Teaching Department"
-            android:theme="@style/FullscreenTheme" />
+            android:label="Subject Teaching Department">
+            <intent-filter>
+                <action android:name="com.example.lenovopc.jagrati.SUBJECTDEPT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".StudentFeedback"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_student_feedback"
-            android:theme="@style/FullscreenTheme" />
+            android:label="@string/title_activity_student_feedback" />
         <activity
             android:name=".History"
-            android:label="@string/title_activity_history"
-            android:theme="@style/AppTheme" />
+            android:label="@string/title_activity_history" />
         <activity
             android:name=".NotificationTimeline"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_notification_timeline"
-            android:theme="@style/FullscreenTheme" />
+            android:label="@string/title_activity_notification_timeline" />
         <activity
             android:name=".AddEvent"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_add_event"
-            android:theme="@style/FullscreenTheme" />
+            android:label="@string/title_activity_add_event" />
         <activity
             android:name=".Events"
-            android:label="@string/title_activity_events"
-            android:theme="@style/AppTheme" />
+            android:label="@string/title_activity_events" />
         <activity android:name=".EventDetails" />
         <activity android:name=".ClassFeedback" />
         <activity android:name=".Attendance" />
-        <activity android:name=".ClassStudentList"></activity>
+        <activity android:name=".ClassStudentList" />
     </application>
 
 </manifest>

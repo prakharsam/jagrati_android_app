@@ -60,9 +60,9 @@ public class TeachingDepartment extends BaseActivity {
         for (int i=0; i < subjects.length(); i++) {
             try {
                 final JSONObject subject = subjects.getJSONObject(i);
-                final String id = subject.get("id").toString();
-                final String name = subject.get("name").toString();
-                final String numVolunteers = subject.get("num_volunteers").toString();
+                final String id = subject.getString("id");
+                final String name = subject.getString("name");
+                final String numVolunteers = subject.getString("num_volunteers");
                 final String numVolunteersLabel = numVolunteers + " Teachers";
 
                 GridLayout gridLayout = (GridLayout) findViewById(R.id.subjectGrid);

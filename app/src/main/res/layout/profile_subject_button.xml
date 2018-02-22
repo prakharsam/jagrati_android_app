@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--TODO: Add Profile Picture-->
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <Button
-        android:id="@+id/name"
+        android:id="@+id/volunteerName"
         android:layout_width="match_parent"
         android:layout_height="75dp"
         android:background="@android:color/transparent"
@@ -18,7 +19,7 @@
         android:textSize="16.2dp" />
 
     <TextView
-        android:id="@+id/discipline"
+        android:id="@+id/volunteerDiscipline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="68.4dp"
