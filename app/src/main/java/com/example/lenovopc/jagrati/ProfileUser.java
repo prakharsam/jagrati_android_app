@@ -3,10 +3,10 @@ package com.example.lenovopc.jagrati;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class ProfileUser extends AppCompatActivity {
+public class ProfileUser extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_user);
     }

@@ -2,7 +2,7 @@
 <!--TODO: Replace @drawable/ic_home_user with user profile pic-->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:drawable="@drawable/ic_home_user"/>
+    <item android:id="@+id/displayPicture"/>
     <item android:drawable="@drawable/student_dp_frame"/>
 
 </layer-list>

@@ -11,40 +11,313 @@
         android:id="@+id/imageView9"
         android:layout_width="match_parent"
         android:layout_height="270dp"
-        app:srcCompat="@drawable/ic_profile_bg" />
+        android:src="@drawable/ic_profile_bg" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="74dp"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="74dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <ImageButton
-                android:id="@+id/back"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:layout_weight="0"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_teachingdepartment_backbutton" />
-
-            <TextView
-                android:id="@+id/pageTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_weight="0"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="74dp"
                 android:gravity="center_vertical"
-                android:paddingLeft="6dp"
-                android:text="Profile"
-                android:textColor="#4a4a4a"
-                android:textSize="25sp" />
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/back"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_teachingdepartment_backbutton" />
+
+                <TextView
+                    android:id="@+id/pageTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_weight="0"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="6dp"
+                    android:text="Profile"
+                    android:textColor="#4a4a4a"
+                    android:textSize="25sp" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/column1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
+                <RelativeLayout
+                    android:id="@+id/profilePic"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_alignParentStart="false"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerVertical="false"
+                    android:layout_marginStart="20dp">
+
+                    <ImageView
+                        android:id="@+id/displayPicture"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <ImageView
+                        android:id="@+id/frame"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/student_dp_frame" />
+                </RelativeLayout>
+
+
+                <TextView
+                    android:id="@+id/extraClasses"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/extraClassesLabel"
+                    android:layout_alignBottom="@+id/extraClassesLabel"
+                    android:layout_marginStart="2dp"
+                    android:layout_toEndOf="@+id/extraClassesLabel"
+                    android:text="02"
+                    android:textColor="#f17e02" />
+
+                <TextView
+                    android:id="@+id/extraClassesLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/attendance"
+                    android:layout_alignBottom="@+id/attendance"
+                    android:layout_marginStart="15dp"
+                    android:layout_toEndOf="@+id/attendance"
+                    android:text="Extra Classses "
+                    android:textColor="#4a4a4a"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/attendance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/attendanceLabel"
+                    android:layout_alignBottom="@+id/attendanceLabel"
+                    android:layout_marginStart="2dp"
+                    android:layout_toEndOf="@+id/attendanceLabel"
+                    android:text="7/9 "
+                    android:textColor="#f17e02" />
+
+                <TextView
+                    android:id="@+id/attendanceLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/bio"
+                    android:layout_below="@+id/bio"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Attandence "
+                    android:textColor="#4a4a4a"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/bio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/name"
+                    android:layout_below="@+id/name"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="9dp"
+                    android:text="I just find myself happy with the simple things. Appreciating the blessings God gave me."
+                    android:textColor="#858585"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_toEndOf="@+id/profilePic"
+                    android:text="Garima Mishra"
+                    android:textColor="#24253d"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/line"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/field_line" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/column2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/field_line"
+                android:paddingBottom="15dp">
+
+                <ImageView
+                    android:id="@+id/imageView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="14dp"
+                    android:src="@drawable/mail_id" />
+
+                <ImageView
+                    android:id="@+id/imageView13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/imageView12"
+                    android:layout_below="@+id/imageView12"
+                    android:layout_marginTop="17dp"
+                    android:src="@drawable/discipline" />
+
+                <ImageView
+                    android:id="@+id/imageView14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/imageView13"
+                    android:layout_below="@+id/imageView13"
+                    android:layout_marginTop="17dp"
+                    android:src="@drawable/batch" />
+
+                <ImageView
+                    android:id="@+id/imageView15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/imageView14"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/birthday" />
+
+                <TextView
+                    android:id="@+id/mailId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/imageView12"
+                    android:layout_marginStart="15dp"
+                    android:layout_toEndOf="@+id/imageView12"
+                    android:text="12345678@iiitdmj.ac.in "
+                    android:textColor="#4a4a4a"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/discipline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/imageView14"
+                    android:layout_alignStart="@+id/mailId"
+                    android:text="Computer Science And Engineering"
+                    android:textColor="#4a4a4a"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/batch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/imageView14"
+                    android:layout_alignStart="@+id/discipline"
+                    android:text="2014-2018 Batch"
+                    android:textColor="#4a4a4a"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/birthDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/imageView15"
+                    android:layout_marginStart="15dp"
+                    android:layout_toEndOf="@+id/imageView15"
+                    android:text="18 July 1994"
+                    android:textColor="#4a4a4a"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/column3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/field_line"
+                android:paddingBottom="18dp">
+
+                <TextView
+                    android:id="@+id/address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/addressLabel"
+                    android:layout_below="@+id/addressLabel"
+                    android:layout_marginEnd="100dp"
+                    android:layout_marginTop="5dp"
+                    android:text="Room No - 402, Hall No - 01 IIITDM, Jabalpur, 482005, Madhaya Pradesh"
+                    android:textColor="#4a4a4a"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/addressLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="14dp"
+                    android:text="Address"
+                    android:textColor="#f17e01" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="16dp"
+                android:paddingTop="15dp">
+
+                <TextView
+                    android:id="@+id/hobbiesLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="20dp"
+                    android:text="Hobbies"
+                    android:textColor="#f17e01" />
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignStart="@+id/hobbiesLabel"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="30dp">
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="33dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/small_box_outline"
+                        android:gravity="center"
+                        android:paddingEnd="8dp"
+                        android:paddingStart="8dp"
+                        android:text="TextView"
+                        android:textColor="#4a4a4a"
+                        android:textSize="12sp" />
+                </GridLayout>
+
+            </RelativeLayout>
 
         </LinearLayout>
+    </ScrollView>
 
-
-    </LinearLayout>
 </RelativeLayout>

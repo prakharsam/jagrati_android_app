@@ -53,7 +53,7 @@
         </activity>
         <activity
             android:name=".SubjectTeachingDepartment"
-            android:label="Subject Teaching Department">
+            android:label="SubjectTeachingDepartment">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.SUBJECTDEPT" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -95,8 +95,20 @@
             android:label="@string/title_activity_add_event" />
         <activity
             android:name=".Events"
-            android:label="@string/title_activity_events" />
-        <activity android:name=".EventDetails" />
+            android:label="@string/title_activity_events" >
+            <intent-filter>
+                <action android:name="com.example.lenovopc.jagrati.EVENTS"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".EventDetails"
+            android:label="EventDetails">
+            <intent-filter>
+                <action android:name="com.example.lenovopc.jagrati.EVENTDETAILS"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ClassFeedback"
             android:label="ClassFeedback">
@@ -113,7 +125,14 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ProfileUser"/>
+        <activity
+            android:name=".ProfileUser"
+            android:label="ProfileUser">
+            <intent-filter>
+                <action android:name="com.example.lenovopc.jagrati.PROFILEUSER"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

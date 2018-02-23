@@ -29,6 +29,16 @@ public class SubjectTeachingDepartment extends BaseActivity {
         setContentView(R.layout.activity_subject_teaching_department);
         Bundle bundle = getIntent().getExtras();
 
+        Button profileBtn = (Button) findViewById(R.id.volunteerName);
+
+        profileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent classActivity = new Intent("com.example.lenovopc.jagrati.PROFILEUSER");
+                startActivity(classActivity);
+            }
+        });
+
         if (bundle != null) {
             String subjectId = bundle.getString("subjectId");
             getTeachers(subjectId);
