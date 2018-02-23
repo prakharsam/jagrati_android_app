@@ -1,7 +1,11 @@
 package com.example.lenovopc.jagrati;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Response;
@@ -22,6 +26,46 @@ public class ClassStudentList extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_class_student_list);
         Bundle bundle = getIntent().getExtras();
+
+        Button attendanceBtn = (Button) findViewById(R.id.getAttendance);
+
+        attendanceBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent classActivity = new Intent("com.example.lenovopc.jagrati.ATTENDANCE");
+                startActivity(classActivity);
+            }
+        });
+
+        Button historyBtn = (Button) findViewById(R.id.history);
+
+        historyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent classActivity = new Intent("com.example.lenovopc.jagrati.HISTORY");
+                startActivity(classActivity);
+            }
+        });
+
+        Button classFeedbackBtn = (Button) findViewById(R.id.classFeedback);
+
+        classFeedbackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent classActivity = new Intent("com.example.lenovopc.jagrati.CLASSFEEDBACK");
+                startActivity(classActivity);
+            }
+        });
+
+        ImageButton backBtn = (ImageButton) findViewById(R.id.back);
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent classActivity = new Intent("com.example.lenovopc.jagrati.CLASSLIST");
+                startActivity(classActivity);
+            }
+        });
 
         if (bundle != null) {
             String classId = bundle.getString("classId");

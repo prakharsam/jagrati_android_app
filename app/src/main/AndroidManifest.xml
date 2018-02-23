@@ -81,7 +81,12 @@
             android:label="@string/title_activity_student_feedback" />
         <activity
             android:name=".History"
-            android:label="@string/title_activity_history" />
+            android:label="@string/title_activity_history" >
+            <intent-filter>
+                <action android:name="com.example.lenovopc.jagrati.HISTORY"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
         <activity
             android:name=".NotificationTimeline"
             android:label="@string/title_activity_notification_timeline" />
@@ -92,9 +97,23 @@
             android:name=".Events"
             android:label="@string/title_activity_events" />
         <activity android:name=".EventDetails" />
-        <activity android:name=".ClassFeedback" />
-        <activity android:name=".Attendance" />
-        <activity android:name=".ProfileUser"></activity>
+        <activity
+            android:name=".ClassFeedback"
+            android:label="ClassFeedback">
+            <intent-filter>
+                <action android:name="com.example.lenovopc.jagrati.CLASSFEEDBACK"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Attendance"
+            android:label="Attendance">
+            <intent-filter>
+                <action android:name="com.example.lenovopc.jagrati.ATTENDANCE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".ProfileUser"/>
     </application>
 
 </manifest>
