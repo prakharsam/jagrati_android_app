@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--TODO: Replace @drawable/ic_home_user with user profile pic-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/ic_home_user"/>
+    <item android:drawable="@drawable/student_dp_frame"/>
+    <item android:drawable="@drawable/checkbox_green"
+          android:width="20dp"
+          android:height="20dp"
+          android:gravity="bottom|end"/>
+
+</layer-list>
