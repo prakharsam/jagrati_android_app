@@ -85,7 +85,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="50dp"
-            android:layout_marginTop="30dp">
+            android:layout_marginTop="14dp">
 
             <GridLayout
                 android:id="@+id/subjectGrid"
@@ -97,24 +97,17 @@
 
                 <RelativeLayout
                     android:layout_width="206dp"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/imageStudent"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_marginStart="20dp"
-                        android:src="@drawable/student_dp" />
+                    android:layout_height="155dp"
+                    android:layout_marginTop="16dp"
+                    android:paddingStart="20dp">
 
                     <TextView
                         android:id="@+id/nameStudent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignStart="@+id/imageStudent"
-                        android:layout_below="@+id/imageStudent"
-                        android:layout_marginTop="13dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/checkBox"
+                        android:layout_marginTop="15dp"
                         android:text="Gaurav Mishra"
                         android:textColor="#343434" />
 
@@ -130,12 +123,10 @@
                         android:textSize="12sp" />
 
                     <CheckBox
-                        android:id="@+id/checkBox2"
+                        android:id="@+id/checkBox"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignBottom="@+id/imageStudent"
-                        android:layout_alignEnd="@+id/imageStudent"
-                        android:button="@drawable/checkbox_selector"/>
+                        android:button="@drawable/checkbox_selector" />
                 </RelativeLayout>
 
             </GridLayout>

@@ -64,6 +64,7 @@
             android:label="ClassList">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.CLASSLIST" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -93,6 +94,7 @@
         <activity android:name=".EventDetails" />
         <activity android:name=".ClassFeedback" />
         <activity android:name=".Attendance" />
+        <activity android:name=".ProfileUser"></activity>
     </application>
 
 </manifest>
