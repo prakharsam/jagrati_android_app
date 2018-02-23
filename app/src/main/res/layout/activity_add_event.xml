@@ -64,23 +64,35 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp">
 
-                <RadioButton
-                    android:id="@+id/event"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingLeft="16dp"
-                    android:text="Event"
-                    android:textColor="#4a4a4a" />
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:checkedButton="@+id/event"
+                    android:id="@+id/eventType">
 
-                <RadioButton
-                    android:id="@+id/meeting"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingLeft="16dp"
-                    android:text="Meeting"
-                    android:textColor="#4a4a4a" />
+                    <RadioButton
+                        android:id="@+id/event"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:buttonTint="#f17e01"
+                        android:paddingLeft="16dp"
+                        android:text="Event"
+                        android:textColor="#4a4a4a"
+                        android:onClick="showImageInput"/>
+
+                    <RadioButton
+                        android:id="@+id/meeting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:buttonTint="#f17e01"
+                        android:paddingLeft="16dp"
+                        android:text="Meeting"
+                        android:textColor="#4a4a4a"
+                        android:onClick="hideImageInput"/>
+                </RadioGroup>
             </LinearLayout>
 
             <LinearLayout
@@ -168,7 +180,7 @@
                 android:textSize="14sp" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/imageInputBtn"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginLeft="20dp"
