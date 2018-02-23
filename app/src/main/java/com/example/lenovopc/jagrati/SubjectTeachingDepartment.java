@@ -2,8 +2,10 @@ package com.example.lenovopc.jagrati;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -16,6 +18,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -46,7 +49,14 @@ public class SubjectTeachingDepartment extends BaseActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // TODO: Show error here.
+                        String errorMessage = "";
+                        try {
+                            errorMessage = new String(error.networkResponse.data,"UTF-8");
+                        } catch (UnsupportedEncodingException e) {
+                            //
+                        }
+                        Log.e("Error", errorMessage);
+                        error.printStackTrace();
                     }
                 }
         ) {
@@ -71,8 +81,8 @@ public class SubjectTeachingDepartment extends BaseActivity {
                 final String lastName = volunteer.getString("last_name");
                 final String fullName = firstName + " " + lastName;
                 final String discipline = volunteerSubject.getString("discipline") + " discipline";
+                final String displayPictureURL = apiURL + volunteerSubject.getString("display_picture");
 
-                // TODO: Add code to add image to image view
                 LinearLayout volunteerSubjectLayout = (LinearLayout) findViewById(R.id.volunteerSubjects);
                 View volunteerProfileButtonView = getLayoutInflater().inflate(R.layout.profile_subject_button, null);
 
@@ -92,9 +102,13 @@ public class SubjectTeachingDepartment extends BaseActivity {
                 TextView volunteerDisciplineText = (TextView) volunteerProfileButtonView.findViewById(R.id.volunteerDiscipline);
                 volunteerDisciplineText.setText(discipline);
 
+                ImageView dpIView = (ImageView) volunteerProfileButtonView.findViewById(R.id.displayPicture);
+                new DownloadImageTask(dpIView).execute(displayPictureURL);
+
                 volunteerSubjectLayout.addView(volunteerProfileButtonView);
             } catch (JSONException e) {
-                // TODO: Show error here.
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
             }
         }
     }
