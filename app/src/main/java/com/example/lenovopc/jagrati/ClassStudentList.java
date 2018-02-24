@@ -37,6 +37,8 @@ public class ClassStudentList extends BaseActivity {
             final String classId = bundle.getString("classId");
             getStudents(classId);
 
+            final String numActiveStudents = bundle.getString("numActiveStudents");
+
             final Bundle _bundle = new Bundle();
             _bundle.putString("classId", classId);
 
@@ -45,6 +47,7 @@ public class ClassStudentList extends BaseActivity {
                 @Override
                 public void onClick(View v) {
                     Intent attendanceActivity = new Intent("com.example.lenovopc.jagrati.ATTENDANCE");
+                    _bundle.putString("numActiveStudents", numActiveStudents);
                     attendanceActivity.putExtras(_bundle);
                     startActivity(attendanceActivity);
                 }

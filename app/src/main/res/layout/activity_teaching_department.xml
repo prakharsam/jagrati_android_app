@@ -20,11 +20,7 @@
             android:gravity="bottom"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/bottomBg"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_teachingdepartment_frame" />
+
         </LinearLayout>
 
         <LinearLayout

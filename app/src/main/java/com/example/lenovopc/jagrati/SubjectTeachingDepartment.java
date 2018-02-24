@@ -108,7 +108,7 @@ public class SubjectTeachingDepartment extends BaseActivity {
                 volunteerDisciplineText.setText(discipline);
 
                 ImageView dpIView = (ImageView) volunteerProfileButtonView.findViewById(R.id.displayPicture);
-                new DownloadImageTask(dpIView).execute(displayPictureURL);
+                new DownloadImageTask(dpIView, null, null, null).execute(displayPictureURL);
 
                 volunteerSubjectLayout.addView(volunteerProfileButtonView);
             } catch (JSONException e) {

@@ -79,6 +79,7 @@ public class ClassesList extends BaseActivity {
                         Bundle bundle = new Bundle();
                         bundle.putString("classId", id);
                         bundle.putString("className", name);
+                        bundle.putString("numActiveStudents", numActiveStudents);
                         subjectDeptActivity.putExtras(bundle);
                         startActivity(subjectDeptActivity);
                     }
