@@ -25,6 +25,8 @@ public class ClassesList extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teaching_department);
         getClasses();
+        setBackOnClickListener(this);
+        setPageTitle("Classes");
     }
 
     private void getClasses() {
@@ -76,6 +78,7 @@ public class ClassesList extends BaseActivity {
                         Intent subjectDeptActivity = new Intent("com.example.lenovopc.jagrati.STUDENTLIST");
                         Bundle bundle = new Bundle();
                         bundle.putString("classId", id);
+                        bundle.putString("className", name);
                         subjectDeptActivity.putExtras(bundle);
                         startActivity(subjectDeptActivity);
                     }

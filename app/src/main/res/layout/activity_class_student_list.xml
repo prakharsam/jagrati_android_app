@@ -12,32 +12,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="74dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/back"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:layout_weight="0"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_backbutton" />
-
-            <TextView
-                android:id="@+id/pageTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_weight="0"
-                android:gravity="center_vertical"
-                android:paddingLeft="6dp"
-                android:text="Class 12"
-                android:textColor="#4a4a4a"
-                android:textSize="25sp" />
-
-        </LinearLayout>
+        <include layout="@layout/nav_header" />
 
         <HorizontalScrollView
             android:layout_width="match_parent"

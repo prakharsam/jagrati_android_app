@@ -3,7 +3,6 @@ package com.example.lenovopc.jagrati;
 import android.os.Bundle;
 
 public class Attendance extends BaseActivity {
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -30,6 +30,11 @@ public class SubjectTeachingDepartment extends BaseActivity {
         Bundle bundle = getIntent().getExtras();
 
         if (bundle != null) {
+            setBackOnClickListener(this);
+
+            String subjectName = bundle.getString("subjectName");
+            setPageTitle(subjectName);
+
             String subjectId = bundle.getString("subjectId");
             getTeachers(subjectId);
         }
@@ -91,7 +96,7 @@ public class SubjectTeachingDepartment extends BaseActivity {
                 volunteerNameBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent volunteerProfileActivity = new Intent("com.example.lenovopc.jagrati.VOLUNTEERPROFILE");
+                        Intent volunteerProfileActivity = new Intent("com.example.lenovopc.jagrati.PROFILE");
                         Bundle bundle = new Bundle();
                         bundle.putString("volunteerId", id);
                         volunteerProfileActivity.putExtras(bundle);

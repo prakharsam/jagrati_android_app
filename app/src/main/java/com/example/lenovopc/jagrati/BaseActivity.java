@@ -4,7 +4,11 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
+import android.view.View;
 import android.view.Window;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
 
@@ -33,5 +37,20 @@ public class BaseActivity extends Activity {
         } else {
             jwtVal = "";
         }
+    }
+
+    public void setPageTitle(String title) {
+        TextView pageTitleView = (TextView) findViewById(R.id.pageTitle);
+        pageTitleView.setText(title);
+    }
+
+    public void setBackOnClickListener(final Activity activity) {
+        ImageButton backBtn = (ImageButton) findViewById(R.id.backBtn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavUtils.navigateUpFromSameTask(activity);
+            }
+        });
     }
 }

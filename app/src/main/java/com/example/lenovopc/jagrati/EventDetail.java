@@ -1,13 +1,12 @@
 package com.example.lenovopc.jagrati;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class EventDetails extends AppCompatActivity {
-
+public class EventDetail extends BaseActivity {
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_details);
+        setBackOnClickListener(this);
     }
 }

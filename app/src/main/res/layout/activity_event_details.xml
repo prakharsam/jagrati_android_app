@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@android:color/white"
-    tools:context="com.example.lenovopc.jagrati.EventDetails">
+    tools:context="com.example.lenovopc.jagrati.EventDetail">
 
 
     <RelativeLayout
@@ -18,14 +18,7 @@
             android:layout_height="216dp"
             android:background="@android:color/darker_gray" />
 
-        <ImageButton
-            android:id="@+id/back"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="17dp"
-            android:layout_weight="0"
-            android:background="@android:color/transparent"
-            android:src="@drawable/ic_backbutton" />
+        <include layout="@layout/nav_header" />
 
     </RelativeLayout>
 

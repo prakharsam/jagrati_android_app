@@ -1,6 +1,7 @@
 package com.example.lenovopc.jagrati;
 
 import android.content.Intent;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -57,17 +58,12 @@ public class ClassStudentList extends BaseActivity {
             }
         });
 
-        ImageButton backBtn = (ImageButton) findViewById(R.id.back);
-
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent classActivity = new Intent("com.example.lenovopc.jagrati.CLASSLIST");
-                startActivity(classActivity);
-            }
-        });
-
         if (bundle != null) {
+            setBackOnClickListener(this);
+
+            String className = bundle.getString("className");
+            setPageTitle("Class " + className);
+
             String classId = bundle.getString("classId");
             getStudents(classId);
         }

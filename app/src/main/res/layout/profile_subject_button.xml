@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--TODO: Add Profile Picture (ImageView `id` : displayPicture) -->
-<RelativeLayout
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:background="@android:color/white">
 
     <Button
         android:id="@+id/volunteerName"
@@ -11,7 +12,7 @@
         android:layout_height="75dp"
         android:background="@android:color/transparent"
         android:gravity="top"
-        android:paddingLeft="68.4dp"
+        android:paddingLeft="80dp"
         android:paddingTop="13.7dp"
         android:text="Garima Mishra"
         android:textAllCaps="false"
@@ -22,14 +23,28 @@
         android:id="@+id/volunteerDiscipline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="68.4dp"
+        android:layout_marginLeft="80dp"
         android:layout_marginTop="39.3dp"
         android:text="Design Discipline"
         android:textColor="#858585"
         android:textSize="13dp" />
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/displayPicture"/>
+    <RelativeLayout
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="16dp">
+
+        <ImageView
+            android:id="@+id/displayPicture"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/student_dp_frame" />
+    </RelativeLayout>
+
 </RelativeLayout>
