@@ -100,7 +100,7 @@
 
         <!--TODO: Warning should appear on invalid input-->
         <TextView
-            android:id="@+id/invalidCredentialsWarning"
+            android:id="@+id/infoText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"

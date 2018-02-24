@@ -8,11 +8,13 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -160,26 +162,33 @@ public class LoginActivity extends Activity {
                                 mainActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 mainActivity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                                 startActivity(mainActivity);
-                            } else {
-                                // TODO: Show "Try Again" message here.
                             }
                         } catch (JSONException e) {
-                            // TODO: Show "Try Again" message here.
-
+                            Log.e("Error: ", e.getMessage());
+                            e.printStackTrace();
                         } finally {
-                            showProgress(false);
+                            showError(getString(R.string.try_again_msg));
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        showProgress(false);
+                        showError(getString(R.string.invalid_credentials));
                     }
                 }
         );
 
         queue.add(req);
+    }
+
+    private void showError(String message) {
+        showProgress(false);
+
+        mPasswordView.setText("");
+
+        TextView infoTextView = (TextView) findViewById(R.id.infoText);
+        infoTextView.setText(message);
     }
 
     /**
