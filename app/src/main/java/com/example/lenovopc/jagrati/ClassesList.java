@@ -25,7 +25,7 @@ public class ClassesList extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teaching_department);
         getClasses();
-        setBackOnClickListener(this);
+        setBackOnClickListener();
         setPageTitle("Classes");
     }
 

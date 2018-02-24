@@ -30,7 +30,7 @@ public class SubjectTeachingDepartment extends BaseActivity {
         Bundle bundle = getIntent().getExtras();
 
         if (bundle != null) {
-            setBackOnClickListener(this);
+            setBackOnClickListener();
 
             String subjectName = bundle.getString("subjectName");
             setPageTitle(subjectName);

@@ -8,7 +8,7 @@ public class StudentFeedback extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_feedback);
 
-        setBackOnClickListener(this);
+        setBackOnClickListener();
         setPageTitle("Student Feedback");
     }
 }

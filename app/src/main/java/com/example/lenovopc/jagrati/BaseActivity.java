@@ -44,12 +44,12 @@ public class BaseActivity extends Activity {
         pageTitleView.setText(title);
     }
 
-    public void setBackOnClickListener(final Activity activity) {
+    public void setBackOnClickListener() {
         ImageButton backBtn = (ImageButton) findViewById(R.id.backBtn);
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NavUtils.navigateUpFromSameTask(activity);
+                finish();
             }
         });
     }

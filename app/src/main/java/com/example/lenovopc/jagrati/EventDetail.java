@@ -7,6 +7,6 @@ public class EventDetail extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_details);
-        setBackOnClickListener(this);
+        setBackOnClickListener();
     }
 }

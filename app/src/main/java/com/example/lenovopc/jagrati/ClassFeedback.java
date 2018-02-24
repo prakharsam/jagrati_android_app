@@ -8,7 +8,7 @@ public class ClassFeedback extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_class_feedback);
 
-        setBackOnClickListener(this);
+        setBackOnClickListener();
         setPageTitle("Class Feedback");
     }
 }

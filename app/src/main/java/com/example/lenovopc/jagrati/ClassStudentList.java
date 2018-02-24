@@ -59,7 +59,7 @@ public class ClassStudentList extends BaseActivity {
         });
 
         if (bundle != null) {
-            setBackOnClickListener(this);
+            setBackOnClickListener();
 
             String className = bundle.getString("className");
             setPageTitle("Class " + className);

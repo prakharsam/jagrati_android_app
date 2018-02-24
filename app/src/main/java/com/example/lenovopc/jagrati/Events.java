@@ -33,7 +33,7 @@ public class Events extends BaseActivity {
             }
         });
 
-        setBackOnClickListener(this);
+        setBackOnClickListener();
         setPageTitle("Events");
 
     }

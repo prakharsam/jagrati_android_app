@@ -14,7 +14,7 @@ public class History extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
-        setBackOnClickListener(this);
+        setBackOnClickListener();
         setPageTitle("History");
     }
 }

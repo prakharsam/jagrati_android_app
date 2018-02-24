@@ -25,7 +25,7 @@ public class TeachingDepartment extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teaching_department);
         getSubjects();
-        setBackOnClickListener(this);
+        setBackOnClickListener();
         setPageTitle("Teaching Department");
     }
 
