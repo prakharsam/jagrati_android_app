@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.NoConnectionError;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -67,7 +68,11 @@ public class Splash extends BaseActivity{
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        moveToActivity("LOGIN");
+                        if (error instanceof NoConnectionError) {
+                            // TODO: Show no internet connection message here.
+                        } else {
+                            moveToActivity("LOGIN");
+                        }
                     }
                 }
             ) {
