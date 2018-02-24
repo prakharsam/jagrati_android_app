@@ -42,7 +42,7 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="0"
                     android:background="@android:color/transparent"
-                    android:src="@drawable/attend_cross" />
+                    android:src="@drawable/ic_close" />
             </RelativeLayout>
 
             <LinearLayout
