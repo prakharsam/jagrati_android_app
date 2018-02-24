@@ -160,7 +160,8 @@ public class ClassFeedback extends BaseActivity {
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         try{
                             JSONObject selectedSubject = subjects.getJSONObject(position);
-                            selectedSubjectId = selectedSubject.getString("id");
+                            JSONObject _selectedSubject = selectedSubject.getJSONObject("subject");
+                            selectedSubjectId = _selectedSubject.getString("id");
                         } catch (JSONException e) {
                             //
                         }

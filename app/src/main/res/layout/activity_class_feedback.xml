@@ -12,7 +12,7 @@
         android:orientation="vertical">
 
         <include layout="@layout/popup_header" />
-        
+
         <Spinner
             android:id="@+id/subject"
             android:layout_width="match_parent"
@@ -22,7 +22,6 @@
             android:layout_marginTop="35dp"
             android:background="@drawable/field_line"
             android:ems="10"
-            android:hint="HINDI"
             android:inputType="text"
             android:textColor="#4a4a4a"
             android:textColorHint="#4a4a4a"
