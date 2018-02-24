@@ -128,10 +128,6 @@ public class LoginActivity extends Activity {
         JSONObject formData = new JSONObject();
         try {
             formData.put("username", email);
-        } catch (JSONException e) {
-            return;
-        }
-        try {
             formData.put("password", password);
         } catch (JSONException e) {
             return;

@@ -28,44 +28,47 @@ public class ClassStudentList extends BaseActivity {
         setContentView(R.layout.activity_class_student_list);
         Bundle bundle = getIntent().getExtras();
 
-        Button attendanceBtn = (Button) findViewById(R.id.getAttendance);
-
-        attendanceBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent classActivity = new Intent("com.example.lenovopc.jagrati.ATTENDANCE");
-                startActivity(classActivity);
-            }
-        });
-
-        Button historyBtn = (Button) findViewById(R.id.history);
-
-        historyBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent classActivity = new Intent("com.example.lenovopc.jagrati.HISTORY");
-                startActivity(classActivity);
-            }
-        });
-
-        Button classFeedbackBtn = (Button) findViewById(R.id.classFeedback);
-
-        classFeedbackBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent classActivity = new Intent("com.example.lenovopc.jagrati.CLASSFEEDBACK");
-                startActivity(classActivity);
-            }
-        });
-
         if (bundle != null) {
             setBackOnClickListener();
 
             String className = bundle.getString("className");
             setPageTitle("Class " + className);
 
-            String classId = bundle.getString("classId");
+            final String classId = bundle.getString("classId");
             getStudents(classId);
+
+            final Bundle _bundle = new Bundle();
+            _bundle.putString("classId", classId);
+
+            Button attendanceBtn = (Button) findViewById(R.id.getAttendance);
+            attendanceBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent attendanceActivity = new Intent("com.example.lenovopc.jagrati.ATTENDANCE");
+                    attendanceActivity.putExtras(_bundle);
+                    startActivity(attendanceActivity);
+                }
+            });
+
+            Button historyBtn = (Button) findViewById(R.id.history);
+            historyBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent historyActivity = new Intent("com.example.lenovopc.jagrati.HISTORY");
+                    historyActivity.putExtras(_bundle);
+                    startActivity(historyActivity);
+                }
+            });
+
+            Button classFeedbackBtn = (Button) findViewById(R.id.classFeedback);
+            classFeedbackBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent classFeedbackActivity = new Intent("com.example.lenovopc.jagrati.CLASSFEEDBACK");
+                    classFeedbackActivity.putExtras(_bundle);
+                    startActivity(classFeedbackActivity);
+                }
+            });
         }
     }
 

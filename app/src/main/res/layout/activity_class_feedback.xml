@@ -12,8 +12,8 @@
         android:orientation="vertical">
 
         <include layout="@layout/popup_header" />
-
-        <EditText
+        
+        <Spinner
             android:id="@+id/subject"
             android:layout_width="match_parent"
             android:layout_height="31dp"
@@ -23,13 +23,14 @@
             android:background="@drawable/field_line"
             android:ems="10"
             android:hint="HINDI"
-            android:inputType="text|number"
+            android:inputType="text"
             android:textColor="#4a4a4a"
             android:textColorHint="#4a4a4a"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:spinnerMode="dropdown"/>
 
         <EditText
-            android:id="@+id/otherFeedback"
+            android:id="@+id/feedback"
             android:layout_width="match_parent"
             android:layout_height="31dp"
             android:layout_marginEnd="20dp"
