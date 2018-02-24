@@ -27,7 +27,7 @@
             android:layout_height="40dp"
             android:layout_weight="0"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_teachingdepartment_backbutton" />
+            android:src="@drawable/ic_backbutton" />
 
         <TextView
             android:id="@+id/pageTitle"
