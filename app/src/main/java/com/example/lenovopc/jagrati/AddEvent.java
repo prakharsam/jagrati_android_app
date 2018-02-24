@@ -11,6 +11,9 @@ public class AddEvent extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_event);
 
+        setBackOnClickListener(this);
+        setPageTitle("Add Event");
+
         Button submitEventBtn = (Button) findViewById(R.id.postEvent);
         submitEventBtn.setOnClickListener(new View.OnClickListener() {
             @Override

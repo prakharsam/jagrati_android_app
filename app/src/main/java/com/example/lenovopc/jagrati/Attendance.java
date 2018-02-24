@@ -7,5 +7,8 @@ public class Attendance extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attendance);
+
+        setBackOnClickListener(this);
+        setPageTitle("Attendance");
     }
 }
