@@ -16,49 +16,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/field_line"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/subject"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="16dp"
-                    android:text="Maths"
-                    android:textAllCaps="true"
-                    android:textColor="#9b9b9b" />
-
-                <TextView
-                    android:id="@+id/description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="14dp"
-                    android:text="Chapter 1 : Lorem ipsum dolor sit amet, consectetur adipi scing elit, sed do eiusmod tempor incididunt  Completed."
-                    android:textColor="@android:color/black"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/timeDay"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_marginBottom="7dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginTop="7dp"
-                    android:text="6:30 PM, Today"
-                    android:textColor="#9b9b9b"
-                    android:textSize="12sp" />
-
-            </LinearLayout>
+            android:orientation="vertical"
+            android:id="@+id/historyList">
         </LinearLayout>
     </ScrollView>
 
