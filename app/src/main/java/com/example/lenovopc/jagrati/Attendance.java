@@ -115,7 +115,6 @@ public class Attendance extends BaseActivity {
                 TextView villageView = (TextView) studentBlockView.findViewById(R.id.villageName);
                 villageView.setText(village);
 
-                // TODO: set dp dynamically
                 CheckBox attendanceCheckBox = (CheckBox) studentBlockView.findViewById(R.id.attendance);
 
                 try {
@@ -154,8 +153,11 @@ public class Attendance extends BaseActivity {
         }
     }
 
+    // TODO: Check dstWidth and Height for other phones than Asus Zenfone
     public void setCheckBoxDP(Bitmap bmap, CheckBox cb) {
-        Drawable drawable = new BitmapDrawable(getResources(), bmap);
+        Bitmap _bmap = Bitmap.createScaledBitmap(bmap, 150, 150, false);
+        bmap.recycle();
+        Drawable drawable = new BitmapDrawable(getResources(), _bmap);
         cb.setBackground(drawable);
     }
 }
