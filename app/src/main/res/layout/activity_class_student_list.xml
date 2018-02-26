@@ -77,6 +77,7 @@
                 android:orientation="vertical">
 
                 <LinearLayout
+                    android:id="@+id/activeStudentsList"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/field_line"
@@ -106,41 +107,11 @@
                             android:layout_marginStart="10dp"
                             android:src="@drawable/online" />
                     </LinearLayout>
-
-
-                    <!--TODO: Loop here for adding an active student-->
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <Button
-                            android:id="@+id/activeStudentProfile"
-                            android:layout_width="match_parent"
-                            android:layout_height="75dp"
-                            android:background="@android:color/transparent"
-                            android:gravity="top"
-                            android:paddingLeft="68.4dp"
-                            android:paddingTop="13.7dp"
-                            android:text="Gaurav Miashra"
-                            android:textAllCaps="false"
-                            android:textColor="#343434"
-                            android:textSize="16.2dp" />
-
-                        <TextView
-                            android:id="@+id/village1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="68.4dp"
-                            android:layout_marginTop="39.3dp"
-                            android:text="Village Name"
-                            android:textColor="#858585"
-                            android:textSize="13dp" />
-                    </RelativeLayout>
-
                 </LinearLayout>
 
 
                 <LinearLayout
+                    android:id="@+id/inactiveStudentsList"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
@@ -170,36 +141,6 @@
                             android:layout_marginStart="10dp"
                             android:src="@drawable/offline" />
                     </LinearLayout>
-
-
-                    <!--TODO: Loop here for adding a deactive student-->
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <Button
-                            android:id="@+id/name"
-                            android:layout_width="match_parent"
-                            android:layout_height="75dp"
-                            android:background="@android:color/transparent"
-                            android:gravity="top"
-                            android:paddingLeft="68.4dp"
-                            android:paddingTop="13.7dp"
-                            android:text="Akashay Singh"
-                            android:textAllCaps="false"
-                            android:textColor="#343434"
-                            android:textSize="16.2dp" />
-
-                        <TextView
-                            android:id="@+id/village2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="68.4dp"
-                            android:layout_marginTop="39.3dp"
-                            android:text="Village Name"
-                            android:textColor="#858585"
-                            android:textSize="13dp" />
-                    </RelativeLayout>
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>

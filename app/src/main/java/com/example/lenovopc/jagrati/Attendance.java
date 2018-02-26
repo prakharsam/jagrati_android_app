@@ -10,19 +10,19 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.GridLayout;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -61,7 +61,44 @@ public class Attendance extends BaseActivity {
     }
 
     private void submitAttendanceForm() {
-        Log.d("@@@@@", selectedStudents.toString());
+        final String attendancePostURL = apiURL + "/attendance/";
+        JSONObject formData = new JSONObject();
+        String studentIds = android.text.TextUtils.join(",", selectedStudents);
+
+        try {
+            formData.put("student_ids", studentIds);
+        } catch (JSONException e) {
+            Log.e("Error", e.getMessage());
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest req = new JsonObjectRequest(
+                Request.Method.POST,
+                attendancePostURL,
+                formData,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        finish();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("Error", new String(error.networkResponse.data));
+                        error.printStackTrace();
+                    }
+                }
+        ) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "JWT " + jwtVal);
+                return headers;
+            }
+        };
+
+        queue.add(req);
     }
 
     private void getStudents(String classId) {
@@ -103,49 +140,52 @@ public class Attendance extends BaseActivity {
                 String firstName = studentUser.getString("first_name");
                 String lastName = studentUser.getString("last_name");
                 String fullName = firstName + " " + lastName;
+                boolean isActiveStudent = studentUser.getBoolean("is_active");
                 String village = student.getString("village").equals("null") ? "Unknown" : student.getString("village");
-                String displayPictureURL = student.getString("display_picture").equals("null") ? null: student.getString("display_picture");
+                String displayPictureURL = student.getString("display_picture").equals("null") ? null : student.getString("display_picture");
 
-                GridLayout studentGrid = (GridLayout) findViewById(R.id.studentGrid);
-                View studentBlockView = getLayoutInflater().inflate(R.layout.student_block, null);
+                if (isActiveStudent) {
+                    GridLayout studentGrid = (GridLayout) findViewById(R.id.studentGrid);
+                    View studentBlockView = getLayoutInflater().inflate(R.layout.student_block, null);
 
-                TextView studentNameView = (TextView) studentBlockView.findViewById(R.id.studentName);
-                studentNameView.setText(fullName);
+                    TextView studentNameView = (TextView) studentBlockView.findViewById(R.id.studentName);
+                    studentNameView.setText(fullName);
 
-                TextView villageView = (TextView) studentBlockView.findViewById(R.id.villageName);
-                villageView.setText(village);
+                    TextView villageView = (TextView) studentBlockView.findViewById(R.id.villageName);
+                    villageView.setText(village);
 
-                CheckBox attendanceCheckBox = (CheckBox) studentBlockView.findViewById(R.id.attendance);
+                    CheckBox attendanceCheckBox = (CheckBox) studentBlockView.findViewById(R.id.attendance);
 
-                try {
-                    Class[] parameterTypes = new Class[2];
-                    parameterTypes[0] = Bitmap.class;
-                    parameterTypes[1] = CheckBox.class;
-                    Method method = Attendance.class.getMethod("setCheckBoxDP", parameterTypes);
-                    new DownloadImageTask(null, method, this, attendanceCheckBox).execute(displayPictureURL);
-                } catch (NoSuchMethodException e) {
-                    //
-                }
-
-                attendanceCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        if (!isChecked) {
-                            int index = selectedStudents.indexOf(id);
-
-                            if (index != -1) {
-                                selectedStudents.remove(index);
-                            }
-                        } else {
-                            selectedStudents.add(id);
-                        }
-
-                        TextView numPresentStudentsView = (TextView) findViewById(R.id.numPresentStudents);
-                        numPresentStudentsView.setText(String.valueOf(selectedStudents.size()));
+                    try {
+                        Class[] parameterTypes = new Class[2];
+                        parameterTypes[0] = Bitmap.class;
+                        parameterTypes[1] = CheckBox.class;
+                        Method method = Attendance.class.getMethod("setCheckBoxDP", parameterTypes);
+                        new DownloadImageTask(null, method, this, attendanceCheckBox).execute(displayPictureURL);
+                    } catch (NoSuchMethodException e) {
+                        //
                     }
-                });
 
-                studentGrid.addView(studentBlockView);
+                    attendanceCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                        @Override
+                        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                            if (!isChecked) {
+                                int index = selectedStudents.indexOf(id);
+
+                                if (index != -1) {
+                                    selectedStudents.remove(index);
+                                }
+                            } else {
+                                selectedStudents.add(id);
+                            }
+
+                            TextView numPresentStudentsView = (TextView) findViewById(R.id.numPresentStudents);
+                            numPresentStudentsView.setText(String.valueOf(selectedStudents.size()));
+                        }
+                    });
+
+                    studentGrid.addView(studentBlockView);
+                }
             } catch (JSONException e) {
                 Log.e("Error", e.getMessage());
                 e.printStackTrace();
@@ -153,7 +193,6 @@ public class Attendance extends BaseActivity {
         }
     }
 
-    // TODO: Check dstWidth and Height for other phones than Asus Zenfone
     public void setCheckBoxDP(Bitmap bmap, CheckBox cb) {
         Bitmap _bmap = Bitmap.createScaledBitmap(bmap, 150, 150, false);
         bmap.recycle();
