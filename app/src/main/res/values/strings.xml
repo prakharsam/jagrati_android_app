@@ -8,5 +8,15 @@
     <string name="error_field_required">This field is required</string>
 
     <string name="jagrati">Jagrati</string>
-    <string name="api_url">http://172.27.48.39:8000</string>
+    <string name="api_url">http://172.27.48.39</string>
+    <string name="title_activity_student_feedback">Student Feedback</string>
+    <string name="title_activity_history">History</string>
+
+    <string name="title_activity_notification_timeline">NotificationTimeline</string>
+    <string name="join_jagrati">Join Jagrati</string>
+
+    <string name="title_activity_add_event">AddEvent</string>
+    <string name="title_activity_events">Events</string>
+    <string name="try_again_msg">There was some error. Please try again.</string>
+    <string name="invalid_credentials">Invalid Credentials</string>
 </resources>

@@ -8,10 +8,13 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -35,8 +38,9 @@ public class LoginActivity extends Activity {
     private DatabaseHelper dbHelper;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_login);
 
         dbHelper = new DatabaseHelper(this);
@@ -46,7 +50,7 @@ public class LoginActivity extends Activity {
 
         mPasswordView = (EditText) findViewById(R.id.password);
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+        Button mEmailSignInButton = (Button) findViewById(R.id.logInButton);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,8 +58,8 @@ public class LoginActivity extends Activity {
             }
         });
 
-        mLoginFormView = findViewById(R.id.email_login_form);
-        mProgressView = findViewById(R.id.login_progress);
+        mLoginFormView = findViewById(R.id.emailLoginForm);
+        mProgressView = findViewById(R.id.loginProgress);
     }
 
 
@@ -124,10 +128,6 @@ public class LoginActivity extends Activity {
         JSONObject formData = new JSONObject();
         try {
             formData.put("username", email);
-        } catch (JSONException e) {
-            return;
-        }
-        try {
             formData.put("password", password);
         } catch (JSONException e) {
             return;
@@ -158,26 +158,33 @@ public class LoginActivity extends Activity {
                                 mainActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 mainActivity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                                 startActivity(mainActivity);
-                            } else {
-                                // TODO: Show "Try Again" message here.
                             }
                         } catch (JSONException e) {
-                            // TODO: Show "Try Again" message here.
-
+                            Log.e("Error: ", e.getMessage());
+                            e.printStackTrace();
                         } finally {
-                            showProgress(false);
+                            showError(getString(R.string.try_again_msg));
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        showProgress(false);
+                        showError(getString(R.string.invalid_credentials));
                     }
                 }
         );
 
         queue.add(req);
+    }
+
+    private void showError(String message) {
+        showProgress(false);
+
+        mPasswordView.setText("");
+
+        TextView infoTextView = (TextView) findViewById(R.id.infoText);
+        infoTextView.setText(message);
     }
 
     /**

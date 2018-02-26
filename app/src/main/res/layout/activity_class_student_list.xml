@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context="com.example.lenovopc.jagrati.ClassStudentList">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/nav_header" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:background="@drawable/field_line"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="10dp">
+
+                <Button
+                    android:id="@+id/getAttendance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/login_button"
+                    android:paddingEnd="30dp"
+                    android:paddingStart="30dp"
+                    android:text="Get Attendance"
+                    android:textColor="#4a4a4a"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/history"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/login_button"
+                    android:paddingEnd="30dp"
+                    android:paddingStart="30dp"
+                    android:text="History"
+                    android:textColor="#4a4a4a"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/classFeedback"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/login_button"
+                    android:paddingEnd="30dp"
+                    android:paddingStart="30dp"
+                    android:text="Class Feedback"
+                    android:textColor="#4a4a4a"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/field_line"
+                    android:orientation="vertical"
+                    android:paddingTop="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginStart="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/activeStudentsLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Active Students"
+                            android:textAllCaps="true" />
+
+                        <ImageView
+                            android:id="@+id/greenDot"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="10dp"
+                            android:src="@drawable/online" />
+                    </LinearLayout>
+
+
+                    <!--TODO: Loop here for adding an active student-->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:id="@+id/activeStudentProfile"
+                            android:layout_width="match_parent"
+                            android:layout_height="75dp"
+                            android:background="@android:color/transparent"
+                            android:gravity="top"
+                            android:paddingLeft="68.4dp"
+                            android:paddingTop="13.7dp"
+                            android:text="Gaurav Miashra"
+                            android:textAllCaps="false"
+                            android:textColor="#343434"
+                            android:textSize="16.2dp" />
+
+                        <TextView
+                            android:id="@+id/village1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="68.4dp"
+                            android:layout_marginTop="39.3dp"
+                            android:text="Village Name"
+                            android:textColor="#858585"
+                            android:textSize="13dp" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:orientation="vertical"
+                    android:paddingTop="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginStart="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/inactiveStudentsLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Inactive Students"
+                            android:textAllCaps="true" />
+
+                        <ImageView
+                            android:id="@+id/imageView7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="10dp"
+                            android:src="@drawable/offline" />
+                    </LinearLayout>
+
+
+                    <!--TODO: Loop here for adding a deactive student-->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:id="@+id/name"
+                            android:layout_width="match_parent"
+                            android:layout_height="75dp"
+                            android:background="@android:color/transparent"
+                            android:gravity="top"
+                            android:paddingLeft="68.4dp"
+                            android:paddingTop="13.7dp"
+                            android:text="Akashay Singh"
+                            android:textAllCaps="false"
+                            android:textColor="#343434"
+                            android:textSize="16.2dp" />
+
+                        <TextView
+                            android:id="@+id/village2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="68.4dp"
+                            android:layout_marginTop="39.3dp"
+                            android:text="Village Name"
+                            android:textColor="#858585"
+                            android:textSize="13dp" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/addStudentButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/add_student2"
+        android:elevation="12dp"
+        android:src="@drawable/add_student" />
+</RelativeLayout>
