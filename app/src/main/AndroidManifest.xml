@@ -166,6 +166,14 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".StudyMaterial">
+            <intent-filter>
+                <action android:name="com.example.lenovopc.jagrati.STUDYMATERIAL" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <!-- Not using currently -->
         <activity
             android:name=".NotificationTimeline"
