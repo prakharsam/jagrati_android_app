@@ -2,6 +2,7 @@ package com.example.lenovopc.jagrati;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -47,11 +48,14 @@ public class Events extends BaseActivity {
                     @Override
                     public void onResponse(JSONArray response) {
                         initializeEvents(response);
+                        Log.d("@@@@@", response.toString());
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+
+                        Log.d("@@@@@", error.toString());
                         // TODO: Show error message here.
                     }
                 }
@@ -83,4 +87,14 @@ public class Events extends BaseActivity {
 
         }
     }
+
+    public void addNewEvent(View view) {
+        Intent classActivity = new Intent("com.example.lenovopc.jagrati.ADDEVENT");
+        startActivity(classActivity);
+
+        }
+
+
+
+
 }

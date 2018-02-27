@@ -52,7 +52,8 @@
                         android:paddingLeft="16dp"
                         android:text="Event"
                         android:textColor="#4a4a4a"
-                        android:onClick="showImageInput"/>
+                        android:onClick="showImageInput"
+                        android:checked="false" />
 
                     <RadioButton
                         android:id="@+id/meeting"
@@ -89,10 +90,11 @@
                     android:layout_height="27dp"
                     android:layout_marginLeft="30dp"
                     android:background="@drawable/field_line"
-                    android:hint="DD    MM    YYYY"
+                    android:hint="YYYY  - MM  - DD"
                     android:inputType="date"
                     android:textColor="#4a4a4a"
-                    android:textColorHint="#4a4a4a" />
+                    android:textColorHint="#4a4a4a"
+                    android:numeric="integer" />
             </LinearLayout>
 
             <LinearLayout
@@ -117,8 +119,8 @@
                     android:layout_height="27dp"
                     android:layout_marginLeft="30dp"
                     android:background="@drawable/field_line"
-                    android:hint="HH    MM"
-                    android:inputType="date"
+                    android:hint="HH  :  MM"
+                    android:inputType="time"
                     android:textColor="#4a4a4a"
                     android:textColorHint="#4a4a4a" />
             </LinearLayout>
@@ -133,7 +135,7 @@
                 android:background="@drawable/field_line"
                 android:ems="10"
                 android:hint="Title"
-                android:inputType="text|number"
+                android:inputType="text"
                 android:textColor="#4a4a4a"
                 android:textSize="14sp" />
 
@@ -162,6 +164,8 @@
                 android:text="Upload Image"
                 android:textAllCaps="false"
                 android:textColor="#9b9b9b" />
+
+
 
         </LinearLayout>
 

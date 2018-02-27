@@ -134,6 +134,7 @@ public class LoginActivity extends Activity {
         }
 
         String loginURL = apiURL + "/login/";
+
         JsonObjectRequest req = new JsonObjectRequest(
                 Request.Method.POST,
                 loginURL,
