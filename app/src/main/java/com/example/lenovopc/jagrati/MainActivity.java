@@ -11,7 +11,6 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        // TODO: Change intent values according to buttons
         Button classBtn = (Button) findViewById(R.id._class);
         Button studyBtn = (Button) findViewById(R.id.studyMaterial);
         Button teachingDeptBtn = (Button) findViewById(R.id.teachingDepartment);
