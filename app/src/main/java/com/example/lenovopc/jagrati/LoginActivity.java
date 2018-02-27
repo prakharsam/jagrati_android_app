@@ -15,10 +15,13 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 
@@ -171,7 +174,13 @@ public class LoginActivity extends Activity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        showError(getString(R.string.invalid_credentials));
+                        if (error.networkResponse == null) {
+                            if (error.getClass().equals(NoConnectionError.class) || error.getClass().equals(TimeoutError.class)) {
+                                showError("Seems like there is no internet connection.");
+                            }
+                        } else {
+                            showError(getString(R.string.invalid_credentials));
+                        }
                     }
                 }
         );
