@@ -31,7 +31,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Cursor getRow() {
         SQLiteDatabase db = this.getWritableDatabase();
         String getQuery = "SELECT * FROM " + TABLE_NAME + " LIMIT 1;";
-        return db.rawQuery(getQuery,null);
+        Cursor cursor = db.rawQuery(getQuery,null);
+        return cursor;
     }
 
     public boolean insertRow(String userId, String isAdmin, String token) {
@@ -42,16 +43,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put("token", token);
 
         long result = db.insert(TABLE_NAME, null, contentValues);
+        db.close();
         return result != -1;
     }
 
     public boolean updateData(String id, String isAdmin, String token) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("is_admin", isAdmin);
-        contentValues.put("token", token);
+        if (isAdmin != null) {
+            contentValues.put("is_admin", isAdmin);
+        }
+
+        if (token != null) {
+            contentValues.put("token", token);
+        }
 
         long result = db.update(TABLE_NAME, contentValues, "id = ?", new String[] { id });
+        db.close();
         return result != -1;
     }
 
@@ -59,5 +67,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         String deleteAllQuery = "DELETE FROM " + TABLE_NAME;
         db.execSQL(deleteAllQuery);
+        db.close();
     }
 }
