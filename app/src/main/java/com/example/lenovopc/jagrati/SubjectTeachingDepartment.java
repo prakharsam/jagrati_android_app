@@ -27,6 +27,7 @@ public class SubjectTeachingDepartment extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subject_teaching_department);
+
         Bundle bundle = getIntent().getExtras();
 
         if (bundle != null) {
