@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="105dp">
+
+        <TextView
+            android:id="@+id/dateTimeAnnouncement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/announcementButton"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="12dp"
+            android:layout_marginStart="16dp"
+            android:elevation="10dp"
+            android:text="15 Aug 2017, 6:00 PM"
+            android:textColor="#797979" />
+
+        <Button
+            android:id="@+id/announcementButton"
+            android:layout_width="match_parent"
+            android:layout_height="95dp"
+            android:background="@drawable/button_outline"
+            android:elevation="10dp"
+            android:gravity="start"
+            android:paddingEnd="32dp"
+            android:paddingStart="16dp"
+            android:paddingTop="12dp"
+            android:text="Announcement : Meeting regarding how to make awareness about study"
+            android:textColor="#4a4a4a" />
+
+        <Button
+            android:id="@+id/edit"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="6dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/button_outline"
+            android:elevation="10dp"
+            android:text="Edit"
+            android:textColor="#4a4a4a" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>
