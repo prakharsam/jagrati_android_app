@@ -19,4 +19,5 @@
     <string name="title_activity_events">Events</string>
     <string name="try_again_msg">There was some error. Please try again.</string>
     <string name="invalid_credentials">Invalid Credentials</string>
+    <string name="event_post_fail">Event/Meeting post not successful</string>
 </resources>

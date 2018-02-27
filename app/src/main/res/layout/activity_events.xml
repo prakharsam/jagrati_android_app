@@ -136,7 +136,9 @@
             android:layout_marginBottom="30dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/ic_addbutton_white"
-            android:src="@drawable/ic_addbutton" />
+            android:src="@drawable/ic_addbutton"
+            android:onClick="addNewEvent"
+            />
 
     </RelativeLayout>
 
