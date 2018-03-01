@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
@@ -117,6 +118,12 @@ public class AddEvent extends BaseActivity {
                new Response.Listener<NetworkResponse>() {
                    @Override
                    public void onResponse(NetworkResponse response) {
+                       Toast.makeText(
+                            AddEvent.this,
+                            "Event Created Successfully",
+                            Toast.LENGTH_SHORT
+                       ).show();
+
                        Intent data = new Intent();
                        data.putExtra("event", new String(response.data));
                        setResult(RESULT_OK, data);
