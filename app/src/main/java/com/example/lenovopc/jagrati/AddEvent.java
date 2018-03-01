@@ -5,18 +5,15 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.Response;
-import com.android.volley.VolleyError;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -26,11 +23,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class AddEvent extends BaseActivity {
-
-    Bitmap bitmap;
-
-
-
+    Bitmap bitmap = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,9 +32,6 @@ public class AddEvent extends BaseActivity {
 
         setBackOnClickListener();
         setPageTitle("Add Event");
-
-
-
 
         Button submitEventBtn = (Button) findViewById(R.id.postEvent);
         Button uploadImage = (Button)findViewById(R.id.imageInputBtn) ;
@@ -52,15 +42,14 @@ public class AddEvent extends BaseActivity {
             }
         });
 
+        // open gallery
         uploadImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(i, 100);
             }
         });
-
     }
 
 
@@ -72,7 +61,6 @@ public class AddEvent extends BaseActivity {
         EditText eventDescription = (EditText) findViewById(R.id.eventDescription);
         EditText eventDate = (EditText) findViewById(R.id.getDate);
         EditText eventTime = (EditText) findViewById(R.id.editText);
-
 
         int checkedEventId = eventTypeRadioGroup.getCheckedRadioButtonId();
         String eventType = "EVENT";
@@ -93,78 +81,84 @@ public class AddEvent extends BaseActivity {
         Pattern time_pattern = Pattern.compile("^(20|21|22|23|[01]\\d|\\d)((:[0-5]\\d){1,2})$");//24 hour format
         Matcher time_matcher = time_pattern.matcher(time);
 
-        boolean check = true;
+        View focusView = null;
+        boolean isFormValid = true;
 
-        if(!date_matcher.matches())
-        {
-            Toast.makeText(getApplicationContext(),"Invalid Date Format",Toast.LENGTH_LONG).show();
-            check = false;
+        if (title.isEmpty()) {
+            eventTitle.setError("This field is required.");
+            focusView = eventTitle;
+            isFormValid = false;
         }
 
-        if(!time_matcher.matches())
-        {
-            Toast.makeText(getApplicationContext(),"Invalid Time Format",Toast.LENGTH_LONG).show();
-            check = false;
+        if (description.isEmpty()) {
+            eventDescription.setError("This field is required.");
+            focusView = eventDescription;
+            isFormValid = false;
         }
 
+        if (!date_matcher.matches()) {
+            eventDate.setError("Invalid Date Format.");
+            focusView = eventDate;
+            isFormValid = false;
+        }
+
+        if (!time_matcher.matches()) {
+            eventTime.setError("Invalid Time Format.");
+            focusView = eventTime;
+            isFormValid = false;
+        }
 
         final String modifiedTime = date+ " " + time + ":00";
 
-        if(check)
-        { VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, eventsURL,
-                       new Response.Listener<NetworkResponse>() {
-                           @Override
-                           public void onResponse(NetworkResponse response) {
-
-                               Intent launchNextActivity = new Intent("com.example.lenovopc.jagrati.EVENTS");
-                               launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                               launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                               launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                               startActivity(launchNextActivity);
-
-                           }
-                       },
-                       new Response.ErrorListener() {
-                           @Override
-                           public void onErrorResponse(VolleyError error) {
-                               Log.e("@@@@@", error.toString());
-                           }
-                       }) {
-
-                    @Override
-                   protected Map<String, String> getParams() throws AuthFailureError {
-                       Map<String, String> params = new HashMap<>();
-
-                       params.put("_type", _type);
-                       params.put("title", title);
-                       params.put("description", description);
-                       params.put("time", modifiedTime);
-
-
-                       return params;
-                   }
-
-
+        if (isFormValid) {
+            VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, eventsURL,
+               new Response.Listener<NetworkResponse>() {
                    @Override
-                   protected Map<String, DataPart> getByteData() {
-                       Map<String, DataPart> params = new HashMap<>();
-                       long imagename = System.currentTimeMillis();
-                       params.put("image", new DataPart(imagename + ".png", getFileDataFromDrawable(bitmap)));
-                       return params;
+                   public void onResponse(NetworkResponse response) {
+                       Intent launchNextActivity = new Intent("com.example.lenovopc.jagrati.EVENTS");
+                       startActivity(launchNextActivity);
                    }
-                   @Override
-                   public Map<String, String> getHeaders() throws AuthFailureError {
-                       Map<String, String> headers = new HashMap<>();
-                       headers.put("Authorization", "JWT " + jwtVal);
-                       return headers;
-                   }
-               };
+               },
+               VolleySingleton.errorListener
+            ) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<>();
 
-               queue.add(volleyMultipartRequest);
+                    params.put("_type", _type);
+                    params.put("title", title);
+                    params.put("description", description);
+                    params.put("time", modifiedTime);
+
+                    return params;
+                }
+
+                @Override
+                protected Map<String, DataPart> getByteData() {
+                   Map<String, DataPart> params = new HashMap<>();
+                   long imageName = System.currentTimeMillis();
+                   byte[] fileData = getFileDataFromDrawable(bitmap);
+
+                   if (fileData != null) {
+                       params.put("image", new DataPart(imageName + ".png", fileData));
+                   }
+
+                   return params;
+                }
+
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                   Map<String, String> headers = new HashMap<>();
+                   headers.put("Authorization", "JWT " + jwtVal);
+                   return headers;
+                }
+            };
+
+           queue.add(volleyMultipartRequest);
+        } else {
+            focusView.requestFocus();
         }
-
     }
-
 
     public void hideImageInput(View view) {
         Button imageInputBtn = (Button) findViewById(R.id.imageInputBtn);
@@ -176,18 +170,12 @@ public class AddEvent extends BaseActivity {
         imageInputBtn.setVisibility(View.VISIBLE);
     }
 
-
-
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 100 && resultCode == RESULT_OK && data != null) {
-
-            //getting the image Uri
             Uri imageUri = data.getData();
             try {
-                //getting bitmap object from uri
                  bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
-
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -195,12 +183,12 @@ public class AddEvent extends BaseActivity {
     }
 
     public byte[] getFileDataFromDrawable(Bitmap bitmap) {
+        if (bitmap == null) {
+            return null;
+        }
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 10, byteArrayOutputStream);
         return byteArrayOutputStream.toByteArray();
     }
-
-
-
 }
 
