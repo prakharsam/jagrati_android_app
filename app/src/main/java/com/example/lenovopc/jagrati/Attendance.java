@@ -112,13 +112,7 @@ public class Attendance extends BaseActivity {
                         initializeStudentList(response);
                     }
                 },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e("Error", new String(error.networkResponse.data));
-                        error.printStackTrace();
-                    }
-                }
+                VolleySingleton.errorListener
         ) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {

@@ -1,9 +1,5 @@
 package com.example.lenovopc.jagrati;
 
-/**
- * Created by lenovo pc on 26-02-2018.
- */
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
@@ -19,10 +15,6 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
-/**
- * Created by Belal on 10/24/2017.
- */
-
 public class VolleyMultipartRequest extends Request<NetworkResponse> {
 
     private final String twoHyphens = "--";
@@ -32,7 +24,6 @@ public class VolleyMultipartRequest extends Request<NetworkResponse> {
     private Response.Listener<NetworkResponse> mListener;
     private Response.ErrorListener mErrorListener;
     private Map<String, String> mHeaders;
-
 
     public VolleyMultipartRequest(int method, String url,
                                   Response.Listener<NetworkResponse> listener,

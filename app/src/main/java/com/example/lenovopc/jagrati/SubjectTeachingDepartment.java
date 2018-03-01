@@ -52,19 +52,7 @@ public class SubjectTeachingDepartment extends BaseActivity {
                         initializeSubjectDepartment(response);
                     }
                 },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        String errorMessage = "";
-                        try {
-                            errorMessage = new String(error.networkResponse.data,"UTF-8");
-                        } catch (UnsupportedEncodingException e) {
-                            //
-                        }
-                        Log.e("Error", errorMessage);
-                        error.printStackTrace();
-                    }
-                }
+                VolleySingleton.errorListener
         ) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {

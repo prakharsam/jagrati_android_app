@@ -3,9 +3,14 @@ package com.example.lenovopc.jagrati;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.LruCache;
+import android.widget.Toast;
 
+import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.TimeoutError;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 
@@ -59,4 +64,19 @@ public class VolleySingleton {
     public ImageLoader getImageLoader() {
         return mImageLoader;
     }
+
+    public static Response.ErrorListener errorListener = new Response.ErrorListener() {
+        @Override
+        public void onErrorResponse(VolleyError error) {
+            if (error.networkResponse == null) {
+                if (error.getClass().equals(NoConnectionError.class) || error.getClass().equals(TimeoutError.class)) {
+                    Toast.makeText(
+                        mCtx,
+                        "Seems like there is no internet connection.",
+                        Toast.LENGTH_LONG
+                    ).show();
+                }
+            }
+        }
+    };
 }
