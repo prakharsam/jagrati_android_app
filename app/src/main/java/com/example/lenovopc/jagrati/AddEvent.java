@@ -15,6 +15,8 @@ import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.Response;
 
+import org.json.JSONObject;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
@@ -115,8 +117,10 @@ public class AddEvent extends BaseActivity {
                new Response.Listener<NetworkResponse>() {
                    @Override
                    public void onResponse(NetworkResponse response) {
-                       Intent launchNextActivity = new Intent("com.example.lenovopc.jagrati.EVENTS");
-                       startActivity(launchNextActivity);
+                       Intent data = new Intent();
+                       data.putExtra("event", new String(response.data));
+                       setResult(RESULT_OK, data);
+                       finish();
                    }
                },
                VolleySingleton.errorListener
