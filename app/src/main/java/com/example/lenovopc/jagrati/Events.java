@@ -2,6 +2,7 @@ package com.example.lenovopc.jagrati;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -19,12 +20,35 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Handler;
 
 public class Events extends BaseActivity {
+
+    SwipeRefreshLayout swipeRefreshLayout;
+    Handler handler;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events);
+
+        swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swiperefresh);
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeRefreshLayout.setRefreshing(true);
+
+                swipeRefreshLayout.postDelayed(new Runnable() {
+                    @Override
+                    public void run(){
+                        swipeRefreshLayout.setRefreshing(false);
+                        getEvents();
+                    }
+                },2000);
+            }
+        });
+
         getEvents();
 
         setBackOnClickListener();
@@ -148,4 +172,9 @@ public class Events extends BaseActivity {
             }
         }
     }
+
+
+
+
+
 }

@@ -22,11 +22,18 @@ public class EventDetail extends BaseActivity {
             String eventURL = bundle.getString("eventURL");
             String eventDescription = bundle.getString("eventDescription");
 
+
+
             getTeachers(eventTitle,eventDate,eventCreatedAt,eventURL,eventDescription);
         }
+
     }
 
     private void getTeachers(String eventTitle,String eventDate,String eventCreatedAt,String eventURL,String eventDescription) {
+
+
+
+
         ImageView eventImageView = (ImageView)findViewById(R.id.eventImage);
 
         if (!eventURL.equals("null")) {
@@ -42,14 +49,18 @@ public class EventDetail extends BaseActivity {
         TextView eventDescriptionView = (TextView)findViewById(R.id.eventDescription);
         eventDescriptionView.setText(eventDescription);
 
-        String[] dateTime = eventDate.split("T");
+
+        String [] dateTime = eventDate.split("T");
 
         TextView eventDateView = (TextView)findViewById(R.id.dateEvent);
         eventDateView.setText(dateTime[0]);
 
         TextView eventTimeView = (TextView)findViewById(R.id.timeEvent);
         eventTimeView.setText(dateTime[1]);
+
     }
+
+
 }
 
 
