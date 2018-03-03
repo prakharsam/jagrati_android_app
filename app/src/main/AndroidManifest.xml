@@ -10,165 +10,163 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true">
-
-        <activity
-            android:name=".Splash">
+        <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".MainActivity"
             android:theme="@android:style/Theme">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.MAIN" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".LoginActivity"
             android:label="Log in">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.LOGIN" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".LogoutActivity"
             android:label="Log out">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.LOGOUT" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".TeachingDepartment"
             android:label="Teaching Department"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.TEACHINGDEPT" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".SubjectTeachingDepartment"
             android:label="SubjectTeachingDepartment"
-            android:parentActivityName=".TeachingDepartment" >
+            android:parentActivityName=".TeachingDepartment">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.SUBJECTDEPT" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ClassesList"
             android:label="ClassList"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.CLASSLIST" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ClassStudentList"
             android:label="ClassStudentList"
             android:parentActivityName=".ClassesList">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.STUDENTLIST" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".StudentFeedback"
             android:label="@string/title_activity_student_feedback"
             android:parentActivityName=".ClassStudentList">
             <intent-filter>
-                <action android:name="com.example.lenovopc.jagrati.STUDENTFEEDBACK"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="com.example.lenovopc.jagrati.STUDENTFEEDBACK" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".History"
             android:label="@string/title_activity_history"
-            android:parentActivityName=".ClassStudentList" >
+            android:parentActivityName=".ClassStudentList">
             <intent-filter>
-                <action android:name="com.example.lenovopc.jagrati.HISTORY"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="com.example.lenovopc.jagrati.HISTORY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".AddEvent"
             android:label="@string/title_activity_add_event"
             android:parentActivityName=".Events">
             <intent-filter>
-                <action android:name="com.example.lenovopc.jagrati.ADDEVENT"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="com.example.lenovopc.jagrati.ADDEVENT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Events"
             android:label="@string/title_activity_events"
             android:parentActivityName=".MainActivity">
             <intent-filter>
-                <action android:name="com.example.lenovopc.jagrati.EVENTS"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="com.example.lenovopc.jagrati.EVENTS" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".EventDetail"
             android:label="EventDetail"
             android:parentActivityName=".Events">
             <intent-filter>
-                <action android:name="com.example.lenovopc.jagrati.EVENTDETAIL"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="com.example.lenovopc.jagrati.EVENTDETAIL" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ClassFeedback"
             android:label="ClassFeedback"
-            android:parentActivityName=".ClassStudentList" >
+            android:parentActivityName=".ClassStudentList">
             <intent-filter>
-                <action android:name="com.example.lenovopc.jagrati.CLASSFEEDBACK"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="com.example.lenovopc.jagrati.CLASSFEEDBACK" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Attendance"
             android:label="Attendance"
-            android:parentActivityName=".ClassStudentList" >
+            android:parentActivityName=".ClassStudentList">
             <intent-filter>
-                <action android:name="com.example.lenovopc.jagrati.ATTENDANCE"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="com.example.lenovopc.jagrati.ATTENDANCE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ProfileUser"
-            android:parentActivityName=".SubjectTeachingDepartment" >
+            android:parentActivityName=".SubjectTeachingDepartment">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.PROFILE" />
-                <category android:name="android.intent.category.DEFAULT"/>
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".StudyMaterial">
+        <activity android:name=".StudyMaterial">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.STUDYMATERIAL" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -177,6 +175,7 @@
         <activity
             android:name=".NotificationTimeline"
             android:label="@string/title_activity_notification_timeline" />
+        <activity android:name=".JoinUs"></activity>
     </application>
 
 </manifest>

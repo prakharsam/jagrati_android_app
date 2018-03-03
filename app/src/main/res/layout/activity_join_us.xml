@@ -1,13 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
-    android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context="com.example.lenovopc.jagrati.LoginActivity">
-
+    android:background="@android:color/white"
+    tools:context="com.example.lenovopc.jagrati.JoinUs">
 
     <ImageView
         android:id="@+id/headerImage"
@@ -44,7 +43,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/loginTitle"
+                android:id="@+id/joinUsTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="17dp"
@@ -52,7 +51,7 @@
                 android:textColor="#f17e02"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                tools:text="Login" />
+                tools:text="Join Us" />
 
             <EditText
                 android:id="@+id/email"
@@ -62,7 +61,6 @@
                 android:layout_marginRight="40dp"
                 android:layout_marginTop="60dp"
                 android:background="@drawable/edittext_side"
-
                 android:hint="Email"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
@@ -73,14 +71,14 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/password"
+                android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
                 android:layout_marginTop="40dp"
                 android:background="@drawable/edittext_side"
-                android:hint="Password"
+                android:hint="Name"
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:paddingStart="16dp"
@@ -90,35 +88,16 @@
                 android:textSize="16sp" />
 
             <Button
-                android:id="@+id/forgotPassword"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="25dp"
-                android:background="@android:color/transparent"
-                android:text="Forgot Password"
-                android:textColor="#9b9b9b" />
-
-            <TextView
-                android:id="@+id/infoText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:gravity="center_horizontal"
-                android:textColor="#f2403c" />
-
-            <Button
-                android:id="@+id/logInButton"
+                android:id="@+id/sendRequestButton"
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_alignParentBottom="false"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="85dp"
                 android:background="@drawable/login_button"
-                android:text="LOG IN"
+                android:text="SEND REQUEST"
                 android:textColor="@color/logincolor" />
         </LinearLayout>
     </ScrollView>
