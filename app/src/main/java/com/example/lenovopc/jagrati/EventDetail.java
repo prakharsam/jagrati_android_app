@@ -1,7 +1,6 @@
 package com.example.lenovopc.jagrati;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,8 +17,6 @@ public class EventDetail extends BaseActivity {
             setBackOnClickListener();
 
             String eventTitle = bundle.getString("eventTitle");
-
-
             String eventDate = bundle.getString("eventDate");
             String eventCreatedAt = bundle.getString("eventCreatedAt");
             String eventURL = bundle.getString("eventURL");
@@ -54,7 +51,6 @@ public class EventDetail extends BaseActivity {
 
 
         String [] dateTime = eventDate.split("T");
-        Log.d("AAAA",dateTime.toString());
 
         TextView eventDateView = (TextView)findViewById(R.id.dateEvent);
         eventDateView.setText(dateTime[0]);
