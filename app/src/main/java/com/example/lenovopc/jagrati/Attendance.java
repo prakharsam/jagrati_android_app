@@ -11,6 +11,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.GridLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -79,6 +80,11 @@ public class Attendance extends BaseActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        Toast.makeText(
+                            Attendance.this,
+                            "Attendance saved successfully",
+                            Toast.LENGTH_SHORT
+                        ).show();
                         finish();
                     }
                 },
@@ -112,13 +118,7 @@ public class Attendance extends BaseActivity {
                         initializeStudentList(response);
                     }
                 },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e("Error", new String(error.networkResponse.data));
-                        error.printStackTrace();
-                    }
-                }
+                VolleySingleton.errorListener
         ) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {

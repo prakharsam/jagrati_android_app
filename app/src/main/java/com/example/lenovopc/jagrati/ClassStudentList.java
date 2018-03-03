@@ -90,12 +90,7 @@ public class ClassStudentList extends BaseActivity {
                         initializeStudentList(response);
                     }
                 },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // TODO: Show error here.
-                    }
-                }
+                VolleySingleton.errorListener
         ) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {

@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -71,12 +72,7 @@ public class ClassFeedback extends BaseActivity {
                         initializeSubjectNamesList();
                     }
                 },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // TODO: Show error here.
-                    }
-                }
+                VolleySingleton.errorListener
         ) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
@@ -115,6 +111,11 @@ public class ClassFeedback extends BaseActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        Toast.makeText(
+                            ClassFeedback.this,
+                            "Feedback saved successfully",
+                            Toast.LENGTH_SHORT
+                        ).show();
                         finish();
                     }
                 },
