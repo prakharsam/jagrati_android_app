@@ -15,7 +15,6 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
@@ -133,7 +132,8 @@ public class LoginActivity extends Activity {
             formData.put("username", email);
             formData.put("password", password);
         } catch (JSONException e) {
-            return;
+            Log.e("Error", e.getMessage());
+            e.printStackTrace();
         }
 
         String loginURL = apiURL + "/login/";
