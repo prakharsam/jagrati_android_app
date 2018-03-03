@@ -20,12 +20,10 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Handler;
 
 public class Events extends BaseActivity {
-
     SwipeRefreshLayout swipeRefreshLayout;
-    Handler handler;
+    String latestEventDateTime = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,28 +41,35 @@ public class Events extends BaseActivity {
                     @Override
                     public void run(){
                         swipeRefreshLayout.setRefreshing(false);
-                        getEvents();
+                        getEvents(true);
                     }
                 },2000);
             }
         });
 
-        getEvents();
-
+        getEvents(false);
         setBackOnClickListener();
         setPageTitle("Events");
 
     }
 
-    private void getEvents() {
-        final String classesURL = apiURL + "/events/";
+    private void getEvents(final boolean refresh) {
+        final String classesURL = apiURL + "/events/?created_at__gt=" + latestEventDateTime;
 
         JsonArrayRequest req = new JsonArrayRequest(
                 classesURL,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        initializeEvents(response);
+                        if (response.length() > 0) {
+                            try {
+                                JSONObject latestEvent = response.getJSONObject(0);
+                                latestEventDateTime = latestEvent.getString("created_at");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        initializeEvents(response, refresh);
                     }
                 },
                 VolleySingleton.errorListener
@@ -142,11 +147,15 @@ public class Events extends BaseActivity {
         }
     }
 
-    private void initializeEvents(JSONArray events) {
+    private void initializeEvents(JSONArray events, boolean refresh) {
         for (int i=0; i < events.length(); i++) {
             try {
                 JSONObject event = events.getJSONObject(i);
-                initializeEvent(event, -1);
+                if (!refresh) {
+                    initializeEvent(event, -1);
+                } else {
+                    initializeEvent(event, 0);
+                }
             } catch (JSONException e) {
                 Log.e("Error", e.getMessage());
                 e.printStackTrace();
