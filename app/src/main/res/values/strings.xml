@@ -8,7 +8,7 @@
     <string name="error_field_required">This field is required</string>
 
     <string name="jagrati">Jagrati</string>
-    <string name="api_url">http://172.27.48.39</string>
+    <string name="api_url">http://18.219.224.92</string>
     <string name="title_activity_student_feedback">Student Feedback</string>
     <string name="title_activity_history">History</string>
 
