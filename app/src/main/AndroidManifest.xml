@@ -26,7 +26,8 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:label="Log in">
+            android:label="Log in"
+            android:theme="@style/Theme.AppCompat.Light">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.LOGIN" />
                 <category android:name="android.intent.category.DEFAULT" />
