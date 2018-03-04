@@ -14,13 +14,11 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-    private ImageView bmImage;
     private Method method;
     private Context object;
     private CheckBox checkBox;
 
-    public DownloadImageTask(ImageView bmImage, Method method, Context object, CheckBox checkBox) {
-        this.bmImage = bmImage;
+    public DownloadImageTask(Method method, Context object, CheckBox checkBox) {
         this.method = method;
         this.object = object;
         this.checkBox = checkBox;
@@ -42,10 +40,6 @@ public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
     }
 
     protected void onPostExecute(Bitmap result) {
-        if (bmImage != null) {
-            bmImage.setImageBitmap(result);
-        }
-
         if (method != null && object != null) {
             Object[] parameters = new Object[2];
             parameters[0] = result;
