@@ -39,7 +39,7 @@
         <LinearLayout
             android:id="@+id/emailLoginForm"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
             android:orientation="vertical">
 
@@ -52,17 +52,15 @@
                 android:textColor="#f17e02"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                tools:text="Login" />
+                android:text="Login" />
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/email"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="70dp"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
-                android:layout_marginTop="60dp"
-                android:background="@drawable/edittext_side"
-
+                android:layout_marginTop="50dp"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
@@ -70,24 +68,26 @@
                 android:singleLine="true"
                 android:textColor="#f17e02"
                 android:textColorHint="#f17e02"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                app:met_floatingLabel="normal"/>
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="70dp"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="30dp"
                 android:background="@drawable/edittext_side"
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:maxLines="1"
-                android:paddingStart="16dp"
+                android:paddingLeft="16dp"
                 android:singleLine="true"
                 android:textColor="#f17e02"
                 android:textColorHint="#f17e02"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                app:met_floatingLabel="normal"/>
 
             <Button
                 android:id="@+id/forgotPassword"
@@ -117,6 +117,7 @@
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
                 android:layout_marginTop="14dp"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/login_button"
                 android:text="LOG IN"
                 android:textColor="@color/logincolor" />
