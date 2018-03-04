@@ -16,6 +16,7 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.NetworkImageView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -134,10 +135,10 @@ public class ClassStudentList extends BaseActivity {
                     }
                 });
 
-                ImageView dpIView = (ImageView) studentLinkView.findViewById(R.id.displayPicture);
+                NetworkImageView dpIView = (NetworkImageView) studentLinkView.findViewById(R.id.displayPicture);
 
                 if (!displayPictureURL.equals("null")) {
-                    new DownloadImageTask(dpIView, null, null, null).execute(displayPictureURL);
+                    dpIView.setImageUrl(displayPictureURL, imageLoader);
                 }
 
                 TextView villageView = (TextView) studentLinkView.findViewById(R.id.volunteerDiscipline);
