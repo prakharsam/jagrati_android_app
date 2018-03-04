@@ -2,6 +2,7 @@ package com.example.lenovopc.jagrati;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,8 @@ import com.android.volley.RequestQueue;
 @SuppressLint("Registered")
 public class BaseActivity extends Activity {
     public String jwtVal;
+    public boolean isAdmin;
+    public int userId;
     public String apiURL;
     public RequestQueue queue;
 
@@ -34,6 +37,8 @@ public class BaseActivity extends Activity {
         if (userRow.getCount() != 0) {
             userRow.moveToFirst();
             jwtVal = userRow.getString(2);
+            isAdmin = userRow.getInt(1) == 1;
+            userId = userRow.getInt(0);
         } else {
             jwtVal = "";
         }
@@ -52,5 +57,16 @@ public class BaseActivity extends Activity {
                 finish();
             }
         });
+    }
+
+    public void logout(View v) {
+        DatabaseHelper db = new DatabaseHelper(this);
+        db.deleteAllRows();
+
+        Intent loginActivity = new Intent("com.example.lenovopc.jagrati.LOGIN");
+        loginActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        loginActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        loginActivity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(loginActivity);
     }
 }

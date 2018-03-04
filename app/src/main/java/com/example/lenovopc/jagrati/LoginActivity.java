@@ -83,8 +83,8 @@ public class LoginActivity extends Activity {
         View focusView = null;
 
         // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-            mPasswordView.setError(getString(R.string.error_invalid_password));
+        if (TextUtils.isEmpty(password)) {
+            mPasswordView.setError(getString(R.string.error_field_required));
             focusView = mPasswordView;
             cancel = true;
         }
@@ -92,10 +92,6 @@ public class LoginActivity extends Activity {
         // Check for a valid email address.
         if (TextUtils.isEmpty(email)) {
             mEmailView.setError(getString(R.string.error_field_required));
-            focusView = mEmailView;
-            cancel = true;
-        } else if (!isEmailValid(email)) {
-            mEmailView.setError(getString(R.string.error_invalid_email));
             focusView = mEmailView;
             cancel = true;
         }
@@ -110,14 +106,6 @@ public class LoginActivity extends Activity {
             showProgress(true);
             submitLoginForm(email, password);
         }
-    }
-
-    private boolean isEmailValid(String email) {
-        return email.contains("@");
-    }
-
-    private boolean isPasswordValid(String password) {
-        return password.length() > 4;
     }
 
     private void submitLoginForm(String email, String password) {

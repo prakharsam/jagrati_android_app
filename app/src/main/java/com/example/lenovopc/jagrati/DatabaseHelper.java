@@ -39,7 +39,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("id", userId);
-        contentValues.put("is_admin", isAdmin);
+        contentValues.put("is_admin", isAdmin.equals("false") ? 0 : 1);
         contentValues.put("token", token);
 
         long result = db.insert(TABLE_NAME, null, contentValues);
