@@ -33,14 +33,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LogoutActivity"
-            android:label="Log out">
-            <intent-filter>
-                <action android:name="com.example.lenovopc.jagrati.LOGOUT" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".TeachingDepartment"
             android:label="Teaching Department"
             android:parentActivityName=".MainActivity">

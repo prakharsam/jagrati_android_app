@@ -6,6 +6,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -30,8 +31,7 @@ public class Events extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events);
 
-        swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swiperefresh);
-
+        swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swipeRefresh);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -51,6 +51,21 @@ public class Events extends BaseActivity {
         setBackOnClickListener();
         setPageTitle("Events");
 
+        if (isAdmin) {
+            showAddEventButton();
+//            hideEventEditButtons();
+        }
+    }
+
+    private void showAddEventButton() {
+        ImageButton addEventBtn = (ImageButton) findViewById(R.id.addEvent);
+        addEventBtn.setVisibility(View.VISIBLE);
+        addEventBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addNewEvent();
+            }
+        });
     }
 
     private void getEvents(final boolean refresh) {
@@ -163,7 +178,7 @@ public class Events extends BaseActivity {
         }
     }
 
-    public void addNewEvent(View view) {
+    public void addNewEvent() {
         Intent classActivity = new Intent("com.example.lenovopc.jagrati.ADDEVENT");
         startActivityForResult(classActivity, 1);
     }
