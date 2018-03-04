@@ -77,7 +77,22 @@ public class ClassStudentList extends BaseActivity {
                     startActivity(classFeedbackActivity);
                 }
             });
+
+            if (isAdmin) {
+                showAddStudentButton();
+            }
         }
+    }
+
+    private void showAddStudentButton() {
+        ImageButton addStudentBtn = (ImageButton) findViewById(R.id.addStudentButton);
+        addStudentBtn.setVisibility(View.VISIBLE);
+        addStudentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: Start add student form activity
+            }
+        });
     }
 
     private void getStudents(String classId) {
@@ -104,51 +119,54 @@ public class ClassStudentList extends BaseActivity {
         queue.add(req);
     }
 
+    private void initializeStudent(JSONObject student) throws JSONException {
+        JSONObject studentUser = student.getJSONObject("user");
+        final String id = studentUser.getString("id");
+        String firstName = studentUser.getString("first_name");
+        String lastName = studentUser.getString("last_name");
+        String fullName = firstName + " " + lastName;
+        String village = student.getString("village").equals("null") ? "" : student.getString("village");
+        String displayPictureURL = student.getString("display_picture");
+        boolean isActiveStudent = studentUser.getBoolean("is_active");
+
+        LinearLayout activeStudentsLayout = (LinearLayout) findViewById(R.id.activeStudentsList);
+        LinearLayout inactiveStudentsLayout = (LinearLayout) findViewById(R.id.inactiveStudentsList);
+
+        View studentLinkView = getLayoutInflater().inflate(R.layout.profile_subject_button, null);
+
+        Button nameBtn = (Button) studentLinkView.findViewById(R.id.volunteerName);
+        nameBtn.setText(fullName);
+        nameBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent studentProfileActivity = new Intent("com.example.lenovopc.jagrati.STUDENTPROFILE");
+                Bundle bundle = new Bundle();
+                bundle.putString("studentId", id);
+                studentProfileActivity.putExtras(bundle);
+                startActivity(studentProfileActivity);
+            }
+        });
+
+        NetworkImageView dpIView = (NetworkImageView) studentLinkView.findViewById(R.id.displayPicture);
+        if (!displayPictureURL.equals("null")) {
+            dpIView.setImageUrl(displayPictureURL, imageLoader);
+        }
+
+        TextView villageView = (TextView) studentLinkView.findViewById(R.id.volunteerDiscipline);
+        villageView.setText(village);
+
+        if (isActiveStudent) {
+            activeStudentsLayout.addView(studentLinkView);
+        } else {
+            inactiveStudentsLayout.addView(studentLinkView);
+        }
+    }
+
     private void initializeStudentList(JSONArray students) {
         for (int i=0; i < students.length(); i++) {
             try {
                 JSONObject student = students.getJSONObject(i);
-                JSONObject studentUser = student.getJSONObject("user");
-                final String id = studentUser.getString("id");
-                String firstName = studentUser.getString("first_name");
-                String lastName = studentUser.getString("last_name");
-                String fullName = firstName + " " + lastName;
-                String village = student.getString("village").equals("null") ? "" : student.getString("village");
-                String displayPictureURL = student.getString("display_picture");
-                boolean isActiveStudent = studentUser.getBoolean("is_active");
-
-                LinearLayout activeStudentsLayout = (LinearLayout) findViewById(R.id.activeStudentsList);
-                LinearLayout inactiveStudentsLayout = (LinearLayout) findViewById(R.id.inactiveStudentsList);
-
-                View studentLinkView = getLayoutInflater().inflate(R.layout.profile_subject_button, null);
-
-                Button nameBtn = (Button) studentLinkView.findViewById(R.id.volunteerName);
-                nameBtn.setText(fullName);
-                nameBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent studentProfileActivity = new Intent("com.example.lenovopc.jagrati.STUDENTPROFILE");
-                        Bundle bundle = new Bundle();
-                        bundle.putString("studentId", id);
-                        studentProfileActivity.putExtras(bundle);
-                        startActivity(studentProfileActivity);
-                    }
-                });
-
-                NetworkImageView dpIView = (NetworkImageView) studentLinkView.findViewById(R.id.displayPicture);
-
-                if (!displayPictureURL.equals("null")) {
-                    dpIView.setImageUrl(displayPictureURL, imageLoader);
-                }
-
-                TextView villageView = (TextView) studentLinkView.findViewById(R.id.volunteerDiscipline);
-                villageView.setText(village);
-
-                if (isActiveStudent) {
-                    activeStudentsLayout.addView(studentLinkView);
-                } else {
-                    inactiveStudentsLayout.addView(studentLinkView);
-                }
+                initializeStudent(student);
             } catch(JSONException e) {
                 Log.e("Error", e.getMessage());
                 e.printStackTrace();
