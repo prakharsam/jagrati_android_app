@@ -255,6 +255,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/field_line"
                 android:paddingBottom="16dp"
                 android:paddingTop="15dp">
 
@@ -268,7 +269,14 @@
                     android:text="Hobbies"
                     android:textColor="#f17e01" />
 
+                <GridView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </GridView>
+
                 <GridLayout
+                    android:id="@+id/gridLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
@@ -288,10 +296,13 @@
                         android:text="TextView"
                         android:textColor="#4a4a4a"
                         android:textSize="12sp" />
+
                 </GridLayout>
 
             </RelativeLayout>
 
+
         </LinearLayout>
     </ScrollView>
+
 </RelativeLayout>
