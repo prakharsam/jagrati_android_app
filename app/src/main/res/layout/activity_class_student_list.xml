@@ -156,5 +156,6 @@
         android:layout_marginEnd="16dp"
         android:background="@drawable/add_student2"
         android:elevation="12dp"
-        android:src="@drawable/add_student" />
+        android:src="@drawable/add_student"
+        android:visibility="gone"/>
 </RelativeLayout>

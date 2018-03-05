@@ -11,9 +11,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.ImageLoader;
 
 @SuppressLint("Registered")
 public class BaseActivity extends Activity {
+    ImageLoader imageLoader;
     public String jwtVal;
     public boolean isAdmin;
     public int userId;
@@ -31,6 +33,10 @@ public class BaseActivity extends Activity {
         queue = VolleySingleton.getInstance(
                 getApplicationContext()
         ).getRequestQueue();
+
+        imageLoader = VolleySingleton.getInstance(
+            getApplicationContext()
+        ).getImageLoader();
 
         apiURL = getString(R.string.api_url);
 

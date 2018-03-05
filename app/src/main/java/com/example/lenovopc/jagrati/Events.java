@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Response;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.NetworkImageView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -118,10 +119,9 @@ public class Events extends BaseActivity {
             TextView date = (TextView) eventCard.findViewById(R.id.dateTimeEvent);
             date.setText(createdAt);
 
-            ImageView eventImageView = (ImageView) eventCard.findViewById(R.id.eventImage);
-
+            NetworkImageView eventImageView = (NetworkImageView) eventCard.findViewById(R.id.eventImage);
             if (!eventImageURL.equals("null")) {
-                new DownloadImageTask(eventImageView, null, null, null).execute(eventImageURL);
+                eventImageView.setImageUrl(eventImageURL, imageLoader);
             }
 
             eventBtn.setOnClickListener(new View.OnClickListener() {

@@ -13,6 +13,7 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.NetworkImageView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -96,8 +97,8 @@ public class SubjectTeachingDepartment extends BaseActivity {
                 TextView volunteerDisciplineText = (TextView) volunteerProfileButtonView.findViewById(R.id.volunteerDiscipline);
                 volunteerDisciplineText.setText(discipline);
 
-                ImageView dpIView = (ImageView) volunteerProfileButtonView.findViewById(R.id.displayPicture);
-                new DownloadImageTask(dpIView, null, null, null).execute(displayPictureURL);
+                NetworkImageView dpIView = (NetworkImageView) volunteerProfileButtonView.findViewById(R.id.displayPicture);
+                dpIView.setImageUrl(displayPictureURL, imageLoader);
 
                 volunteerSubjectLayout.addView(volunteerProfileButtonView);
             } catch (JSONException e) {
