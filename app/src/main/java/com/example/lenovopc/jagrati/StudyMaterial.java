@@ -72,7 +72,7 @@ public class StudyMaterial extends BaseActivity {
                     @Override
                     public void onClick(View v) {
                         // TODO: Change intent value
-                        Intent subjectDeptActivity = new Intent("com.example.lenovopc.jagrati.SUBJECTDEPT");
+                        Intent subjectDeptActivity = new Intent("com.example.lenovopc.jagrati.STUDYMATERIALCLASS");
                         Bundle bundle = new Bundle();
                         bundle.putString("classId", id);
                         bundle.putString("className", name);

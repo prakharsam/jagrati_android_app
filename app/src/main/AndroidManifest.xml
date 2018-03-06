@@ -155,7 +155,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".StudyMaterial">
+        <activity android:name=".StudyMaterial" android:label="StudyMaterial">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.STUDYMATERIAL" />
 
@@ -174,7 +174,14 @@
         <activity
             android:name=".NotificationTimeline"
             android:label="@string/title_activity_notification_timeline" />
-        <activity android:name=".StudyMaterialClass"></activity>
+        <activity android:name=".StudyMaterialClass"
+                  android:label="StydyMaterialClass">
+            <intent-filter>
+                <action android:name="com.example.lenovopc.jagrati.STUDYMATERIALCLASS" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

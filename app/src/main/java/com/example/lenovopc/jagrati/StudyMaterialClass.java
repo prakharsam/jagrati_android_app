@@ -78,4 +78,6 @@ public class StudyMaterialClass extends Activity {
         listDataChild.put(listDataHeader.get(1), nowShowing);
         listDataChild.put(listDataHeader.get(2), comingSoon);
     }
+
+
 }
