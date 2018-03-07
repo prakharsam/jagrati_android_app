@@ -13,6 +13,7 @@
         <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -21,6 +22,7 @@
             android:theme="@android:style/Theme">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.MAIN" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -30,6 +32,7 @@
             android:theme="@style/Theme.AppCompat.Light">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.LOGIN" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -39,6 +42,7 @@
             android:parentActivityName=".MainActivity">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.TEACHINGDEPT" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -48,6 +52,7 @@
             android:parentActivityName=".TeachingDepartment">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.SUBJECTDEPT" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -57,6 +62,7 @@
             android:parentActivityName=".MainActivity">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.CLASSLIST" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -66,6 +72,7 @@
             android:parentActivityName=".ClassesList">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.STUDENTLIST" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -75,6 +82,7 @@
             android:parentActivityName=".ClassStudentList">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.STUDENTFEEDBACK" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -84,6 +92,7 @@
             android:parentActivityName=".ClassStudentList">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.HISTORY" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -93,6 +102,7 @@
             android:parentActivityName=".Events">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.ADDEVENT" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -102,6 +112,7 @@
             android:parentActivityName=".MainActivity">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.EVENTS" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -111,6 +122,7 @@
             android:parentActivityName=".Events">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.EVENTDETAIL" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -120,6 +132,7 @@
             android:parentActivityName=".ClassStudentList">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.CLASSFEEDBACK" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -129,6 +142,7 @@
             android:parentActivityName=".ClassStudentList">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.ATTENDANCE" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -137,18 +151,21 @@
             android:parentActivityName=".SubjectTeachingDepartment">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.PROFILE" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".StudyMaterial">
+        <activity android:name=".StudyMaterial" android:label="StudyMaterial">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.STUDYMATERIAL" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity android:name=".JoinUs">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.JOINUS" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -157,6 +174,14 @@
         <activity
             android:name=".NotificationTimeline"
             android:label="@string/title_activity_notification_timeline" />
+        <activity android:name=".StudyMaterialClass"
+                  android:label="StydyMaterialClass">
+            <intent-filter>
+                <action android:name="com.example.lenovopc.jagrati.STUDYMATERIALCLASS" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

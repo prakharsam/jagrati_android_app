@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    tools:context="com.example.lenovopc.jagrati.StudyMaterialClass">
+
+    <include layout="@layout/nav_header" />
+
+    <ExpandableListView
+        android:id="@+id/expandLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:childDivider="@android:color/transparent"
+        android:clipChildren="false"
+        android:layoutDirection="rtl">
+
+    </ExpandableListView>
+
+</LinearLayout>
