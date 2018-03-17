@@ -12,111 +12,116 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-        android:id="@+id/headerImage"
-        android:layout_width="match_parent"
-        android:layout_height="236dp"
-        android:background="@mipmap/frame" />
-
-        <ProgressBar
-        android:id="@+id/loginProgress"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:visibility="gone" />
-
-        <FrameLayout
-        android:id="@+id/gradient"
-        android:layout_width="match_parent"
-        android:layout_height="22dp"
-        android:background="@drawable/gradient" />
-
         <LinearLayout
-            android:id="@+id/emailLoginForm"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/loginTitle"
+            <ImageView
+                android:id="@+id/headerImage"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="17dp"
-                android:gravity="center_horizontal"
-                android:textColor="#f17e02"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:text="Login" />
+                android:layout_height="236dp"
+                android:background="@mipmap/frame" />
 
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/email"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginTop="30dp"
-                android:hint="Email"
-                android:inputType="textEmailAddress"
-                android:maxLines="1"
-                android:paddingLeft="16dp"
-                android:singleLine="true"
-                android:textColor="#f17e02"
-                android:textColorHint="#f17e02"
-                android:textSize="16sp"
-                app:met_floatingLabel="normal" />
-
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/password"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/edittext_side"
-                android:hint="Password"
-                android:inputType="textPassword"
-                android:maxLines="1"
-                android:paddingLeft="16dp"
-                android:singleLine="true"
-                android:textColor="#f17e02"
-                android:textColorHint="#f17e02"
-                android:textSize="16sp"
-                app:met_floatingLabel="normal" />
-
-            <Button
-                android:id="@+id/forgotPassword"
+            <ProgressBar
+                android:id="@+id/loginProgress"
+                style="@android:style/Widget.ProgressBar.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="25dp"
-                android:background="@android:color/transparent"
-                android:text="Forgot Password"
-                android:textColor="#9b9b9b" />
+                android:visibility="gone" />
 
-            <TextView
-                android:id="@+id/infoText"
+            <FrameLayout
+                android:id="@+id/gradient"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:gravity="center_horizontal"
-                android:textColor="#f2403c" />
+                android:layout_height="22dp"
+                android:background="@drawable/gradient" />
 
-            <Button
-                android:id="@+id/logInButton"
-                style="?android:textAppearanceSmall"
+            <LinearLayout
+                android:id="@+id/emailLoginForm"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_alignParentBottom="false"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginTop="14dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/login_button"
-                android:text="LOG IN"
-                android:textColor="@color/logincolor" />
+                android:layout_height="match_parent"
+                android:layout_marginTop="0dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/loginTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:gravity="center_horizontal"
+                    android:text="Login"
+                    android:textColor="#f17e02"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginTop="30dp"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:paddingLeft="16dp"
+                    android:singleLine="true"
+                    android:textColor="#f17e02"
+                    android:textColorHint="#f17e02"
+                    android:textSize="16sp"
+                    app:met_floatingLabel="normal" />
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/edittext_side"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:paddingLeft="16dp"
+                    android:singleLine="true"
+                    android:textColor="#f17e02"
+                    android:textColorHint="#f17e02"
+                    android:textSize="16sp"
+                    app:met_floatingLabel="normal" />
+
+                <Button
+                    android:id="@+id/forgotPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="25dp"
+                    android:background="@android:color/transparent"
+                    android:text="Forgot Password"
+                    android:textColor="#9b9b9b" />
+
+                <TextView
+                    android:id="@+id/infoText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center_horizontal"
+                    android:textColor="#f2403c" />
+
+                <Button
+                    android:id="@+id/logInButton"
+                    style="?android:textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_alignParentBottom="false"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginTop="14dp"
+                    android:background="@drawable/login_button"
+                    android:text="LOG IN"
+                    android:textColor="@color/logincolor" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
