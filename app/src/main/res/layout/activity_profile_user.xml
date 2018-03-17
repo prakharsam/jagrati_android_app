@@ -22,7 +22,19 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <include layout="@layout/nav_header" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <include layout="@layout/nav_header" />
+
+                <!--TODO: Include for logged in user-->
+                <include
+                    layout="@layout/options_button"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true" />
+
+            </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/column1"
@@ -174,6 +186,7 @@
                     android:id="@+id/imageView15"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/batch"
                     android:layout_alignTop="@+id/imageView14"
                     android:layout_centerHorizontal="true"
                     android:src="@drawable/birthday" />
@@ -213,8 +226,8 @@
                     android:id="@+id/birthDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignTop="@+id/imageView15"
-                    android:layout_marginStart="15dp"
+                    android:layout_alignBottom="@+id/imageView15"
+                    android:layout_marginStart="14dp"
                     android:layout_toEndOf="@+id/imageView15"
                     android:text="18 July 1994"
                     android:textColor="#4a4a4a"

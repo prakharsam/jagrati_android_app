@@ -29,7 +29,7 @@
         <activity
             android:name=".LoginActivity"
             android:label="Log in"
-            android:theme="@style/Theme.AppCompat.Light">
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.LOGIN" />
 
@@ -155,7 +155,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".StudyMaterial" android:label="StudyMaterial">
+        <activity
+            android:name=".StudyMaterial"
+            android:label="StudyMaterial">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.STUDYMATERIAL" />
 
@@ -172,16 +174,28 @@
 
         <!-- Not using currently -->
         <activity
-            android:name=".NotificationTimeline"
+            android:name=".Timeline"
             android:label="@string/title_activity_notification_timeline" />
-        <activity android:name=".StudyMaterialClass"
-                  android:label="StydyMaterialClass">
+        <activity
+            android:name=".StudyMaterialClass"
+            android:label="StydyMaterialClass">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.STUDYMATERIALCLASS" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Notification"
+            android:label="Notification"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="com.example.lenovopc.jagrati.NOTIFICATION" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ProfileEdit"></activity>
     </application>
 
 </manifest>

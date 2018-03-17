@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class MainActivity extends BaseActivity {
@@ -17,6 +18,8 @@ public class MainActivity extends BaseActivity {
         Button studyBtn = (Button) findViewById(R.id.studyMaterial);
         Button teachingDeptBtn = (Button) findViewById(R.id.teachingDepartment);
         Button eventsBtn = (Button) findViewById(R.id.events);
+        ImageButton notificationBtn = (ImageButton) findViewById(R.id.notification);
+        ImageButton profileBtn = (ImageButton) findViewById(R.id.user);
 
         classBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,6 +49,22 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Intent classActivity = new Intent("com.example.lenovopc.jagrati.EVENTS");
+                startActivity(classActivity);
+            }
+        });
+
+        notificationBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent classActivity = new Intent("com.example.lenovopc.jagrati.NOTIFICATION");
+                startActivity(classActivity);
+            }
+        });
+
+        profileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent classActivity = new Intent("com.example.lenovopc.jagrati.PROFILE");
                 startActivity(classActivity);
             }
         });
