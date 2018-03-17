@@ -40,7 +40,7 @@ public class TeachingDepartment extends BaseActivity {
                         initializeSubjects(response);
                     }
                 },
-                VolleySingleton.errorListener
+                errorListener
         ) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {

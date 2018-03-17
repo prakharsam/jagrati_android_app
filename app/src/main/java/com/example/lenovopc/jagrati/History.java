@@ -43,11 +43,10 @@ public class History extends BaseActivity {
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        Log.d("@@@@@", response.toString());
                         initializeClassHistory(response);
                     }
                 },
-                VolleySingleton.errorListener
+                errorListener
         ) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {

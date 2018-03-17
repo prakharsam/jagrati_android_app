@@ -72,7 +72,7 @@ public class ClassFeedback extends BaseActivity {
                         initializeSubjectNamesList();
                     }
                 },
-                VolleySingleton.errorListener
+                errorListener
         ) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
