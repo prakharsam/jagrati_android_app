@@ -41,7 +41,7 @@ public class StudyMaterial extends BaseActivity {
                         initializeClasses(response);
                     }
                 },
-                VolleySingleton.errorListener
+                errorListener
         ) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
