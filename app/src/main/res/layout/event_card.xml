@@ -43,14 +43,8 @@
             android:text="15 Aug 2017, 6:00 PM"
             android:textColor="#797979" />
 
-        <ImageButton
-            android:id="@+id/options"
-            android:layout_width="43dp"
-            android:layout_height="66dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:background="@android:color/transparent"
-            app:srcCompat="@drawable/ic_options_button" />
+        <!--TODO: Include for admin and user adding this event-->
+        <include layout="@layout/options_button" />
 
     </RelativeLayout>
 
