@@ -106,7 +106,7 @@ public class ClassStudentList extends BaseActivity {
                         initializeStudentList(response);
                     }
                 },
-                VolleySingleton.errorListener
+                errorListener
         ) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {

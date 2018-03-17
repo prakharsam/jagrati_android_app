@@ -1,11 +1,6 @@
 package com.example.lenovopc.jagrati;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -15,6 +10,8 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.NoConnectionError;
@@ -62,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         mLoginFormView = findViewById(R.id.emailLoginForm);
-        mProgressView = findViewById(R.id.loginProgress);
+        mProgressView = findViewById(R.id.progressBar);
     }
 
 
@@ -186,40 +183,25 @@ public class LoginActivity extends AppCompatActivity {
         infoTextView.setText(message);
     }
 
+    private void toggleLoginForm(boolean show) {
+        ImageView headerImgView = (ImageView) findViewById(R.id.headerImage);
+        FrameLayout gradient = (FrameLayout) findViewById(R.id.gradient);
+        TextView loginTitle = (TextView) findViewById(R.id.loginTitle);
+        int visibility = show ? View.VISIBLE : View.GONE;
+        float alphaVal = (float) (show ? 0.25 : 0.0);
+
+        headerImgView.setAlpha(alphaVal);
+        gradient.setAlpha(alphaVal);
+        loginTitle.setAlpha(alphaVal);
+        mProgressView.setVisibility(visibility);
+    }
+
     /**
      * Shows the progress UI and hides the login form.
      */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     private void showProgress(final boolean show) {
-        // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
-        // for very easy animations. If available, use these APIs to fade-in
-        // the progress spinner.
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
-            int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
-
-            mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-            mLoginFormView.animate().setDuration(shortAnimTime).alpha(
-                    show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-                }
-            });
-
-            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            mProgressView.animate().setDuration(shortAnimTime).alpha(
-                    show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-                }
-            });
-        } else {
-            // The ViewPropertyAnimator APIs are not available, so simply show
-            // and hide the relevant UI components.
-            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-        }
+        mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
+        toggleLoginForm(show);
     }
 }
 

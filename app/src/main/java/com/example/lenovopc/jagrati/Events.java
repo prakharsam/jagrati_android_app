@@ -88,7 +88,7 @@ public class Events extends BaseActivity {
                         initializeEvents(response, refresh);
                     }
                 },
-                VolleySingleton.errorListener
+                errorListener
         ) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {

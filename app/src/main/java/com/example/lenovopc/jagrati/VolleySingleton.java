@@ -63,19 +63,4 @@ public class VolleySingleton {
     public ImageLoader getImageLoader() {
         return mImageLoader;
     }
-
-    public static Response.ErrorListener errorListener = new Response.ErrorListener() {
-        @Override
-        public void onErrorResponse(VolleyError error) {
-            if (error.networkResponse == null) {
-                if (error.getClass().equals(NoConnectionError.class) || error.getClass().equals(TimeoutError.class)) {
-                    Toast.makeText(
-                        mCtx,
-                        "Seems like there is no internet connection.",
-                        Toast.LENGTH_LONG
-                    ).show();
-                }
-            }
-        }
-    };
 }
