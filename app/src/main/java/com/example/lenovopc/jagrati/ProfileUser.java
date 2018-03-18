@@ -2,6 +2,16 @@ package com.example.lenovopc.jagrati;
 
 import android.os.Bundle;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class ProfileUser extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -9,6 +19,41 @@ public class ProfileUser extends BaseActivity {
         setContentView(R.layout.activity_profile_user);
         setBackOnClickListener();
         setPageTitle("Profile");
+
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            int _userId = bundle.getInt("userId");
+            getUserProfile(_userId);
+        }
+    }
+
+    private void getUserProfile(int _userId) {
+        final String getProfileURL = apiURL + "/students/" + _userId;
+
+        JsonObjectRequest req = new JsonObjectRequest(
+                getProfileURL,
+                null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject student) {
+                        initializeStudentProfile(student);
+                    }
+                },
+                errorListener
+        ) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "JWT " + jwtVal);
+                return headers;
+            }
+        };
+
+        queue.add(req);
+    }
+
+    private void initializeStudentProfile(JSONObject student) {
+        // TODO: Update layout code
     }
 }
 

@@ -1,20 +1,16 @@
 package com.example.lenovopc.jagrati;
 
 import android.content.Intent;
-import android.support.v4.app.NavUtils;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.NetworkImageView;
 
@@ -121,7 +117,7 @@ public class ClassStudentList extends BaseActivity {
 
     private void initializeStudent(JSONObject student) throws JSONException {
         JSONObject studentUser = student.getJSONObject("user");
-        final String id = studentUser.getString("id");
+        final int id = studentUser.getInt("id");
         String firstName = studentUser.getString("first_name");
         String lastName = studentUser.getString("last_name");
         String fullName = firstName + " " + lastName;
@@ -139,9 +135,9 @@ public class ClassStudentList extends BaseActivity {
         nameBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent studentProfileActivity = new Intent("com.example.lenovopc.jagrati.STUDENTPROFILE");
+                Intent studentProfileActivity = new Intent("com.example.lenovopc.jagrati.PROFILE");
                 Bundle bundle = new Bundle();
-                bundle.putString("studentId", id);
+                bundle.putInt("userId", id);
                 studentProfileActivity.putExtras(bundle);
                 startActivity(studentProfileActivity);
             }

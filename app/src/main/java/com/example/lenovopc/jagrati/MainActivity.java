@@ -65,6 +65,9 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Intent classActivity = new Intent("com.example.lenovopc.jagrati.PROFILE");
+                Bundle bundle = new Bundle();
+                bundle.putInt("userId", userId);
+                classActivity.putExtras(bundle);
                 startActivity(classActivity);
             }
         });
