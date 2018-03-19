@@ -6,6 +6,13 @@
     android:background="@android:color/white"
     tools:context="com.example.lenovopc.jagrati.AddEvent">
 
+    <!-- Dummy item to prevent EditText views from receiving focus -->
+    <LinearLayout
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_width="0px"
+        android:layout_height="0px"/>
+
     <include layout="@layout/progress_bar" />
 
     <RelativeLayout
@@ -139,7 +146,7 @@
                 <com.rengwuxian.materialedittext.MaterialEditText
                     android:id="@+id/eventTitle"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="50dp"
