@@ -278,6 +278,7 @@ public class AddEvent extends BaseActivity {
     public void hideImageInput(View view) {
         Button imageInputBtn = (Button) findViewById(R.id.imageInputBtn);
         imageInputBtn.setVisibility(View.GONE);
+        removeImage(view);
     }
 
     public void showImageInput(View view) {
