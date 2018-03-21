@@ -90,15 +90,8 @@ public class ClassFeedback extends BaseActivity {
 
         JSONObject formData = new JSONObject();
         try {
-            JSONObject classJSONObject = new JSONObject();
-            JSONObject subjectJSONObject = new JSONObject();
-            classJSONObject.put("id", classId);
-            classJSONObject.put("name", "ANYTHING");
-            subjectJSONObject.put("id", selectedSubjectId);
-            subjectJSONObject.put("name", "ANYTHING");
-
-            formData.put("_class", classJSONObject);
-            formData.put("subject", subjectJSONObject);
+            formData.put("_class_id", classId);
+            formData.put("subject_id", selectedSubjectId);
             formData.put("feedback", feedbackView.getText());
         } catch (JSONException e) {
             return;
