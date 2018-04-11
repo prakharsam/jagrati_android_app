@@ -4,12 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Response;
@@ -56,6 +59,29 @@ public class Events extends BaseActivity {
             showAddEventButton();
 //            hideEventEditButtons();
         }
+        final ImageButton optionBtn = (ImageButton) findViewById(R.id.options);
+        optionBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onPopupButtonClick(optionBtn);
+            }
+        });
+    }
+
+    protected void onPopupButtonClick(View button) {
+        PopupMenu popup = new PopupMenu(this, button);
+        popup.getMenuInflater().inflate(R.menu.menu_options_2, popup.getMenu());
+
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            public boolean onMenuItemClick(MenuItem item) {
+                Toast.makeText(Events.this,
+                        "Clicked popup menu item " + item.getTitle(),
+                        Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
+
+        popup.show();
     }
 
     private void showAddEventButton() {

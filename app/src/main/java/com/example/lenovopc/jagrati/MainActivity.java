@@ -20,6 +20,7 @@ public class MainActivity extends BaseActivity {
         Button eventsBtn = (Button) findViewById(R.id.events);
         ImageButton notificationBtn = (ImageButton) findViewById(R.id.notification);
         ImageButton profileBtn = (ImageButton) findViewById(R.id.user);
+        Button classManageBtn = (Button) findViewById(R.id.manageClass);
 
         classBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +69,14 @@ public class MainActivity extends BaseActivity {
                 Bundle bundle = new Bundle();
                 bundle.putInt("userId", userId);
                 classActivity.putExtras(bundle);
+                startActivity(classActivity);
+            }
+        });
+
+        classManageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent classActivity = new Intent("com.example.lenovopc.jagrati.MANAGECLASS");
                 startActivity(classActivity);
             }
         });

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.lenovopc.jagrati.ClassManagement">
+
+    <include layout="@layout/nav_header"
+        android:id="@+id/include2" />
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/include2"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="These students have been inactive lately."
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/header"
+        android:baselineAligned="false"
+        android:orientation="vertical">
+
+        <include layout="@layout/inactive_student_manage" />
+    </LinearLayout>
+
+</RelativeLayout>

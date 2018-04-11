@@ -18,8 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.MAIN" />
 
@@ -193,7 +192,16 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".ProfileEdit"></activity>
+        <activity android:name=".ProfileEdit" />
+        <activity
+            android:name=".ClassManagement"
+            android:label="ManageClass">
+            <intent-filter>
+                <action android:name="com.example.lenovopc.jagrati.MANAGECLASS" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

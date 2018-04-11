@@ -11,9 +11,9 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import android.app.Activity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
@@ -29,12 +29,19 @@ public class ProfileUser extends BaseActivity {
         if (bundle != null) {
             int _userId = bundle.getInt("userId");
             getUserProfile(_userId);
+            final ImageButton optionBtn = (ImageButton) findViewById(R.id.options);
+            optionBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onPopupButtonClick(optionBtn);
+                }
+            });
         }
     }
 
     protected void onPopupButtonClick(View button) {
         PopupMenu popup = new PopupMenu(this, button);
-        popup.getMenuInflater().inflate(R.menu.menu_options, popup.getMenu());
+        popup.getMenuInflater().inflate(R.menu.menu_options_1, popup.getMenu());
 
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             public boolean onMenuItemClick(MenuItem item) {

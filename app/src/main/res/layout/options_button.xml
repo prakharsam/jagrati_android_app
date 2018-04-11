@@ -7,4 +7,4 @@
     android:layout_alignParentBottom="true"
     android:background="@android:color/transparent"
     android:elevation="10dp"
-    android:src="@drawable/ic_options_button" />
+    android:src="@drawable/ic_options_button"/>
