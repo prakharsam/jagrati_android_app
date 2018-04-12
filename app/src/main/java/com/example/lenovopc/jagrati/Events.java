@@ -59,29 +59,6 @@ public class Events extends BaseActivity {
             showAddEventButton();
 //            hideEventEditButtons();
         }
-        final ImageButton optionBtn = (ImageButton) findViewById(R.id.options);
-        optionBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onPopupButtonClick(optionBtn);
-            }
-        });
-    }
-
-    protected void onPopupButtonClick(View button) {
-        PopupMenu popup = new PopupMenu(this, button);
-        popup.getMenuInflater().inflate(R.menu.menu_options_2, popup.getMenu());
-
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            public boolean onMenuItemClick(MenuItem item) {
-                Toast.makeText(Events.this,
-                        "Clicked popup menu item " + item.getTitle(),
-                        Toast.LENGTH_SHORT).show();
-                return true;
-            }
-        });
-
-        popup.show();
     }
 
     private void showAddEventButton() {

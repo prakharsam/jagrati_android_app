@@ -318,7 +318,7 @@
                 android:layout_marginRight="40dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/login_button"
-                android:onClick="logout"
+                android:onClick="q  logout"
                 android:text="Log out"
                 android:textColor="@color/logincolor" />
 

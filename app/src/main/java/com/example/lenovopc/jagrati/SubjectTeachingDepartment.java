@@ -57,7 +57,7 @@ public class SubjectTeachingDepartment extends BaseActivity {
 
     protected void onPopupButtonClick(View button) {
         PopupMenu popup = new PopupMenu(this, button);
-        popup.getMenuInflater().inflate(R.menu.menu_options_1, popup.getMenu());
+        popup.getMenuInflater().inflate(R.menu.menu_options_2, popup.getMenu());
 
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             public boolean onMenuItemClick(MenuItem item) {

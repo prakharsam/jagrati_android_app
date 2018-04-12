@@ -14,13 +14,36 @@
         android:layout_height="wrap_content"
         android:background="@android:color/white">
 
+        <!--TODO: Hide when edit is active-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <Button
+                android:id="@+id/addSubject"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="false"
+                android:layout_below="@+id/linearLayout"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/button_notificationpage2"
+                android:text="+Add Subject"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+
         <!--TODO: Hide when no edit-->
         <LinearLayout
             android:id="@+id/editSave"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_alignParentBottom="true"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <Button
                 android:id="@+id/dontSave"
@@ -36,7 +59,7 @@
                 android:textColor="#f17e02" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/save"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentBottom="true"
@@ -50,17 +73,10 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="bottom"
-            android:orientation="vertical">
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_marginBottom="60dp"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
@@ -83,9 +99,9 @@
                 android:background="#d8d8d8" />
 
             <android.support.v4.widget.NestedScrollView
+                android:id="@+id/gridScroll"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="55dp"
                 android:fillViewport="true"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp">
@@ -97,9 +113,7 @@
                     android:animateLayoutChanges="false"
                     android:columnCount="2"
                     android:rowCount="10"
-                    android:rowOrderPreserved="false">
-
-                </GridLayout>
+                    android:rowOrderPreserved="false"></GridLayout>
             </android.support.v4.widget.NestedScrollView>
 
         </LinearLayout>
