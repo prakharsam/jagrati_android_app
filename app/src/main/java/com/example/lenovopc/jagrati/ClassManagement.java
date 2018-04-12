@@ -1,5 +1,6 @@
 package com.example.lenovopc.jagrati;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.MenuItem;
@@ -26,13 +27,12 @@ public class ClassManagement extends BaseActivity {
     }
     protected void onPopupButtonClick(View button) {
         PopupMenu popup = new PopupMenu(this, button);
-        popup.getMenuInflater().inflate(R.menu.menu_options_3, popup.getMenu());
+        popup.getMenuInflater().inflate(R.menu.menu_options_setdays, popup.getMenu());
 
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             public boolean onMenuItemClick(MenuItem item) {
-                Toast.makeText(ClassManagement.this,
-                        "Clicked popup menu item " + item.getTitle(),
-                        Toast.LENGTH_SHORT).show();
+                Intent classActivity = new Intent("com.example.lenovopc.jagrati.POPUPSETDAYS");
+                startActivity(classActivity);
                 return true;
             }
         });

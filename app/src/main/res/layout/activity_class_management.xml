@@ -6,15 +6,22 @@
     tools:context="com.example.lenovopc.jagrati.ClassManagement"
     android:background="#ffffff" >
 
-    <include layout="@layout/nav_header"
-        android:id="@+id/include2" />
+    <RelativeLayout
+        android:id="@+id/navHeader"
+        android:layout_width="match_parent"
+        android:layout_height="74dp">
+
+        <include layout="@layout/nav_header" />
+        <include layout="@layout/options_button" />
+
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/include2"
+        android:layout_below="@+id/navHeader"
         android:layout_marginBottom="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
@@ -27,8 +34,8 @@
         android:layout_below="@+id/header"
         android:baselineAligned="false"
         android:orientation="vertical">
-
-        <include layout="@layout/inactive_student_manage" />
+        <!--TODO: Insert inactive_student_manage layout here for inactive student-->
+        <!--TODO: Set menu_options_3 for options button in include-->
     </LinearLayout>
 
 </RelativeLayout>

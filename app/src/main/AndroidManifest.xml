@@ -173,7 +173,13 @@
         <!-- Not using currently -->
         <activity
             android:name=".Timeline"
-            android:label="@string/title_activity_notification_timeline" />
+            android:label="Timeline">
+            <intent-filter>
+                <action android:name="com.example.lenovopc.jagrati.TIMELINE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".StudyMaterialClass"
             android:label="StydyMaterialClass">
@@ -213,11 +219,32 @@
         </activity>
         <activity android:name=".VolunteerList">
             <intent-filter>
-                <action android:name="com.example.lenovopc.jagrati.VOLUNTEERLIST"/>
+                <action android:name="com.example.lenovopc.jagrati.VOLUNTEERLIST" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".VolunteerRequest"
+            android:label="VolunteerRequest">
+            <intent-filter>
+                <action android:name="com.example.lenovopc.jagrati.VOLUNTEERREQUEST" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".PopupSetDays"
+            android:label="PopupSetDays"
+            android:theme="@style/AppTheme.CustomTheme">
+            <intent-filter>
+                <action android:name="com.example.lenovopc.jagrati.POPUPSETDAYS" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ProfileStudent" />
+        <activity android:name=".AddStudent"></activity>
     </application>
 
 </manifest>

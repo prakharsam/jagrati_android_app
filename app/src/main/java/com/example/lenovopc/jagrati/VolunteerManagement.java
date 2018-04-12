@@ -23,5 +23,15 @@ public class VolunteerManagement extends BaseActivity {
                 startActivity(classActivity);
             }
         });
+
+        Button volunteerRequestBtn = (Button) findViewById(R.id.volunteerRequest);
+
+        volunteerRequestBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent classActivity = new Intent("com.example.lenovopc.jagrati.VOLUNTEERREQUEST");
+                startActivity(classActivity);
+            }
+        });
     }
 }
