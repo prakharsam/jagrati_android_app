@@ -202,6 +202,22 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".VolunteerManagement"
+            android:label="VolunteerManagement">
+            <intent-filter>
+                <action android:name="com.example.lenovopc.jagrati.MANAGEVOLUNTEER" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".VolunteerList">
+            <intent-filter>
+                <action android:name="com.example.lenovopc.jagrati.VOLUNTEERLIST"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
