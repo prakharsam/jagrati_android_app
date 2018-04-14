@@ -27,11 +27,8 @@
 
                 <include layout="@layout/nav_header" />
 
-                <!--TODO: Include for logged in user-->
-                <include
-                    layout="@layout/options_button"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentEnd="true" />
+                <!--TODO: Hide for other users-->
+                <include layout="@layout/options_button" />
 
             </RelativeLayout>
 
@@ -310,9 +307,20 @@
                         android:textSize="12sp" />
 
                 </GridLayout>
-
             </RelativeLayout>
 
+            <Button
+                android:id="@+id/logout"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="30dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/login_button"
+                android:onClick="logout"
+                android:text="Log out"
+                android:textColor="@color/logincolor" />
 
         </LinearLayout>
     </ScrollView>

@@ -14,22 +14,81 @@
         android:layout_height="wrap_content"
         android:background="@android:color/white">
 
+        <!--TODO: Hide when edit is active-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="bottom"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:visibility="visible">
 
+            <Button
+                android:id="@+id/addSubject"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="false"
+                android:layout_below="@+id/linearLayout"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/button_notificationpage2"
+                android:text="+Add Subject"
+                android:textColor="#ffffff" />
+        </LinearLayout>
 
+        <!--TODO: Hide when no edit-->
+        <LinearLayout
+            android:id="@+id/editSave"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/dontSave"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/login_button"
+                android:text="DON'T SAVE"
+                android:textColor="#f17e02" />
+
+            <Button
+                android:id="@+id/save"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_notificationpage2"
+                android:text="SAVE"
+                android:textColor="#ffffff" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="60dp"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
-            <include layout="@layout/nav_header" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="74dp">
+
+                <include layout="@layout/nav_header" />
+
+                <include layout="@layout/options_button" />
+
+            </RelativeLayout>
 
             <View
                 android:layout_width="match_parent"
@@ -39,17 +98,23 @@
                 android:layout_marginTop="1dp"
                 android:background="#d8d8d8" />
 
-            <GridLayout
-                android:id="@+id/gridWrap"
+            <android.support.v4.widget.NestedScrollView
+                android:id="@+id/gridScroll"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:animateLayoutChanges="false"
-                android:columnCount="2"
-                android:rowCount="10"
-                android:rowOrderPreserved="false">
-            </GridLayout>
+                android:fillViewport="true"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+
+                <GridLayout
+                    android:id="@+id/gridWrap"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:animateLayoutChanges="false"
+                    android:columnCount="2"
+                    android:rowCount="10"
+                    android:rowOrderPreserved="false"></GridLayout>
+            </android.support.v4.widget.NestedScrollView>
 
         </LinearLayout>
 
