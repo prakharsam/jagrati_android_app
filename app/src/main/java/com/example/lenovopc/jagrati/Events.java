@@ -138,6 +138,7 @@ public class Events extends BaseActivity {
                     bundle.putString("eventCreatedAt", createdAt);
                     bundle.putString("eventURL", eventImageURL);
                     bundle.putString("eventDescription", eventDescription);
+                    bundle.putInt("eventId", 0);
 
                     eventDetailActivity.putExtras(bundle);
                     startActivity(eventDetailActivity);

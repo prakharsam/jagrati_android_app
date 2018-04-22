@@ -245,6 +245,10 @@
         </activity>
         <activity android:name=".ProfileStudent" />
         <activity android:name=".AddStudent"></activity>
-    </application>
 
+        <service
+            android:name=".NotificationService"
+            android:enabled="true">
+        </service>
+    </application>
 </manifest>
