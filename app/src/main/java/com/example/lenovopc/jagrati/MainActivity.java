@@ -53,7 +53,7 @@ public class MainActivity extends BaseActivity {
             }
         });
 
-        teachingDeptBtn.setOnClickListener(new View.OnClickListener() {
+       teachingDeptBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent classActivity = new Intent("com.example.lenovopc.jagrati.TEACHINGDEPT");

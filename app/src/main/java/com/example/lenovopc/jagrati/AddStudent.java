@@ -8,5 +8,6 @@ public class AddStudent extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_student);
+        setPageTitle("Add Student");
     }
 }

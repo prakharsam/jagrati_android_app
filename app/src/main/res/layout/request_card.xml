@@ -42,9 +42,9 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="16dp"
             android:layout_weight="1"
-            android:background="@drawable/login_button"
+            android:background="@drawable/button_notificationpage2"
             android:text="Accept"
-            android:textColor="@color/logincolor" />
+            android:textColor="#ffffff" />
 
         <Button
             android:id="@+id/remove"

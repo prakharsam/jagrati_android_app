@@ -244,8 +244,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".ProfileStudent" />
-        <activity android:name=".AddStudent"></activity>
-
+        <activity
+            android:name=".AddStudent"
+            android:label="AddStudent"
+            android:theme="@style/AppTheme.CustomTheme">
+            <intent-filter>
+                <action android:name="com.example.lenovopc.jagrati.ADDSTUDENT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+  
         <service
             android:name=".NotificationService"
             android:enabled="true">
