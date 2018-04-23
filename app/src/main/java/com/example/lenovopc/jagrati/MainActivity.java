@@ -1,8 +1,14 @@
 package com.example.lenovopc.jagrati;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -13,6 +19,14 @@ public class MainActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        Intent notificationServiceIntent = new Intent(this, NotificationService.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt("userId", userId);
+        bundle.putString("apiURL", apiURL);
+        bundle.putString("jwtVal", jwtVal);
+        notificationServiceIntent.putExtras(bundle);
+        startService(notificationServiceIntent);
 
         Button classBtn = (Button) findViewById(R.id._class);
         Button studyBtn = (Button) findViewById(R.id.studyMaterial);
