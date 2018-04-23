@@ -97,7 +97,7 @@ public class TeachingDepartment extends BaseActivity {
 
                 Button subjectNameBtn = (Button) subjectButtonView.findViewById(R.id.buttonTitle);
                 subjectNameBtn.setText(name);
-                subjectNameBtn.setOnClickListener(new View.OnClickListener() {
+                subjectNameBtn.setOnClickListener( new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent subjectDeptActivity = new Intent("com.example.lenovopc.jagrati.SUBJECTDEPT");

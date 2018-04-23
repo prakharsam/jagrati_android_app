@@ -77,6 +77,16 @@ public class ClassStudentList extends BaseActivity {
             if (isAdmin) {
                 showAddStudentButton();
             }
+
+            ImageButton addStudentBtn = (ImageButton) findViewById(R.id.addStudentButton);
+            addStudentBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent classStudentListActivity = new Intent("com.example.lenovopc.jagrati.ADDSTUDENT");
+                    classStudentListActivity.putExtras(_bundle);
+                    startActivity(classStudentListActivity);
+                }
+            });
         }
     }
 
