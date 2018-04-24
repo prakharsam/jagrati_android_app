@@ -247,7 +247,8 @@
         <activity
             android:name=".AddStudent"
             android:label="AddStudent"
-            android:theme="@style/AppTheme.CustomTheme">
+            android:theme="@style/AppTheme.CustomTheme"
+            android:parentActivityName=".ClassStudentList">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.ADDSTUDENT"/>
                 <category android:name="android.intent.category.DEFAULT"/>

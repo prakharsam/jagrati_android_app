@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,6 +7,8 @@
 
     <include layout="@layout/popup_header"
         android:id="@+id/include2" />
+
+    <include layout="@layout/progress_bar" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,10 +19,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:id="@+id/addStudentForm">
 
             <ImageButton
-                android:id="@+id/uploadImage"
+                android:id="@+id/displayPicture"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="false"
@@ -31,7 +33,7 @@
                 android:src="@drawable/student_dp" />
 
             <EditText
-                android:id="@+id/name"
+                android:id="@+id/firstName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
@@ -39,8 +41,8 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/field_line"
                 android:ems="10"
-                android:hint="Name"
-                android:inputType="textPersonName"
+                android:hint="Name *"
+                android:inputType="text"
                 android:paddingBottom="12dp"
                 android:paddingLeft="20dp"
                 android:paddingTop="12dp"
@@ -49,7 +51,25 @@
                 android:textSize="14sp" />
 
             <EditText
-                android:id="@+id/vilage"
+                android:id="@+id/lastName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/field_line"
+                android:ems="10"
+                android:hint="Name *"
+                android:inputType="text"
+                android:paddingBottom="12dp"
+                android:paddingLeft="20dp"
+                android:paddingTop="12dp"
+                android:textColor="#4a4a4a"
+                android:textColorHint="#9b9b9b"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/village"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
@@ -58,7 +78,7 @@
                 android:background="@drawable/field_line"
                 android:ems="10"
                 android:hint="Village Name"
-                android:inputType="textPersonName"
+                android:inputType="text"
                 android:paddingBottom="12dp"
                 android:paddingLeft="20dp"
                 android:paddingTop="12dp"
@@ -75,8 +95,8 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/field_line"
                 android:ems="10"
-                android:hint="Class"
-                android:inputType="number"
+                android:hint="Class *"
+                android:inputType="text"
                 android:paddingBottom="12dp"
                 android:paddingLeft="20dp"
                 android:paddingTop="12dp"
@@ -85,7 +105,7 @@
                 android:textSize="14sp" />
 
             <EditText
-                android:id="@+id/roll"
+                android:id="@+id/sex"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
@@ -93,8 +113,8 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/field_line"
                 android:ems="10"
-                android:hint="Roll No."
-                android:inputType="number"
+                android:hint="Sex"
+                android:inputType="text"
                 android:paddingBottom="12dp"
                 android:paddingLeft="20dp"
                 android:paddingTop="12dp"
@@ -112,7 +132,7 @@
                 android:background="@drawable/field_line"
                 android:ems="10"
                 android:hint="Mother's Name"
-                android:inputType="textPersonName"
+                android:inputType="text"
                 android:paddingBottom="12dp"
                 android:paddingLeft="20dp"
                 android:paddingTop="12dp"
@@ -130,7 +150,7 @@
                 android:background="@drawable/field_line"
                 android:ems="10"
                 android:hint="Father's Name"
-                android:inputType="textPersonName"
+                android:inputType="text"
                 android:paddingBottom="12dp"
                 android:paddingLeft="20dp"
                 android:paddingTop="12dp"
@@ -184,7 +204,7 @@
                 android:background="@drawable/field_line"
                 android:ems="10"
                 android:hint="Address"
-                android:inputType="textPersonName"
+                android:inputType="text"
                 android:paddingBottom="12dp"
                 android:paddingLeft="20dp"
                 android:paddingTop="12dp"
@@ -192,16 +212,8 @@
                 android:textColorHint="#9b9b9b"
                 android:textSize="14sp" />
 
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="20dp" />
-
             <EditText
-                android:id="@+id/birthDate"
+                android:id="@+id/dob"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
@@ -219,7 +231,7 @@
                 android:textSize="14sp" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/formSubmitBtn"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginBottom="30dp"
