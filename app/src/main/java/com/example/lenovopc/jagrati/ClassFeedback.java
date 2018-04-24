@@ -1,5 +1,6 @@
 package com.example.lenovopc.jagrati;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -85,7 +87,31 @@ public class ClassFeedback extends BaseActivity {
         queue.add(req);
     }
 
+    private boolean validateForm() {
+        if (feedbackView.getText().length() == 0) {
+            feedbackView.setError("This field is required.");
+            feedbackView.requestFocus();
+            Toast.makeText(this, "Feedback cannot be empty", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (selectedSubjectId.equals("-1")) {
+            TextView errorText = (TextView) subjectView.getSelectedView();
+            errorText.setError("");
+            errorText.setTextColor(Color.RED);
+            subjectView.requestFocus();
+            Toast.makeText(this, "Please select a subject", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        return true;
+    }
+
     public void submitFeedbackForm() {
+        if (!validateForm()) {
+            return;
+        }
+
         final String classFeedbackURL = apiURL + "/class_feedback/";
 
         JSONObject formData = new JSONObject();
@@ -141,6 +167,7 @@ public class ClassFeedback extends BaseActivity {
             e.printStackTrace();
         }
 
+        subjectNames.add("Select Subject");
         for (int i=0; i < subjects.length(); i++) {
             try {
                 JSONObject subject = subjects.getJSONObject(i);
@@ -153,11 +180,11 @@ public class ClassFeedback extends BaseActivity {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         try{
-                            JSONObject selectedSubject = subjects.getJSONObject(position);
+                            JSONObject selectedSubject = subjects.getJSONObject(position-1);
                             JSONObject _selectedSubject = selectedSubject.getJSONObject("subject");
                             selectedSubjectId = _selectedSubject.getString("id");
                         } catch (JSONException e) {
-                            //
+                            selectedSubjectId = "-1";
                         }
                     }
 

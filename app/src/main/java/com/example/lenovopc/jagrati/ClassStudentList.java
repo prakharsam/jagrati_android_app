@@ -96,7 +96,8 @@ public class ClassStudentList extends BaseActivity {
         addStudentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Start add student form activity
+                Intent intent = new Intent("com.example.lenovopc.jagrati.ADDSTUDENT");
+                startActivityForResult(intent, 1);
             }
         });
     }
@@ -178,6 +179,20 @@ public class ClassStudentList extends BaseActivity {
                 e.printStackTrace();
             }
 
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK && requestCode == 1) {
+            String student = data.getExtras().getString("student");
+            try {
+                JSONObject studentJSONObject = new JSONObject(student);
+                initializeStudent(studentJSONObject);
+            } catch (JSONException e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
         }
     }
 }
