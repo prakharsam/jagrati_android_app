@@ -22,7 +22,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ProfileStudent extends BaseActivity {
-    String nullValuesLabel = "We don't know";
+    final String nullValuesLabel = "We don't know";
+    String fullName = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,22 +40,16 @@ public class ProfileStudent extends BaseActivity {
         }
 
         Button studentFeedbackBtn = (Button) findViewById(R.id.studentFeedback);
+        studentFeedbackBtn.setActivated(false);
 
         studentFeedbackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent classActivity = new Intent("com.example.lenovopc.jagrati.STUDENTFEEDBACK");
-                startActivity(classActivity);
-            }
-        });
-
-        Button timelineBtn = (Button) findViewById(R.id.timeline);
-
-        timelineBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent classActivity = new Intent("com.example.lenovopc.jagrati.TIMELINE");
-                startActivity(classActivity);
+                Intent studentFeedbackActivity = new Intent("com.example.lenovopc.jagrati.STUDENTFEEDBACK");
+                Bundle bundle = new Bundle();
+                bundle.putInt("userId", bundle.getInt("userId"));
+                bundle.putString("fullName", fullName);
+                startActivity(studentFeedbackActivity);
             }
         });
 
@@ -104,6 +99,8 @@ public class ProfileStudent extends BaseActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
+                            Button feedbackBtn = (Button) findViewById(R.id.studentFeedback);
+                            feedbackBtn.setActivated(true);
                             initializeStudent(response);
                         } catch (JSONException e) {
                             Log.e("Error", e.getMessage());

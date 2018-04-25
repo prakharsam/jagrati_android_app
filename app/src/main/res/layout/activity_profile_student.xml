@@ -126,21 +126,6 @@
                     android:textColor="#4a4a4a"
                     android:textSize="12sp" />
 
-                <Button
-                    android:id="@+id/timeline"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_alignTop="@+id/studentFeedback"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toEndOf="@+id/studentFeedback"
-                    android:background="@drawable/login_button"
-                    android:paddingLeft="25dp"
-                    android:paddingRight="25dp"
-                    android:text="Timeline"
-                    android:textAllCaps="false"
-                    android:textColor="#4a4a4a"
-                    android:textSize="12sp" />
-
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
