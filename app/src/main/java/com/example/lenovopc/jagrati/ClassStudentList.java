@@ -146,7 +146,7 @@ public class ClassStudentList extends BaseActivity {
         nameBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent studentProfileActivity = new Intent("com.example.lenovopc.jagrati.PROFILE");
+                Intent studentProfileActivity = new Intent("com.example.lenovopc.jagrati.PROFILESTUDENT");
                 Bundle bundle = new Bundle();
                 bundle.putInt("userId", id);
                 studentProfileActivity.putExtras(bundle);
