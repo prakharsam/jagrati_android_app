@@ -7,11 +7,12 @@
     android:background="#ffffff"
     tools:context="com.example.lenovopc.jagrati.ProfileStudent">
 
+    <!-- TODO: Solve bug of setting background to ic_profile_bg -->
+    <!--       causes ResourceNotFoundException -->
     <ImageView
         android:id="@+id/imageView8"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_profile_bg" />
+        android:layout_height="wrap_content" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -35,7 +36,7 @@
             android:orientation="vertical" >
 
             <RelativeLayout
-                android:id="@+id/profie"
+                android:id="@+id/profile"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentStart="true"
@@ -50,7 +51,7 @@
                     android:layout_centerVertical="false"
                     android:layout_marginStart="20dp">
 
-                    <ImageView
+                    <com.android.volley.toolbox.NetworkImageView
                         android:id="@+id/displayPicture"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -98,7 +99,7 @@
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/attendance"
+                    android:id="@+id/attendanceData"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/villageName"
@@ -185,40 +186,12 @@
                         android:textSize="12sp" />
 
                     <TextView
-                        android:id="@+id/classDetail
-"
+                        android:id="@+id/classDetail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="20dp"
                         android:layout_weight="2"
                         android:text="11th"
-                        android:textColor="#4a4a4a"
-                        android:textSize="12sp" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="14dp">
-
-                    <TextView
-                        android:id="@+id/rollLabel"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_weight="1"
-                        android:text="Roll Number"
-                        android:textColor="#4a4a4a"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:id="@+id/roll"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="20dp"
-                        android:layout_weight="2"
-                        android:text="2014736"
                         android:textColor="#4a4a4a"
                         android:textSize="12sp" />
 
@@ -414,7 +387,7 @@
                     android:textColor="#f17e01" />
 
                 <TextView
-                    android:id="@+id/textView17"
+                    android:id="@+id/address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignStart="@+id/addressLabel"
