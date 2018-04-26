@@ -32,7 +32,7 @@ public class ProfileStudent extends BaseActivity {
         setBackOnClickListener();
         setPageTitle("Student Profile");
 
-        Bundle bundle = getIntent().getExtras();
+        final Bundle bundle = getIntent().getExtras();
 
         if (bundle != null) {
             int userId = bundle.getInt("userId");
@@ -46,9 +46,10 @@ public class ProfileStudent extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Intent studentFeedbackActivity = new Intent("com.example.lenovopc.jagrati.STUDENTFEEDBACK");
-                Bundle bundle = new Bundle();
-                bundle.putInt("userId", bundle.getInt("userId"));
-                bundle.putString("fullName", fullName);
+                Bundle _bundle = new Bundle();
+                _bundle.putInt("userId", bundle.getInt("userId"));
+                _bundle.putString("fullName", fullName);
+                studentFeedbackActivity.putExtras(_bundle);
                 startActivity(studentFeedbackActivity);
             }
         });
@@ -128,7 +129,7 @@ public class ProfileStudent extends BaseActivity {
 
         String firstName = studentUser.optString("first_name").equals("null") ? nullValuesLabel : studentUser.optString("first_name");
         String lastName = studentUser.optString("last_name").equals("null") ? nullValuesLabel : studentUser.optString("last_name");
-        String fullName = firstName + " " + lastName;
+        fullName = firstName + " " + lastName;
         String village = student.optString("village").equals("null") ? nullValuesLabel : student.optString("village");
         String displayPictureURL = student.optString("display_picture").equals("null") ? nullValuesLabel : student.optString("display_picture");
         int attendanceCount = attendanceData.optInt("attendance", 0);
