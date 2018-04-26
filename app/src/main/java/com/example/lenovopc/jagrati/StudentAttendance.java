@@ -29,13 +29,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Attendance extends BaseActivity {
+public class StudentAttendance extends BaseActivity {
     private ArrayList<String> selectedStudents;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_attendance);
+        setContentView(R.layout.activity_student_attendance);
         Bundle bundle = getIntent().getExtras();
 
         if (bundle != null) {
@@ -81,7 +81,7 @@ public class Attendance extends BaseActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         Toast.makeText(
-                            Attendance.this,
+                            StudentAttendance.this,
                             "Attendance saved successfully",
                             Toast.LENGTH_SHORT
                         ).show();
@@ -146,7 +146,7 @@ public class Attendance extends BaseActivity {
 
                 if (isActiveStudent) {
                     GridLayout studentGrid = (GridLayout) findViewById(R.id.studentGrid);
-                    View studentBlockView = getLayoutInflater().inflate(R.layout.student_block, null);
+                    View studentBlockView = getLayoutInflater().inflate(R.layout.attendance_student_block, null);
 
                     TextView studentNameView = (TextView) studentBlockView.findViewById(R.id.studentName);
                     studentNameView.setText(fullName);
@@ -160,7 +160,7 @@ public class Attendance extends BaseActivity {
                         Class[] parameterTypes = new Class[2];
                         parameterTypes[0] = Bitmap.class;
                         parameterTypes[1] = CheckBox.class;
-                        Method method = Attendance.class.getMethod("setCheckBoxDP", parameterTypes);
+                        Method method = StudentAttendance.class.getMethod("setCheckBoxDP", parameterTypes);
                         new DownloadImageTask(method, this, attendanceCheckBox).execute(displayPictureURL);
                     } catch (NoSuchMethodException e) {
                         //

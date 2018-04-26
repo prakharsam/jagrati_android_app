@@ -176,14 +176,16 @@
             android:label="Timeline">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.TIMELINE" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
             android:name=".StudyMaterialClass"
-            android:label="StudyMaterialClass">
+            android:label="StydyMaterialClass">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.STUDYMATERIALCLASS" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -192,6 +194,7 @@
             android:label="Notification">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.NOTIFICATION" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -201,6 +204,7 @@
             android:label="ManageClass">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.MANAGECLASS" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -209,12 +213,14 @@
             android:label="VolunteerManagement">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.MANAGEVOLUNTEER" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity android:name=".VolunteerList">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.VOLUNTEERLIST" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -223,6 +229,7 @@
             android:label="VolunteerRequest">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.VOLUNTEERREQUEST" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -232,32 +239,28 @@
             android:theme="@style/AppTheme.CustomTheme">
             <intent-filter>
                 <action android:name="com.example.lenovopc.jagrati.POPUPSETDAYS" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ProfileStudent"
-            android:label="ProfileStudent"
-            android:parentActivityName=".ClassStudentList">
-            <intent-filter>
-                <action android:name="com.example.lenovopc.jagrati.PROFILESTUDENT" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".ProfileStudent" />
         <activity
             android:name=".AddStudent"
             android:label="AddStudent"
-            android:theme="@style/AppTheme.CustomTheme"
-            android:parentActivityName=".ClassStudentList">
+            android:theme="@style/AppTheme.CustomTheme">
             <intent-filter>
-                <action android:name="com.example.lenovopc.jagrati.ADDSTUDENT"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="com.example.lenovopc.jagrati.ADDSTUDENT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-  
+
         <service
             android:name=".NotificationService"
             android:enabled="true">
         </service>
+
+        <activity android:name=".VolunteerAttendance"></activity>
     </application>
+
 </manifest>
