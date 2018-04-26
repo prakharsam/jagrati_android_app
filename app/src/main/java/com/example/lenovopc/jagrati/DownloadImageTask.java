@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import java.io.IOException;
@@ -17,11 +18,13 @@ public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
     private Method method;
     private Context object;
     private CheckBox checkBox;
+    private ImageButton imageBtn;
 
-    public DownloadImageTask(Method method, Context object, CheckBox checkBox) {
+    public DownloadImageTask(Method method, Context object, CheckBox checkBox, ImageButton imageBtn) {
         this.method = method;
         this.object = object;
         this.checkBox = checkBox;
+        this.imageBtn = imageBtn;
     }
 
     protected Bitmap doInBackground(String... urls) {
@@ -43,7 +46,11 @@ public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         if (method != null && object != null) {
             Object[] parameters = new Object[2];
             parameters[0] = result;
-            parameters[1] = checkBox;
+            if (checkBox == null) {
+                parameters[1] = imageBtn;
+            } else {
+                parameters[1] = checkBox;
+            }
             try {
                 method.invoke(object, parameters);
             } catch (IllegalAccessException e) {

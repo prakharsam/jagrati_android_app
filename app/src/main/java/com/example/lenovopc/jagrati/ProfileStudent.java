@@ -24,6 +24,7 @@ import java.util.Map;
 public class ProfileStudent extends BaseActivity {
     final String nullValuesLabel = "We don't know";
     String fullName = "";
+    int editStudentCode = 100;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -80,7 +81,7 @@ public class ProfileStudent extends BaseActivity {
                     if (bundle != null) {
                         intent.putExtras(bundle);
                     }
-                    startActivity(intent);
+                    startActivityForResult(intent, editStudentCode);
                 }
 
                 return true;
@@ -196,5 +197,19 @@ public class ProfileStudent extends BaseActivity {
         }
 
         return className + "th";
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK && requestCode == editStudentCode) {
+            try {
+                String studentStr = data.getExtras().getString("student");
+                JSONObject student = new JSONObject(studentStr);
+                initializeStudent(student);
+            } catch (JSONException | NullPointerException e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+        }
     }
 }
