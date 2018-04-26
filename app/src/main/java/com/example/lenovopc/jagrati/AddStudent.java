@@ -3,11 +3,15 @@ package com.example.lenovopc.jagrati;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -17,14 +21,23 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.Response;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.NetworkImageView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
 public class AddStudent extends BaseActivity {
     Bitmap displayPic = null;
+    boolean isEdit = false;
+    int studentId = -1;
+    String nullValuesLabel = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,6 +62,116 @@ public class AddStudent extends BaseActivity {
                 startActivityForResult(i, 100);
             }
         });
+
+        Bundle bundle = getIntent().getExtras();
+
+        if (bundle != null) {
+            isEdit = true;
+            studentId = bundle.getInt("userId");
+            getStudent(studentId);
+        }
+    }
+
+    private void getStudent(int userId) {
+        final String teachersURL = apiURL + "/students/" + userId;
+
+        JsonObjectRequest req = new JsonObjectRequest(
+                teachersURL,
+                null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            initializeStudentForm(response);
+                        } catch (JSONException e) {
+                            Log.e("Error", e.getMessage());
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                errorListener
+        ) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "JWT " + jwtVal);
+                return headers;
+            }
+        };
+
+        queue.add(req);
+    }
+
+    public void setStudentDP(Bitmap bitmap, ImageButton dpIView) {
+        Bitmap _bmap = Bitmap.createScaledBitmap(bitmap, 150, 150, false);
+        displayPic = _bmap;
+        Drawable drawable = new BitmapDrawable(getResources(), _bmap);
+        dpIView.setImageDrawable(drawable);
+    }
+
+    private void initializeStudentForm(JSONObject student) throws JSONException {
+        JSONObject studentUser = student.getJSONObject("user");
+        JSONObject classData = student.getJSONObject("_class");
+
+        String firstName = studentUser.optString("first_name").equals("null") ? nullValuesLabel : studentUser.optString("first_name");
+        String lastName = studentUser.optString("last_name").equals("null") ? nullValuesLabel : studentUser.optString("last_name");
+        String village = student.optString("village").equals("null") ? nullValuesLabel : student.optString("village");
+        String displayPictureURL = student.optString("display_picture").equals("null") ? nullValuesLabel : student.optString("display_picture");
+        String classLabel = classData.optString("name").equals("null") ? nullValuesLabel : classData.optString("name");
+        String sex = student.optString("sex").equals("null") ? nullValuesLabel : student.optString("sex");
+        String dob = student.optString("dob").equals("null") ? nullValuesLabel : student.optString("dob");
+        String mother = student.optString("mother").equals("null") ? nullValuesLabel : student.optString("mother");
+        String father = student.optString("father").equals("null") ? nullValuesLabel : student.optString("father");
+        String contact = student.optString("contact").equals("null") ? nullValuesLabel : student.optString("contact");
+        String emergencyContact = student.optString("emergency_contact").equals("null") ? nullValuesLabel : student.optString("emergency_contact");
+        String address = student.optString("address").equals("null") ? nullValuesLabel : student.optString("address");
+
+        ImageButton dpIView = (ImageButton) findViewById(R.id.displayPicture);
+        if (!displayPictureURL.equals("null")) {
+            Class[] parameterTypes = new Class[2];
+            parameterTypes[0] = Bitmap.class;
+            parameterTypes[1] = ImageButton.class;
+            try {
+                Method method = AddStudent.class.getMethod("setStudentDP", parameterTypes);
+                new DownloadImageTask(method, this, null, dpIView).execute(displayPictureURL);
+            } catch (NoSuchMethodException e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+        }
+
+        EditText firstNameView = (EditText) findViewById(R.id.firstName);
+        firstNameView.setText(firstName);
+
+        EditText lastNameView = (EditText) findViewById(R.id.lastName);
+        lastNameView.setText(lastName);
+
+        EditText villageView = (EditText) findViewById(R.id.village);
+        villageView.setText(village);
+
+        EditText classView = (EditText) findViewById(R.id.classNum);
+        classView.setText(classLabel);
+
+        EditText sexView = (EditText) findViewById(R.id.sex);
+        sexView.setText(sex);
+
+        EditText motherNameView = (EditText) findViewById(R.id.motherName);
+        motherNameView.setText(mother);
+
+        EditText fatherNameView = (EditText) findViewById(R.id.fatherName);
+        fatherNameView.setText(father);
+
+        EditText contactView = (EditText) findViewById(R.id.contactNumber);
+        contactView.setText(contact);
+
+        EditText emergencyContactView = (EditText) findViewById(R.id.emergencyNumber);
+        emergencyContactView.setText(emergencyContact);
+
+        EditText addressView = (EditText) findViewById(R.id.address);
+        addressView.setText(address);
+
+        EditText dobView = (EditText) findViewById(R.id.dob);
+        dobView.setText(dob);
     }
 
     private boolean validateForm() {
@@ -56,13 +179,6 @@ public class AddStudent extends BaseActivity {
         if (firstNameView.getText().length() == 0) {
             firstNameView.setError("This field is required.");
             firstNameView.requestFocus();
-            return false;
-        }
-
-        EditText lastNameView = (EditText) findViewById(R.id.lastName);
-        if (lastNameView.getText().length() == 0) {
-            lastNameView.setError("This field is required.");
-            lastNameView.requestFocus();
             return false;
         }
 
@@ -80,6 +196,13 @@ public class AddStudent extends BaseActivity {
         }
 
         String studentsURL = apiURL + "/students/";
+        int requestType = Request.Method.POST;
+
+        if (isEdit) {
+            studentsURL += String.valueOf(studentId) + "/";
+            requestType = Request.Method.PUT;
+        }
+
         final View studentFormView = findViewById(R.id.addStudentForm);
 
         final String firstName = String.valueOf(((EditText) findViewById(R.id.firstName)).getText());
@@ -96,15 +219,21 @@ public class AddStudent extends BaseActivity {
 
         showProgress(true, studentFormView);
         VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(
-                Request.Method.POST,
+                requestType,
                 studentsURL,
                 new Response.Listener<NetworkResponse>() {
                     @Override
                     public void onResponse(NetworkResponse response) {
                         showProgress(false, studentFormView);
+                        String successToastLabel = "Student Added Successfully";
+
+                        if (isEdit) {
+                            successToastLabel = "Student Edited Successfully";
+                        }
+
                         Toast.makeText(
                                 AddStudent.this,
-                                "Student Added Successfully",
+                                successToastLabel,
                                 Toast.LENGTH_SHORT
                         ).show();
 
@@ -172,7 +301,7 @@ public class AddStudent extends BaseActivity {
                 displayPic = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
 
                 ImageView selectedImgView = (ImageView) findViewById(R.id.displayPicture);
-                selectedImgView.setBackground(new BitmapDrawable(getResources(), displayPic));
+                selectedImgView.setImageDrawable(new BitmapDrawable(getResources(), displayPic));
 
 //                Button removeImageBtn = (Button) findViewById(R.id.removeSelectedImage);
 //                removeImageBtn.setVisibility(View.VISIBLE);
@@ -185,7 +314,7 @@ public class AddStudent extends BaseActivity {
     public void removeImage(View v) {
         ImageView selectedImgView = (ImageView) findViewById(R.id.displayPicture);
         Button removeImageBtn = (Button) findViewById(R.id.removeSelectedImage);
-        // selectedImgView.setBackground(R.drawable.ic_home_user);
+        selectedImgView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_home_user));
         removeImageBtn.setVisibility(View.GONE);
         displayPic = null;
     }

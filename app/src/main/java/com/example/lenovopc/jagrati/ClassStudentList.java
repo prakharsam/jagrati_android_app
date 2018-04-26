@@ -77,16 +77,6 @@ public class ClassStudentList extends BaseActivity {
             if (isAdmin) {
                 showAddStudentButton();
             }
-
-            ImageButton addStudentBtn = (ImageButton) findViewById(R.id.addStudentButton);
-            addStudentBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent classStudentListActivity = new Intent("com.example.lenovopc.jagrati.ADDSTUDENT");
-                    classStudentListActivity.putExtras(_bundle);
-                    startActivity(classStudentListActivity);
-                }
-            });
         }
     }
 
@@ -178,18 +168,17 @@ public class ClassStudentList extends BaseActivity {
                 Log.e("Error", e.getMessage());
                 e.printStackTrace();
             }
-
         }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK && requestCode == 1) {
-            String student = data.getExtras().getString("student");
             try {
+                String student = data.getExtras().getString("student");
                 JSONObject studentJSONObject = new JSONObject(student);
                 initializeStudent(studentJSONObject);
-            } catch (JSONException e) {
+            } catch (JSONException | NullPointerException e) {
                 Log.e("Error", e.getMessage());
                 e.printStackTrace();
             }

@@ -243,7 +243,16 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".ProfileStudent" />
+        <activity
+            android:name=".ProfileStudent"
+            android:label="ProfileStudent"
+            android:parentActivityName=".ClassStudentList">
+            <intent-filter>
+                <action android:name="com.example.lenovopc.jagrati.PROFILESTUDENT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".AddStudent"
             android:label="AddStudent"

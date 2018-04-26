@@ -161,7 +161,7 @@ public class StudentAttendance extends BaseActivity {
                         parameterTypes[0] = Bitmap.class;
                         parameterTypes[1] = CheckBox.class;
                         Method method = StudentAttendance.class.getMethod("setCheckBoxDP", parameterTypes);
-                        new DownloadImageTask(method, this, attendanceCheckBox).execute(displayPictureURL);
+                        new DownloadImageTask(method, this, attendanceCheckBox, null).execute(displayPictureURL);
                     } catch (NoSuchMethodException e) {
                         //
                     }

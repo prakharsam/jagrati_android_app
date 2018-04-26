@@ -83,8 +83,10 @@ public class NotificationService extends Service {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.e("Error:", error.networkResponse.toString());
-                        error.printStackTrace();
+                        if (error.networkResponse != null) {
+                            Log.e("Error:", error.networkResponse.toString());
+                            error.printStackTrace();
+                        }
                     }
                 }
         ) {
