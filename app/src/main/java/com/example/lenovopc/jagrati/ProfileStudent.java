@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Response;
@@ -23,6 +22,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ProfileStudent extends BaseActivity {
+    final String nullValuesLabel = "We don't know";
+    String fullName = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,7 @@ public class ProfileStudent extends BaseActivity {
         setBackOnClickListener();
         setPageTitle("Student Profile");
 
-        Bundle bundle = getIntent().getExtras();
+        final Bundle bundle = getIntent().getExtras();
 
         if (bundle != null) {
             int userId = bundle.getInt("userId");
@@ -39,26 +40,24 @@ public class ProfileStudent extends BaseActivity {
         }
 
         Button studentFeedbackBtn = (Button) findViewById(R.id.studentFeedback);
+        studentFeedbackBtn.setActivated(false);
 
         studentFeedbackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent classActivity = new Intent("com.example.lenovopc.jagrati.STUDENTFEEDBACK");
-                startActivity(classActivity);
-            }
-        });
-
-        Button timelineBtn = (Button) findViewById(R.id.timeline);
-
-        timelineBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent classActivity = new Intent("com.example.lenovopc.jagrati.TIMELINE");
-                startActivity(classActivity);
+                Intent studentFeedbackActivity = new Intent("com.example.lenovopc.jagrati.STUDENTFEEDBACK");
+                Bundle _bundle = new Bundle();
+                _bundle.putInt("userId", bundle.getInt("userId"));
+                _bundle.putString("fullName", fullName);
+                studentFeedbackActivity.putExtras(_bundle);
+                startActivity(studentFeedbackActivity);
             }
         });
 
         final ImageButton optionBtn = (ImageButton) findViewById(R.id.options);
+        if (!isAdmin) {
+            optionBtn.setVisibility(View.GONE);
+        }
         optionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,9 +72,17 @@ public class ProfileStudent extends BaseActivity {
 
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             public boolean onMenuItemClick(MenuItem item) {
-                Toast.makeText(ProfileStudent.this,
-                        "Clicked popup menu item " + item.getTitle(),
-                        Toast.LENGTH_SHORT).show();
+                String title = (String) item.getTitle();
+
+                if (title.equals("Edit")) {
+                    Intent intent = new Intent("com.example.lenovopc.jagrati.ADDSTUDENT");
+                    Bundle bundle = getIntent().getExtras();
+                    if (bundle != null) {
+                        intent.putExtras(bundle);
+                    }
+                    startActivity(intent);
+                }
+
                 return true;
             }
         });
@@ -93,6 +100,8 @@ public class ProfileStudent extends BaseActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
+                            Button feedbackBtn = (Button) findViewById(R.id.studentFeedback);
+                            feedbackBtn.setActivated(true);
                             initializeStudent(response);
                         } catch (JSONException e) {
                             Log.e("Error", e.getMessage());
@@ -118,22 +127,21 @@ public class ProfileStudent extends BaseActivity {
         JSONObject attendanceData = student.getJSONObject("attendance");
         JSONObject classData = student.getJSONObject("_class");
 
-        String firstName = studentUser.optString("first_name", "");
-        String lastName = studentUser.optString("last_name", "");
-        String fullName = firstName + " " + lastName;
-        String village = student.optString("village", "");
-        String displayPictureURL = student.optString("display_picture", "");
+        String firstName = studentUser.optString("first_name").equals("null") ? nullValuesLabel : studentUser.optString("first_name");
+        String lastName = studentUser.optString("last_name").equals("null") ? nullValuesLabel : studentUser.optString("last_name");
+        fullName = firstName + " " + lastName;
+        String village = student.optString("village").equals("null") ? nullValuesLabel : student.optString("village");
+        String displayPictureURL = student.optString("display_picture").equals("null") ? nullValuesLabel : student.optString("display_picture");
         int attendanceCount = attendanceData.optInt("attendance", 0);
         int totalAttendance = attendanceData.optInt("total_classes", 0);
-        String className = classData.optString("name", "");
-        String classLabel = getClassLabel(className);
-        String sex = student.optString("sex", "");
-        String dob = student.optString("dob", "");
-        String mother = student.optString("mother", "");
-        String father = student.optString("father", "");
-        String contact = student.optString("contact", "");
-        String emergencyContact = student.optString("emergency_contact", "");
-        String address = student.optString("address", "");
+        String classLabel = classData.optString("name").equals("null") ? nullValuesLabel : getClassLabel(classData.optString("name"));
+        String sex = student.optString("sex").equals("null") ? nullValuesLabel : student.optString("sex");
+        String dob = student.optString("dob").equals("null") ? nullValuesLabel : student.optString("dob");
+        String mother = student.optString("mother").equals("null") ? nullValuesLabel : student.optString("mother");
+        String father = student.optString("father").equals("null") ? nullValuesLabel : student.optString("father");
+        String contact = student.optString("contact").equals("null") ? nullValuesLabel : student.optString("contact");
+        String emergencyContact = student.optString("emergency_contact").equals("null") ? nullValuesLabel : student.optString("emergency_contact");
+        String address = student.optString("address").equals("null") ? nullValuesLabel : student.optString("address");
 
         TextView nameView = (TextView) findViewById(R.id.studentName);
         nameView.setText(fullName);
