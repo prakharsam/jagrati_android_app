@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.lenovopc.jagrati.VolunteerAttendance">
+
+    <include
+        android:id="@+id/header"
+        layout="@layout/popup_header" />
+
+    <Button
+        android:id="@+id/submitAttendance"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="false"
+        android:background="#f17e01"
+        android:text="Submit"
+        android:textColor="@android:color/white"
+        android:textSize="14sp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/header"
+        android:layout_marginBottom="50dp">
+
+        <GridLayout
+            android:id="@+id/volunteerGrid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="false"
+            android:columnCount="2"
+            android:rowOrderPreserved="false">
+            <!--TODO: Include attendance_volunteer_block for each volunteer-->
+            <!--TODO: Delete dummy inlude-->
+            <include layout="@layout/attendance_volunteer_block"/>
+        </GridLayout>
+    </ScrollView>
+
+</RelativeLayout>
