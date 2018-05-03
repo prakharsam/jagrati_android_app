@@ -6,11 +6,12 @@
     android:background="@android:color/white"
     tools:context="com.example.lenovopc.jagrati.ProfileUser">
 
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="match_parent"
-        android:layout_height="270dp"
-        android:src="@drawable/ic_profile_bg" />
+    <!-- TODO: Solve bug - ic_profile_bg causes ResourceNotFoundException -->
+    <!--<ImageView-->
+        <!--android:id="@+id/imageView9"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="270dp"-->
+        <!--android:src="@drawable/ic_profile_bg" />-->
 
     <ScrollView
         android:layout_width="match_parent"
@@ -24,12 +25,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
                 <include layout="@layout/nav_header" />
-
-                <!--TODO: Hide for other users-->
                 <include layout="@layout/options_button" />
-
             </RelativeLayout>
 
             <RelativeLayout
@@ -47,7 +44,7 @@
                     android:layout_centerVertical="false"
                     android:layout_marginStart="20dp">
 
-                    <ImageView
+                    <com.android.volley.toolbox.NetworkImageView
                         android:id="@+id/displayPicture"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
@@ -102,7 +99,7 @@
                     android:layout_below="@+id/bio"
                     android:layout_marginBottom="15dp"
                     android:layout_marginTop="20dp"
-                    android:text="Attandence "
+                    android:text="Attendance "
                     android:textColor="#4a4a4a"
                     android:textSize="12sp" />
 
@@ -285,27 +282,49 @@
                 </GridView>
 
                 <GridLayout
-                    android:id="@+id/gridLayout"
+                    android:id="@+id/hobbyGrid"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_alignStart="@+id/hobbiesLabel"
                     android:layout_marginEnd="20dp"
                     android:layout_marginTop="30dp">
+                <!-- inflate rectangular blocks here -->
+                </GridLayout>
+            </RelativeLayout>
 
-                    <TextView
-                        android:id="@+id/textView4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="33dp"
-                        android:layout_marginEnd="10dp"
-                        android:background="@drawable/small_box_outline"
-                        android:gravity="center"
-                        android:paddingEnd="8dp"
-                        android:paddingStart="8dp"
-                        android:text="TextView"
-                        android:textColor="#4a4a4a"
-                        android:textSize="12sp" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/field_line"
+                android:paddingBottom="16dp"
+                android:paddingTop="15dp">
 
+                <TextView
+                    android:id="@+id/skillsLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="20dp"
+                    android:text="Skills"
+                    android:textColor="#f17e01" />
+
+                <GridView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </GridView>
+
+                <GridLayout
+                    android:id="@+id/skillGrid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignStart="@+id/skillsLabel"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="30dp">
+                    <!-- inflate rectangular blocks here -->
                 </GridLayout>
             </RelativeLayout>
 
