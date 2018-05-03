@@ -3,15 +3,16 @@ package com.example.lenovopc.jagrati;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.ImageButton;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.NetworkImageView;
 
@@ -19,15 +20,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
-
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageButton;
-import android.widget.PopupMenu;
-import android.widget.Toast;
 
 public class SubjectTeachingDepartment extends BaseActivity {
     @Override
@@ -45,6 +39,7 @@ public class SubjectTeachingDepartment extends BaseActivity {
 
             String subjectId = bundle.getString("subjectId");
             getTeachers(subjectId);
+
             final ImageButton optionBtn = (ImageButton) findViewById(R.id.options);
             optionBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -61,14 +56,25 @@ public class SubjectTeachingDepartment extends BaseActivity {
 
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             public boolean onMenuItemClick(MenuItem item) {
-                Toast.makeText(SubjectTeachingDepartment.this,
-                        "Clicked popup menu item " + item.getTitle(),
-                        Toast.LENGTH_SHORT).show();
+                if (item.getTitle().equals("Edit")) {
+                    Button removeVolunteersBtn = (Button) findViewById(R.id.removeVolunteers);
+                    removeVolunteersBtn.setVisibility(View.VISIBLE);
+                    removeVolunteersBtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            removeVolunteers();
+                        }
+                    });
+                }
                 return true;
             }
         });
 
         popup.show();
+    }
+
+    private void removeVolunteers() {
+
     }
 
     private void getTeachers(String subjectId) {
@@ -128,6 +134,9 @@ public class SubjectTeachingDepartment extends BaseActivity {
 
                 NetworkImageView dpIView = (NetworkImageView) volunteerProfileButtonView.findViewById(R.id.displayPicture);
                 dpIView.setImageUrl(displayPictureURL, imageLoader);
+
+                ImageButton optionsBtn = (ImageButton) volunteerProfileButtonView.findViewById(R.id.options);
+                optionsBtn.setVisibility(View.GONE);
 
                 volunteerSubjectLayout.addView(volunteerProfileButtonView);
             } catch (JSONException e) {

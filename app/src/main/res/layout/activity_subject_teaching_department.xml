@@ -6,12 +6,13 @@
     android:background="@android:color/white"
     tools:context="com.example.lenovopc.jagrati.SubjectTeachingDepartment">
 
-    <ImageView
-        android:id="@+id/background"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        app:srcCompat="@drawable/ic_teachingdepartment_frame" />
+    <!-- TODO: Exact problem like ic_profile_bg -->
+    <!--<ImageView-->
+        <!--android:id="@+id/background"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--app:srcCompat="@drawable/ic_teachingdepartment_frame" />-->
 
     <LinearLayout
         android:id="@+id/subjectDept"
@@ -40,14 +41,15 @@
                 android:id="@+id/volunteerSubjects"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"></LinearLayout>
+                android:orientation="vertical">
+
+            </LinearLayout>
         </ScrollView>
 
     </LinearLayout>
 
-    <!--TODO: Hide when no edit-->
     <Button
-        android:id="@+id/remove"
+        android:id="@+id/removeVolunteers"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
@@ -58,6 +60,7 @@
         android:background="@drawable/button_notificationpage2"
         android:text="Remove Selected (3)"
         android:textColor="#ffffff"
-        android:textAllCaps="false"/>
+        android:textAllCaps="false"
+        android:visibility="gone"/>
 
 </RelativeLayout>
