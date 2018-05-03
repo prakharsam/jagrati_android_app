@@ -141,6 +141,7 @@ public class ProfileUser extends BaseActivity {
         if (!displayPictureURL.equals("null")) {
             NetworkImageView dpIView = (NetworkImageView) findViewById(R.id.displayPicture);
             dpIView.setImageUrl(displayPictureURL, imageLoader);
+            dpIView.setBackground(null);
         }
 
         TextView nameView = (TextView) findViewById(R.id.name);

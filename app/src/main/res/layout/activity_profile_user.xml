@@ -47,7 +47,8 @@
                     <com.android.volley.toolbox.NetworkImageView
                         android:id="@+id/displayPicture"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ic_home_user"/>
 
                     <ImageView
                         android:id="@+id/frame"

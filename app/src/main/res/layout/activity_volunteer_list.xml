@@ -27,15 +27,13 @@
         android:layout_marginTop="20dp">
 
         <LinearLayout
+            android:id="@+id/volunteerList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!--TODO: get profile_subject_button here for each volunteer-->
-            <!--TODO: get menu_options_volunteers popup menu for each volunteers options_button-->
-            <!--TODO: Delete dummy include-->
-            <include layout="@layout/profile_subject_button"/>
-
+            <!--TODO: get menu_options_volunteers
+            popup menu for each volunteers options_button-->
         </LinearLayout>
     </ScrollView>
 
