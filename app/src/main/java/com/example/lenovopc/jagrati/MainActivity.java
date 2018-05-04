@@ -22,8 +22,6 @@ public class MainActivity extends BaseActivity {
 
         Intent notificationServiceIntent = new Intent(this, NotificationService.class);
         Bundle bundle = new Bundle();
-        bundle.putInt("userId", userId);
-        bundle.putString("apiURL", apiURL);
         bundle.putString("jwtVal", jwtVal);
         notificationServiceIntent.putExtras(bundle);
         startService(notificationServiceIntent);

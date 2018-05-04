@@ -31,8 +31,6 @@ public class NotificationService extends Service {
     public Context context = this;
     public Handler handler = null;
     public static Runnable runnable = null;
-    public int userId = -1;
-    public String apiURL = "";
     public String jwtVal = "";
 
     @Override
@@ -43,10 +41,8 @@ public class NotificationService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
-        if (userId == -1 && intent != null) {
+        if (intent != null) {
             Bundle bundle = intent.getExtras();
-            userId = bundle.getInt("userId");
-            apiURL = bundle.getString("apiURL");
             jwtVal = bundle.getString("jwtVal");
         }
         return START_STICKY;
@@ -67,7 +63,7 @@ public class NotificationService extends Service {
     }
 
     public void getUserNotifications() {
-        final String notificationURL = apiURL + "/user_notifications/?is_seen=False";
+        final String notificationURL = getString(R.string.api_url) + "/user_notifications/?is_seen=False";
         RequestQueue queue = VolleySingleton.getInstance(
                 getApplicationContext()
         ).getRequestQueue();
