@@ -17,73 +17,11 @@
         android:layout_marginTop="20dp">
 
         <LinearLayout
-            android:id="@+id/requestLayout"
+            android:id="@+id/joinRequestsList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <!--TODO: Insert request_card layout here for new join request-->
-            <RelativeLayout android:id="@+id/requestCard"
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:background="@drawable/field_line"
-                xmlns:android="http://schemas.android.com/apk/res/android">
 
-                <TextView
-                    android:id="@+id/VolunteerName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Kisan Sharma"
-                    android:textColor="#4a4a4a"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/volunteerId"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/VolunteerName"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="8dp"
-                    android:text="kisansharma@iiitdmj.ac.in" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:orientation="horizontal"
-                    android:paddingBottom="15dp"
-                    android:paddingTop="10dp">
-
-                    <Button
-                        android:id="@+id/accept"
-                        android:layout_width="wrap_content"
-                        android:layout_height="35dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/button_notificationpage2"
-                        android:text="Accept"
-                        android:textColor="#ffffff" />
-
-                    <Button
-                        android:id="@+id/remove"
-                        android:layout_width="wrap_content"
-                        android:layout_height="35dp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignTop="@+id/accept"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/login_button"
-                        android:text="Remove"
-                        android:textColor="@color/logincolor" />
-                </LinearLayout>
-
-            </RelativeLayout>
         </LinearLayout>
     </ScrollView>
 

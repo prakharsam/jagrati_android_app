@@ -121,7 +121,7 @@ public class NotificationService extends Service {
                     bundle.putInt("eventId", instanceId);
                 } else if (_type.equals("join_request")) {
                     title = "Join Request - " + content;
-                    cls = MainActivity.class;
+                    cls = VolunteerRequest.class;
                     bundle.putInt("joinRequestId", instanceId);
                 } else if (_type.equals("class_feedback")) {
                     title = content + " History Updated";

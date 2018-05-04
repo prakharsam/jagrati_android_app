@@ -6,7 +6,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <TextView
-        android:id="@+id/VolunteerName"
+        android:id="@+id/volunteerName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -17,10 +17,10 @@
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/volunteerId"
+        android:id="@+id/volunteerEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/VolunteerName"
+        android:layout_below="@+id/volunteerName"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
         android:text="kisansharma@iiitdmj.ac.in" />
@@ -29,6 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_below="@+id/volunteerEmail"
         android:orientation="horizontal"
         android:paddingBottom="15dp"
         android:paddingTop="10dp">
