@@ -47,7 +47,7 @@ public class ClassStudentList extends BaseActivity {
             attendanceBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent attendanceActivity = new Intent("com.example.lenovopc.jagrati.ATTENDANCE");
+                    Intent attendanceActivity = new Intent("com.example.lenovopc.jagrati.STUDENTATTENDANCE");
                     _bundle.putString("numActiveStudents", numActiveStudents);
                     attendanceActivity.putExtras(_bundle);
                     startActivity(attendanceActivity);
