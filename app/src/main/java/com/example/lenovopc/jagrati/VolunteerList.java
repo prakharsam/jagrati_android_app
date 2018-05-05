@@ -1,30 +1,28 @@
 package com.example.lenovopc.jagrati;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.PopupMenu;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.SearchView;
+import android.util.Log;
+import android.widget.ListView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Response;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.NetworkImageView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class VolunteerList extends BaseActivity {
+
+    SearchView editSearch;
+    ArrayList<VolunteerLink> volunteerList = new ArrayList<>();
+    ListView volunteerListView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,6 +32,16 @@ public class VolunteerList extends BaseActivity {
         setPageTitle("Volunteer List");
 
         getVolunteers();
+
+        editSearch = (SearchView) findViewById(R.id.search);
+        editSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editSearch.setIconified(false);
+            }
+        });
+
+        volunteerListView = (ListView) findViewById(R.id.volunteerList);
     }
 
     private void getVolunteers() {
@@ -76,32 +84,25 @@ public class VolunteerList extends BaseActivity {
             String discipline = volunteer.getString("discipline");
             String displayPicURL = volunteer.getString("display_picture");
 
-            LinearLayout volunteerListLayout = (LinearLayout) findViewById(R.id.volunteerList);
-            View profileLinkView = getLayoutInflater().inflate(R.layout.profile_subject_button, null);
+            volunteerList.add(
+                new VolunteerLink(userId, volunteerFullName, discipline, displayPicURL)
+            );
+        }
 
-            Button volunteerNameBtn = (Button) profileLinkView.findViewById(R.id.volunteerName);
-            volunteerNameBtn.setText(volunteerFullName);
-            volunteerNameBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent profileActivity = new Intent("com.example.lenovopc.jagrati.PROFILE");
-                    Bundle bundle = new Bundle();
-                    bundle.putInt("userId", userId);
-                    profileActivity.putExtras(bundle);
-                    startActivity(profileActivity);
-                }
-            });
+        final ListViewAdapter adapter = new ListViewAdapter(this, volunteerList);
+        volunteerListView.setAdapter(adapter);
 
-            TextView disciplineView = (TextView) profileLinkView.findViewById(R.id.volunteerDiscipline);
-            disciplineView.setText(discipline);
-
-            NetworkImageView dpIView = (NetworkImageView) profileLinkView.findViewById(R.id.displayPicture);
-            if (!displayPicURL.equals("null")) {
-                dpIView.setImageUrl(displayPicURL, imageLoader);
-                dpIView.setBackground(null);
+        editSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
             }
 
-            volunteerListLayout.addView(profileLinkView);
-        }
+            @Override
+            public boolean onQueryTextChange(String s) {
+                adapter.filter(s);
+                return false;
+            }
+        });
     }
 }

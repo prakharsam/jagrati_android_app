@@ -10,31 +10,19 @@
         android:id="@+id/include4" />
 
     <SearchView
+        android:id="@+id/search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/include4"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:background="@drawable/uploadimage_button"
-        android:id="@+id/searchView" />
+        android:background="@drawable/uploadimage_button"/>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/searchView"
-        android:layout_marginTop="20dp">
-
-        <LinearLayout
-            android:id="@+id/volunteerList"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <!--TODO: get menu_options_volunteers
-            popup menu for each volunteers options_button-->
-        </LinearLayout>
-    </ScrollView>
+    <ListView
+        android:id="@+id/volunteerList"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/search" />
 
 </RelativeLayout>
