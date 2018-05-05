@@ -67,7 +67,7 @@ public class StudentAttendance extends BaseActivity {
         String studentIds = android.text.TextUtils.join(",", selectedStudents);
 
         try {
-            formData.put("student_ids", studentIds);
+            formData.put("user_ids", studentIds);
         } catch (JSONException e) {
             Log.e("Error", e.getMessage());
             e.printStackTrace();
