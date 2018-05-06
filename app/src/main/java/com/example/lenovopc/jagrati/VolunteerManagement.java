@@ -36,10 +36,13 @@ public class VolunteerManagement extends BaseActivity {
 
         Button volunteerAttendanceBtn = (Button) findViewById(R.id.volunteerAttendance);
 
-        volunteerListBtn.setOnClickListener(new View.OnClickListener() {
+        volunteerAttendanceBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent classActivity = new Intent("com.example.lenovopc.jagrati.VOLUNTEERATTENDANCE");
+                Intent classActivity = new Intent("com.example.lenovopc.jagrati.TEACHINGDEPT");
+                Bundle bundle = new Bundle();
+                bundle.putBoolean("forAttendance", true);
+                classActivity.putExtras(bundle);
                 startActivity(classActivity);
             }
         });

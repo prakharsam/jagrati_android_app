@@ -105,13 +105,13 @@ public class SubjectTeachingDepartment extends BaseActivity {
         for (int i=0; i < department.length(); i++) {
             try {
                 JSONObject volunteerSubject = department.getJSONObject(i);
-                JSONObject volunteer = (JSONObject) volunteerSubject.get("volunteer");
+                JSONObject volunteer = volunteerSubject.getJSONObject("volunteer");
                 final String id = volunteer.getString("id");
                 final String firstName = volunteer.getString("first_name");
                 final String lastName = volunteer.getString("last_name");
                 final String fullName = firstName + " " + lastName;
                 final String discipline = volunteerSubject.getString("discipline") + " discipline";
-                final String displayPictureURL = apiURL + volunteerSubject.getString("display_picture");
+                final String displayPictureURL = volunteerSubject.getString("display_picture");
 
                 LinearLayout volunteerSubjectLayout = (LinearLayout) findViewById(R.id.volunteerSubjects);
                 View volunteerProfileButtonView = getLayoutInflater().inflate(R.layout.profile_subject_button, null);
@@ -133,7 +133,10 @@ public class SubjectTeachingDepartment extends BaseActivity {
                 volunteerDisciplineText.setText(discipline);
 
                 NetworkImageView dpIView = (NetworkImageView) volunteerProfileButtonView.findViewById(R.id.displayPicture);
-                dpIView.setImageUrl(displayPictureURL, imageLoader);
+                if (!displayPictureURL.equals("")) {
+                    dpIView.setImageUrl(displayPictureURL, imageLoader);
+                    dpIView.setBackground(null);
+                }
 
                 ImageButton optionsBtn = (ImageButton) volunteerProfileButtonView.findViewById(R.id.options);
                 optionsBtn.setVisibility(View.GONE);

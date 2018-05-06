@@ -33,9 +33,6 @@
             android:animateLayoutChanges="false"
             android:columnCount="2"
             android:rowOrderPreserved="false">
-            <!--TODO: Include attendance_volunteer_block for each volunteer-->
-            <!--TODO: Delete dummy inlude-->
-            <include layout="@layout/attendance_volunteer_block"/>
         </GridLayout>
     </ScrollView>
 

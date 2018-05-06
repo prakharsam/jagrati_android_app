@@ -64,10 +64,10 @@ public class StudentAttendance extends BaseActivity {
     private void submitAttendanceForm() {
         final String attendancePostURL = apiURL + "/attendance/";
         JSONObject formData = new JSONObject();
-        String studentIds = android.text.TextUtils.join(",", selectedStudents);
 
         try {
-            formData.put("user_ids", studentIds);
+            formData.put("user_ids", new JSONArray(selectedStudents));
+            formData.put("extra_user_ids", new JSONArray());
         } catch (JSONException e) {
             Log.e("Error", e.getMessage());
             e.printStackTrace();
@@ -163,7 +163,8 @@ public class StudentAttendance extends BaseActivity {
                         Method method = StudentAttendance.class.getMethod("setCheckBoxDP", parameterTypes);
                         new DownloadImageTask(method, this, attendanceCheckBox, null).execute(displayPictureURL);
                     } catch (NoSuchMethodException e) {
-                        //
+                        Log.e("Error", e.getMessage());
+                        e.printStackTrace();
                     }
 
                     attendanceCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -195,7 +196,6 @@ public class StudentAttendance extends BaseActivity {
 
     public void setCheckBoxDP(Bitmap bmap, CheckBox cb) {
         Bitmap _bmap = Bitmap.createScaledBitmap(bmap, 150, 150, false);
-        bmap.recycle();
         Drawable drawable = new BitmapDrawable(getResources(), _bmap);
         cb.setBackground(drawable);
     }

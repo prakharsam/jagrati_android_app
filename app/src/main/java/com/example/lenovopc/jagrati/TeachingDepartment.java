@@ -26,10 +26,18 @@ import android.widget.PopupMenu;
 import android.widget.Toast;
 
 public class TeachingDepartment extends BaseActivity {
+    boolean forAttendance = false;
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teaching_department);
+
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            forAttendance = bundle.getBoolean("forAttendance");
+        }
+
         getSubjects();
         setBackOnClickListener();
         setPageTitle("Teaching Department");
@@ -100,7 +108,11 @@ public class TeachingDepartment extends BaseActivity {
                 subjectNameBtn.setOnClickListener( new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent subjectDeptActivity = new Intent("com.example.lenovopc.jagrati.SUBJECTDEPT");
+                        Class cls = SubjectTeachingDepartment.class;
+                        if (forAttendance) {
+                            cls = VolunteerAttendance.class;
+                        }
+                        Intent subjectDeptActivity = new Intent(TeachingDepartment.this, cls);
                         Bundle bundle = new Bundle();
                         bundle.putString("subjectId", id);
                         bundle.putString("subjectName", name);
