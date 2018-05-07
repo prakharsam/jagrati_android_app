@@ -16,6 +16,8 @@
 
     </RelativeLayout>
 
+    <include layout="@layout/progress_bar" />
+
     <TextView
         android:id="@+id/header"
         android:layout_width="wrap_content"
@@ -28,14 +30,18 @@
         android:text="These students have been inactive lately."
         android:textSize="16sp" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/header"
-        android:baselineAligned="false"
-        android:orientation="vertical">
-        <!--TODO: Insert inactive_student_manage layout here for inactive student-->
-        <!--TODO: Set menu_options_3 for options button in include-->
-    </LinearLayout>
+        android:paddingBottom="2dp">
+        <LinearLayout
+            android:id="@+id/studentList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="vertical">
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>

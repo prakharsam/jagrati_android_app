@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/active"
-        android:title="Active" />
+        android:title="Set Active" />
 
     <item
         android:id="@+id/remove"
