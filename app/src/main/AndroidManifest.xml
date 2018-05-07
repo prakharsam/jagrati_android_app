@@ -280,6 +280,16 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".TransferVolunteerAttendance"
+            android:label="TransferVolunteerAttendance"
+            android:parentActivityName=".VolunteerAttendance">
+            <intent-filter>
+                <action android:name="com.example.lenovopc.jagrati.TRANSFERATTENDANCE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".VolunteerRequest"
             android:label="VolunteerRequest"
             android:parentActivityName=".VolunteerManagement">

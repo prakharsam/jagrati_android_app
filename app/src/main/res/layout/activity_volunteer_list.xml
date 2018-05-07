@@ -22,7 +22,36 @@
     <ListView
         android:id="@+id/volunteerList"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="match_parent"
         android:layout_below="@+id/search" />
+
+    <LinearLayout
+        android:id="@+id/transferFormButtons"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="false"
+        android:visibility="gone">
+        <Button
+            android:id="@+id/cancelTransfer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#bbbbbb"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:text="Cancel"/>
+        <Button
+            android:id="@+id/transfer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#f17e01"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:text="Transfer"/>
+    </LinearLayout>
 
 </RelativeLayout>

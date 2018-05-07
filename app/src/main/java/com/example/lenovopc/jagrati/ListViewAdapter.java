@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.NetworkImageView;
@@ -21,12 +23,15 @@ public class ListViewAdapter extends BaseAdapter {
     LayoutInflater inflater;
     private List<VolunteerLink> volunteerLinks = null;
     private ArrayList<VolunteerLink> volunteerLinksList;
+    private boolean forTransfer;
+    private ArrayList<View> childViews = new ArrayList<>();
 
-    public ListViewAdapter(Context context, List<VolunteerLink> volunteerLinkList) {
+    public ListViewAdapter(Context context, List<VolunteerLink> volunteerLinkList, boolean forTransfer) {
         mContext = context;
+        this.forTransfer = forTransfer;
         this.volunteerLinks = volunteerLinkList;
         inflater = LayoutInflater.from(mContext);
-        this.volunteerLinksList = new ArrayList<VolunteerLink>();
+        this.volunteerLinksList = new ArrayList<>();
         this.volunteerLinksList.addAll(volunteerLinkList);
     }
 
@@ -34,6 +39,8 @@ public class ListViewAdapter extends BaseAdapter {
         Button name;
         TextView discipline;
         NetworkImageView dpIView;
+        ImageButton optionsBtn;
+        ImageView greenTick;
     }
 
     @Override
@@ -60,11 +67,20 @@ public class ListViewAdapter extends BaseAdapter {
             holder.name = (Button) view.findViewById(R.id.volunteerName);
             holder.discipline = (TextView) view.findViewById(R.id.volunteerDiscipline);
             holder.dpIView = (NetworkImageView) view.findViewById(R.id.displayPicture);
+            holder.optionsBtn = (ImageButton) view.findViewById(R.id.options);
+            holder.greenTick = (ImageView) view.findViewById(R.id.greenTick);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
         }
-        String dpURL = volunteerLinks.get(position).getDisplayPicURL();
+
+        if (this.forTransfer) {
+            holder.optionsBtn.setVisibility(View.GONE);
+        }
+
+        final String fullName = volunteerLinks.get(position).getName();
+        final String discipline = volunteerLinks.get(position).getDiscipline();
+        final String dpURL = volunteerLinks.get(position).getDisplayPicURL();
         if (!dpURL.equals("null")) {
             holder.dpIView.setImageUrl(dpURL, VolleySingleton.getInstance(
                 mContext
@@ -72,18 +88,28 @@ public class ListViewAdapter extends BaseAdapter {
             holder.dpIView.setBackground(null);
         }
 
-        holder.name.setText(volunteerLinks.get(position).getName());
-        holder.discipline.setText(volunteerLinks.get(position).getDiscipline());
+        holder.name.setText(fullName);
+        holder.discipline.setText(discipline);
         holder.name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            Intent profileActivity = new Intent("com.example.lenovopc.jagrati.PROFILE");
-            Bundle bundle = new Bundle();
-            bundle.putInt("userId", volunteerLinks.get(position).getId());
-            profileActivity.putExtras(bundle);
-            mContext.startActivity(profileActivity);
+                int userId = volunteerLinks.get(position).getId();
+                if (ListViewAdapter.this.forTransfer) {
+                    ((TransferVolunteerAttendance) mContext).selectUser(userId, fullName, discipline, dpURL);
+
+                    for (int i=0; i < childViews.size(); i++) {
+                        View childView = childViews.get(i);
+                        ImageView greenTickView = (ImageView) childView.findViewById(R.id.greenTick);
+                        greenTickView.setVisibility(View.GONE);
+                    }
+
+                    holder.greenTick.setVisibility(View.VISIBLE);
+                } else {
+                    ((VolunteerList) mContext).selectUser(userId, fullName, discipline, dpURL);
+                }
             }
         });
+        childViews.add(view);
         return view;
     }
 

@@ -27,7 +27,7 @@ import android.widget.Toast;
 
 public class TeachingDepartment extends BaseActivity {
     boolean forAttendance = false;
-    
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

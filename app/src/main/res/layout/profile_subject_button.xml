@@ -7,7 +7,19 @@
 
     <!--TODO: Hide include in activity_subject teaching_department-->
     <!--TODO: Show include in activity_volunteers_list-->
-    <include layout="@layout/options_button" />
+    <include layout="@layout/options_button"/>
+
+    <ImageView
+        android:id="@+id/greenTick"
+        android:layout_width="21dp"
+        android:layout_height="33dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="14dp"
+        android:background="@android:color/transparent"
+        android:elevation="10dp"
+        android:src="@drawable/checkbox_green"
+        android:visibility="gone" />
 
     <!--TODO: Hide Checkbox in activity_subject teaching_department & activity_volunteers_list-->
     <!--TODO: Show Checkbox in activity_subject teaching_department when edit is on-->
@@ -47,7 +59,8 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_centerVertical="true"
-        android:layout_marginStart="16dp">
+        android:layout_marginStart="16dp"
+        android:id="@+id/relativeLayout2">
 
         <com.android.volley.toolbox.NetworkImageView
             android:id="@+id/displayPicture"
@@ -61,6 +74,4 @@
             android:layout_height="match_parent"
             android:src="@drawable/student_dp_frame" />
     </RelativeLayout>
-
-
 </RelativeLayout>

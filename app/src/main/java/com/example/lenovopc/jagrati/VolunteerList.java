@@ -1,5 +1,6 @@
 package com.example.lenovopc.jagrati;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.SearchView;
@@ -23,6 +24,7 @@ public class VolunteerList extends BaseActivity {
     SearchView editSearch;
     ArrayList<VolunteerLink> volunteerList = new ArrayList<>();
     ListView volunteerListView;
+    ListViewAdapter adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,8 @@ public class VolunteerList extends BaseActivity {
         setPageTitle("Volunteer List");
 
         getVolunteers();
+
+        adapter = new ListViewAdapter(this, volunteerList, false);
 
         editSearch = (SearchView) findViewById(R.id.search);
         editSearch.setOnClickListener(new View.OnClickListener() {
@@ -44,7 +48,7 @@ public class VolunteerList extends BaseActivity {
         volunteerListView = (ListView) findViewById(R.id.volunteerList);
     }
 
-    private void getVolunteers() {
+    public void getVolunteers() {
         final String volunteersURL = apiURL + "/volunteers/";
 
         JsonArrayRequest req = new JsonArrayRequest(
@@ -89,8 +93,8 @@ public class VolunteerList extends BaseActivity {
             );
         }
 
-        final ListViewAdapter adapter = new ListViewAdapter(this, volunteerList);
-        volunteerListView.setAdapter(adapter);
+        final ListViewAdapter _adapter = adapter;
+        volunteerListView.setAdapter(_adapter);
 
         editSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -100,9 +104,17 @@ public class VolunteerList extends BaseActivity {
 
             @Override
             public boolean onQueryTextChange(String s) {
-                adapter.filter(s);
+                _adapter.filter(s);
                 return false;
             }
         });
+    }
+
+    public void selectUser(int userId, String fullName, String discipline, String dpURL) {
+        Intent profileActivity = new Intent("com.example.lenovopc.jagrati.PROFILE");
+        Bundle bundle = new Bundle();
+        bundle.putInt("userId", userId);
+        profileActivity.putExtras(bundle);
+        startActivity(profileActivity);
     }
 }

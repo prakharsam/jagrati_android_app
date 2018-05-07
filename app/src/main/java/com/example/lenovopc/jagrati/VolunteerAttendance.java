@@ -141,10 +141,11 @@ public class VolunteerAttendance extends BaseActivity {
                         selectedVolunteers.remove(index);
                     }
 
-                    Intent transferActivity = new Intent(VolunteerAttendance.this, MainActivity.class);
+                    Intent transferActivity = new Intent(VolunteerAttendance.this, TransferVolunteerAttendance.class);
                     Bundle bundle = new Bundle();
                     bundle.putString("firstName", firstName);
                     bundle.putInt("childIndex", idx);
+                    bundle.putString("transferringUserId", id);
                     transferActivity.putExtras(bundle);
                     startActivityForResult(transferActivity, 100);
                 }
@@ -234,7 +235,7 @@ public class VolunteerAttendance extends BaseActivity {
             Class[] parameterTypes = new Class[2];
             parameterTypes[0] = Bitmap.class;
             parameterTypes[1] = CheckBox.class;
-            Method method = StudentAttendance.class.getMethod("setCheckBoxDP", parameterTypes);
+            Method method = VolunteerAttendance.class.getMethod("setCheckBoxDP", parameterTypes);
             new DownloadImageTask(method, this, attendanceCheckBox, null).execute(dpURL);
         } catch (NoSuchMethodException e) {
             Log.e("Error", e.getMessage());
@@ -245,13 +246,29 @@ public class VolunteerAttendance extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 100 && resultCode == RESULT_OK && data != null) {
-            String userId = data.getExtras().getString("id");
-            String firstName = data.getExtras().getString("firstName");
-            String tFullName = data.getExtras().getString("tFullName");
-            String tDiscipline = data.getExtras().getString("tDiscipline");
-            String tDpURL = data.getExtras().getString("tDpURL");
+            Bundle bundle = data.getExtras();
+            String userId = bundle.getString("id");
+            String transferringUserId = bundle.getString("transferringUserId");
+            String tFullName = bundle.getString("tFullName");
 
-            int childIndex = data.getExtras().getInt("childIndex");
+            if (transferringUserId.equals(userId)) {
+                Toast.makeText(this, "Can't transfer a user to himself",
+                        Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            int index = extraVolunteers.indexOf(userId);
+            if (index != -1) {
+                Toast.makeText(this, tFullName + " has already been selected for transfer",
+                        Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            String firstName = bundle.getString("firstName");
+            String tDiscipline = bundle.getString("tDiscipline");
+            String tDpURL = bundle.getString("tDpURL");
+
+            int childIndex = bundle.getInt("childIndex");
             View childView = volunteerGrid.getChildAt(childIndex);
 
             TextView transferredFrom = (TextView) childView.findViewById(R.id.transferredFrom);
