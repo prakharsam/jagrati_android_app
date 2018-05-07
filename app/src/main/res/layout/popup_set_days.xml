@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff">
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/backBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView2"
@@ -19,15 +18,15 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/editText"
-        android:layout_alignBottom="@+id/editText"
+        android:layout_alignBaseline="@+id/maxAbsents"
+        android:layout_alignBottom="@+id/maxAbsents"
         android:layout_marginEnd="12dp"
-        android:layout_toStartOf="@+id/editText"
+        android:layout_toStartOf="@+id/maxAbsents"
         android:text="Maximum absents"
         android:textSize="16sp" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/maxAbsents"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_centerHorizontal="true"
@@ -36,7 +35,7 @@
         android:ems="10"
         android:gravity="center"
         android:inputType="number"
-        android:text="4"
+        android:text="0"
         android:textColor="#4a4a4a"
         android:textSize="24sp" />
 
@@ -45,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/textView2"
-        android:layout_below="@+id/editText"
+        android:layout_below="@+id/maxAbsents"
         android:layout_marginTop="17dp"
         android:text="After which the student will shift to inactive section." />
 
