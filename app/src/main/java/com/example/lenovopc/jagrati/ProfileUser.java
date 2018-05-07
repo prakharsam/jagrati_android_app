@@ -137,6 +137,7 @@ public class ProfileUser extends BaseActivity {
         String batch = user.getString("batch").equals("null") ? nullValuesLabel : user.getString("batch");
         String contact = user.getString("contact").equals("null") ? nullValuesLabel : user.getString("contact");
         String address = user.getString("address").equals("null") ? nullValuesLabel : user.getString("address");
+        int extraClasses = user.getInt("extra_classes");
         boolean isContactHidden = user.getBoolean("is_contact_hidden");
         int attendanceCount = attendanceData.getInt("attendance");
         int totalClasses = attendanceData.getInt("total_classes");
@@ -170,6 +171,9 @@ public class ProfileUser extends BaseActivity {
 
         TextView addressView = (TextView) findViewById(R.id.address);
         addressView.setText(address);
+
+        TextView extraClassesView = (TextView) findViewById(R.id.extraClasses);
+        extraClassesView.setText(String.valueOf(extraClasses));
     }
 
     private String getBatchLabel(String batch, String programme) {
