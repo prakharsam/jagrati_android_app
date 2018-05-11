@@ -42,6 +42,20 @@ public class ClassesList extends BaseActivity {
                 onPopupButtonClick(optionBtn);
             }
         });
+
+        Button addClassBtn = (Button) findViewById(R.id.addSubject);
+        addClassBtn.setText("+Add Class");
+        addClassBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent addSubjectActivity = new Intent(ClassesList.this, AddSubject.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("header", "Add Class");
+                bundle.putString("urlSlug", "/classes/");
+                addSubjectActivity.putExtras(bundle);
+                startActivityForResult(addSubjectActivity, 100);
+            }
+        });
     }
 
     protected void onPopupButtonClick(View button) {
@@ -91,34 +105,53 @@ public class ClassesList extends BaseActivity {
                 final String id = _class.getString("id");
                 final String name = _class.getString("name");
                 final String numActiveStudents = _class.getString("num_active_students");
-                final String numActiveStudentsLabel = numActiveStudents + (numActiveStudents.equals("1") ? " Active Student" : " Active Students");
 
                 GridLayout gridLayout = (GridLayout) findViewById(R.id.gridWrap);
                 View classButtonView = getLayoutInflater().inflate(R.layout.subject_button, null);
 
-                Button classNameBtn = (Button) classButtonView.findViewById(R.id.buttonTitle);
-                classNameBtn.setText(name);
-                classNameBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent subjectDeptActivity = new Intent("com.example.lenovopc.jagrati.STUDENTLIST");
-                        Bundle bundle = new Bundle();
-                        bundle.putString("classId", id);
-                        bundle.putString("className", name);
-                        bundle.putString("numActiveStudents", numActiveStudents);
-                        subjectDeptActivity.putExtras(bundle);
-                        startActivity(subjectDeptActivity);
-                    }
-                });
-
-                TextView numStudentsTextView = (TextView) classButtonView.findViewById(R.id.buttonCaption);
-                numStudentsTextView.setText(numActiveStudentsLabel);
-
-                gridLayout.addView(classButtonView);
+                initializeClass(gridLayout, classButtonView, id, name, numActiveStudents);
             } catch (JSONException e) {
                 Log.e("Error", e.getMessage());
                 e.printStackTrace();
             }
+        }
+    }
+
+    private void initializeClass(GridLayout gridLayout, View classButtonView, final String id,
+                                 final String name, final String numActiveStudents) {
+        Button classNameBtn = (Button) classButtonView.findViewById(R.id.buttonTitle);
+        classNameBtn.setText(name);
+        classNameBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent subjectDeptActivity = new Intent("com.example.lenovopc.jagrati.STUDENTLIST");
+                Bundle bundle = new Bundle();
+                bundle.putString("classId", id);
+                bundle.putString("className", name);
+                bundle.putString("numActiveStudents", numActiveStudents);
+                subjectDeptActivity.putExtras(bundle);
+                startActivity(subjectDeptActivity);
+            }
+        });
+
+        final String numActiveStudentsLabel = numActiveStudents + " Active Students";
+        TextView numStudentsTextView = (TextView) classButtonView.findViewById(R.id.buttonCaption);
+        numStudentsTextView.setText(numActiveStudentsLabel);
+
+        gridLayout.addView(classButtonView);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 100 && resultCode == RESULT_OK && data != null) {
+            String name = data.getExtras().getString("name");
+            String id = data.getExtras().getString("id");
+            String numActiveStudents = "0";
+
+            GridLayout gridLayout = (GridLayout) findViewById(R.id.gridWrap);
+            View classButtonView = getLayoutInflater().inflate(R.layout.subject_button, null);
+
+            initializeClass(gridLayout, classButtonView, id, name, numActiveStudents);
         }
     }
 }
