@@ -2,6 +2,7 @@ package com.example.lenovopc.jagrati;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
@@ -126,7 +127,8 @@ public class TeachingDepartment extends BaseActivity {
 
                 gridLayout.addView(subjectButtonView);
             } catch (JSONException e) {
-                // TODO: Show error here.
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
             }
         }
     }
