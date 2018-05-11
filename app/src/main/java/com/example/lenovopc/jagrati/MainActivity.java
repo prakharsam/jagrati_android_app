@@ -12,6 +12,7 @@ import android.support.v4.app.TaskStackBuilder;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 public class MainActivity extends BaseActivity {
@@ -86,21 +87,26 @@ public class MainActivity extends BaseActivity {
             }
         });
 
-        classManageBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent classActivity = new Intent("com.example.lenovopc.jagrati.MANAGECLASS");
-                startActivity(classActivity);
-            }
-        });
+        if (isAdmin) {
+            classManageBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent classActivity = new Intent("com.example.lenovopc.jagrati.MANAGECLASS");
+                    startActivity(classActivity);
+                }
+            });
 
-        volunteerManageBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent classActivity = new Intent("com.example.lenovopc.jagrati.MANAGEVOLUNTEER");
-                startActivity(classActivity);
-            }
-        });
+            volunteerManageBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent classActivity = new Intent("com.example.lenovopc.jagrati.MANAGEVOLUNTEER");
+                    startActivity(classActivity);
+                }
+            });
+        } else {
+            LinearLayout adminOptionsView = (LinearLayout) findViewById(R.id.adminOptions);
+            adminOptionsView.setVisibility(View.GONE);
+        }
     }
 
     boolean doubleBackToExitPressedOnce = false;
