@@ -35,8 +35,6 @@ public class VolunteerList extends BaseActivity {
 
         getVolunteers();
 
-        adapter = new ListViewAdapter(this, volunteerList, false);
-
         editSearch = (SearchView) findViewById(R.id.search);
         editSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,6 +91,7 @@ public class VolunteerList extends BaseActivity {
             );
         }
 
+        adapter = new ListViewAdapter(this, volunteerList, false);
         final ListViewAdapter _adapter = adapter;
         volunteerListView.setAdapter(_adapter);
 
