@@ -206,7 +206,6 @@
                     </RelativeLayout>
                 </LinearLayout>
 
-                <!--TODO: Hide adminOptions layout for volunteers-->
                 <LinearLayout
                     android:id="@+id/adminOptions"
                     android:layout_width="match_parent"

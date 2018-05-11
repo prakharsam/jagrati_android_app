@@ -1,0 +1,59 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context="com.example.lenovopc.jagrati.AddSubject">
+
+    <include layout="@layout/progress_bar" />
+
+    <RelativeLayout
+        android:id="@+id/addSubjectForm"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/formSubmitBtn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="false"
+            android:background="#f17e01"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/popup_header" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/nameWrap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/field_line"
+                android:ems="10"
+                android:hint="Name"
+                android:inputType="text"
+                android:textColor="#4a4a4a"
+                android:textSize="14sp"
+                app:met_floatingLabel="normal" />
+        </LinearLayout>
+    </RelativeLayout>
+</FrameLayout>

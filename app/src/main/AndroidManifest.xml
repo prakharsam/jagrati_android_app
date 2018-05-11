@@ -65,6 +65,16 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".AddSubject"
+            android:label="AddSubject"
+            android:parentActivityName=".TeachingDepartment">
+            <intent-filter>
+                <action android:name="com.example.lenovopc.jagrati.ADDSUBJECT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <!-- Teaching Department Activities END -->
 
         <!-- Class Activities -->
