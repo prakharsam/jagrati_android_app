@@ -130,7 +130,7 @@ public class SubjectTeachingDepartment extends BaseActivity {
 
     private void initializeVolunteer(JSONObject volunteerSubject) throws JSONException {
         JSONObject volunteer = volunteerSubject.getJSONObject("volunteer");
-        final String id = volunteer.getString("id");
+        final int id = volunteer.getInt("id");
         final String firstName = volunteer.getString("first_name");
         final String lastName = volunteer.getString("last_name");
         final String fullName = firstName + " " + lastName;
@@ -147,7 +147,7 @@ public class SubjectTeachingDepartment extends BaseActivity {
             public void onClick(View v) {
                 Intent volunteerProfileActivity = new Intent("com.example.lenovopc.jagrati.PROFILE");
                 Bundle bundle = new Bundle();
-                bundle.putString("volunteerId", id);
+                bundle.putInt("userId", id);
                 volunteerProfileActivity.putExtras(bundle);
                 startActivity(volunteerProfileActivity);
             }
