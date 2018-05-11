@@ -75,6 +75,16 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".AddSubjectVolunteer"
+            android:label="AddSubjectVolunteer"
+            android:parentActivityName=".SubjectTeachingDepartment">
+            <intent-filter>
+                <action android:name="com.example.lenovopc.jagrati.ADDSUBJECTVOLUNTEER" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <!-- Teaching Department Activities END -->
 
         <!-- Class Activities -->

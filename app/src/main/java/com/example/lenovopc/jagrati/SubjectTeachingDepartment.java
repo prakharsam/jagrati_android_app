@@ -34,10 +34,10 @@ public class SubjectTeachingDepartment extends BaseActivity {
         if (bundle != null) {
             setBackOnClickListener();
 
-            String subjectName = bundle.getString("subjectName");
+            final String subjectName = bundle.getString("subjectName");
             setPageTitle(subjectName);
 
-            String subjectId = bundle.getString("subjectId");
+            final String subjectId = bundle.getString("subjectId");
             getTeachers(subjectId);
 
             final ImageButton optionBtn = (ImageButton) findViewById(R.id.options);
@@ -45,6 +45,21 @@ public class SubjectTeachingDepartment extends BaseActivity {
                 @Override
                 public void onClick(View view) {
                     onPopupButtonClick(optionBtn);
+                }
+            });
+
+            Button addSubjectVolunteerBtn = (Button) findViewById(R.id.addSubjectVolunteer);
+            addSubjectVolunteerBtn.setText("Add Volunteer To " + subjectName);
+            addSubjectVolunteerBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent addSubjectVolunteerActivity = new Intent(SubjectTeachingDepartment.this,
+                                                            AddSubjectVolunteer.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("id", subjectId);
+                    bundle.putString("name", subjectName);
+                    addSubjectVolunteerActivity.putExtras(bundle);
+                    startActivityForResult(addSubjectVolunteerActivity, 100);
                 }
             });
         }
@@ -105,46 +120,66 @@ public class SubjectTeachingDepartment extends BaseActivity {
         for (int i=0; i < department.length(); i++) {
             try {
                 JSONObject volunteerSubject = department.getJSONObject(i);
-                JSONObject volunteer = volunteerSubject.getJSONObject("volunteer");
-                final String id = volunteer.getString("id");
-                final String firstName = volunteer.getString("first_name");
-                final String lastName = volunteer.getString("last_name");
-                final String fullName = firstName + " " + lastName;
-                final String discipline = volunteerSubject.getString("discipline") + " discipline";
-                final String displayPictureURL = volunteerSubject.getString("display_picture");
-
-                LinearLayout volunteerSubjectLayout = (LinearLayout) findViewById(R.id.volunteerSubjects);
-                View volunteerProfileButtonView = getLayoutInflater().inflate(R.layout.profile_subject_button, null);
-
-                Button volunteerNameBtn = (Button) volunteerProfileButtonView.findViewById(R.id.volunteerName);
-                volunteerNameBtn.setText(fullName);
-                volunteerNameBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent volunteerProfileActivity = new Intent("com.example.lenovopc.jagrati.PROFILE");
-                        Bundle bundle = new Bundle();
-                        bundle.putString("volunteerId", id);
-                        volunteerProfileActivity.putExtras(bundle);
-                        startActivity(volunteerProfileActivity);
-                    }
-                });
-
-                TextView volunteerDisciplineText = (TextView) volunteerProfileButtonView.findViewById(R.id.volunteerDiscipline);
-                volunteerDisciplineText.setText(discipline);
-
-                NetworkImageView dpIView = (NetworkImageView) volunteerProfileButtonView.findViewById(R.id.displayPicture);
-                if (!displayPictureURL.equals("")) {
-                    dpIView.setImageUrl(displayPictureURL, imageLoader);
-                    dpIView.setBackground(null);
-                }
-
-                ImageButton optionsBtn = (ImageButton) volunteerProfileButtonView.findViewById(R.id.options);
-                optionsBtn.setVisibility(View.GONE);
-
-                volunteerSubjectLayout.addView(volunteerProfileButtonView);
+                initializeVolunteer(volunteerSubject);
             } catch (JSONException e) {
                 Log.e("Error", e.getMessage());
                 e.printStackTrace();
+            }
+        }
+    }
+
+    private void initializeVolunteer(JSONObject volunteerSubject) throws JSONException {
+        JSONObject volunteer = volunteerSubject.getJSONObject("volunteer");
+        final String id = volunteer.getString("id");
+        final String firstName = volunteer.getString("first_name");
+        final String lastName = volunteer.getString("last_name");
+        final String fullName = firstName + " " + lastName;
+        final String discipline = volunteerSubject.getString("discipline") + " discipline";
+        final String displayPictureURL = volunteerSubject.getString("display_picture");
+
+        LinearLayout volunteerSubjectLayout = (LinearLayout) findViewById(R.id.volunteerSubjects);
+        View volunteerProfileButtonView = getLayoutInflater().inflate(R.layout.profile_subject_button, null);
+
+        Button volunteerNameBtn = (Button) volunteerProfileButtonView.findViewById(R.id.volunteerName);
+        volunteerNameBtn.setText(fullName);
+        volunteerNameBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent volunteerProfileActivity = new Intent("com.example.lenovopc.jagrati.PROFILE");
+                Bundle bundle = new Bundle();
+                bundle.putString("volunteerId", id);
+                volunteerProfileActivity.putExtras(bundle);
+                startActivity(volunteerProfileActivity);
+            }
+        });
+
+        TextView volunteerDisciplineText = (TextView) volunteerProfileButtonView.findViewById(R.id.volunteerDiscipline);
+        volunteerDisciplineText.setText(discipline);
+
+        NetworkImageView dpIView = (NetworkImageView) volunteerProfileButtonView.findViewById(R.id.displayPicture);
+        if (!displayPictureURL.equals("")) {
+            dpIView.setImageUrl(displayPictureURL, imageLoader);
+            dpIView.setBackground(null);
+        }
+
+        ImageButton optionsBtn = (ImageButton) volunteerProfileButtonView.findViewById(R.id.options);
+        optionsBtn.setVisibility(View.GONE);
+
+        volunteerSubjectLayout.addView(volunteerProfileButtonView);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 100 && resultCode == RESULT_OK && data != null) {
+            Bundle bundle = data.getExtras();
+            if (bundle != null) {
+                try {
+                    JSONObject volunteer = new JSONObject(bundle.getString("volunteer"));
+                    initializeVolunteer(volunteer);
+                } catch (JSONException e) {
+                    Log.e("Error", e.getMessage());
+                    e.printStackTrace();
+                }
             }
         }
     }

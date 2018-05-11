@@ -71,7 +71,7 @@ public class AddSubject extends BaseActivity {
                         public void onResponse(JSONObject response) {
                             showProgress(false, formWrap);
                             Toast.makeText(AddSubject.this, "Added successfully",
-                                    Toast.LENGTH_SHORT);
+                                    Toast.LENGTH_SHORT).show();
                             try {
                                 Intent data = new Intent();
                                 data.putExtra("name", name);
