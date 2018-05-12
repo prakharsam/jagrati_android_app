@@ -35,6 +35,7 @@ public class VolunteerAttendance extends BaseActivity {
     String subjectId;
     private ArrayList<String> selectedVolunteers = new ArrayList<>();
     private ArrayList<String> extraVolunteers = new ArrayList<>();
+    private ArrayList<String> subjectVolunteerIds = new ArrayList<>();
     GridLayout volunteerGrid;
 
     @Override
@@ -101,6 +102,8 @@ public class VolunteerAttendance extends BaseActivity {
             final String fullName = firstName + " " + lastName;
             final String discipline = subjectVolunteer.getString("discipline");
             final String displayPictureURL = subjectVolunteer.getString("display_picture");
+
+            subjectVolunteerIds.add(id);
 
             View volunteerBlock = getLayoutInflater().inflate(R.layout.attendance_volunteer_block, null);
 
@@ -250,6 +253,12 @@ public class VolunteerAttendance extends BaseActivity {
             String userId = bundle.getString("id");
             String transferringUserId = bundle.getString("transferringUserId");
             String tFullName = bundle.getString("tFullName");
+
+            if (subjectVolunteerIds.contains(userId)) {
+                Toast.makeText(this, "Attendance can only be transferred to " +
+                        "volunteers of different subject", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
             if (transferringUserId.equals(userId)) {
                 Toast.makeText(this, "Can't transfer a user to himself",
