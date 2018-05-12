@@ -25,10 +25,14 @@ public class VolunteerList extends BaseActivity {
     ArrayList<VolunteerLink> volunteerList = new ArrayList<>();
     ListView volunteerListView;
     ListViewAdapter adapter;
+    boolean forTransfer = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (savedInstanceState != null) {
+            forTransfer = savedInstanceState.getBoolean("forTransfer");
+        }
         setContentView(R.layout.activity_volunteer_list);
         setBackOnClickListener();
         setPageTitle("Volunteer List");
@@ -91,7 +95,7 @@ public class VolunteerList extends BaseActivity {
             );
         }
 
-        adapter = new ListViewAdapter(this, volunteerList, false);
+        adapter = new ListViewAdapter(this, volunteerList, forTransfer);
         final ListViewAdapter _adapter = adapter;
         volunteerListView.setAdapter(_adapter);
 

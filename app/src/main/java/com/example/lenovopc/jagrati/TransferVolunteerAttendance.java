@@ -16,12 +16,12 @@ public class TransferVolunteerAttendance extends VolunteerList {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        savedInstanceState = new Bundle();
+        savedInstanceState.putBoolean("forTransfer", true);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_volunteer_list);
         setPageTitle("Transfer Attendance");
         setBackOnClickListener();
-
-        adapter = new ListViewAdapter(this, volunteerList, true);
 
         editSearch = (SearchView) findViewById(R.id.search);
         editSearch.setOnClickListener(new View.OnClickListener() {
